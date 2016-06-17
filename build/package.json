@@ -1,0 +1,53 @@
+{
+  "name": "inflex",
+  "version": "1.0.0",
+  "prefix": "inflex.",
+  "description": "Inflex is a responsive design grid, utilising the power of the flex display property.",
+  "repository": "chris-garner/inflex",
+  "homepage": "http://inflex.io",
+  "license": "MIT",
+  "copyright": [
+    "/*!",
+    " * Inflex v<%= pkg.version %> (<%= pkg.homepage %>)",
+    " * Copyright (c) <%= new Date().getFullYear() %>, <%= pkg.author.name %>",
+    " * Licensed under MIT (<%= pkg.author.url %>/inflex/blob/master/LICENSE.md)",
+    " */",
+    ""
+  ],
+  "author": {
+    "name": "Chris Garner",
+    "email": "help@inflex.io",
+    "url": "https://github.com/chris-garner"
+  },
+  "keywords": [
+    "css",
+    "less",
+    "grid",
+    "flexbox",
+    "framework",
+    "responsive"
+  ],
+  "devDependencies": {
+    "autoprefixer-core": "^3.1.2",
+    "del": "^0.1.3",
+    "gulp": "^3.8.11",
+    "gulp-bower": "0.0.7",
+    "gulp-cached": "^1.0.1",
+    "gulp-concat": "^2.5.2",
+    "gulp-debug": "^1.0.1",
+    "gulp-filter": "^1.0.2",
+    "gulp-header": "^1.2.2",
+    "gulp-if": "^1.2.5",
+    "gulp-jshint": "^1.9.2",
+    "gulp-less": "^3.0.1",
+    "gulp-minify-css": "^0.3.13",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^0.6.6",
+    "gulp-postcss": "^2.0.1",
+    "gulp-rename": "^1.2.0",
+    "gulp-uglify": "^1.0.1",
+    "gulp-watch": "^1.2.1",
+    "jshint-stylish": "^1.0.1",
+    "main-bower-files": "^2.1.0"
+  }
+}
