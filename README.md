@@ -7,11 +7,9 @@ Inflex is a responsive design grid, utilising the power of the **flex** display 
 ## Configuration Variables:
 
 ```
-@columns: 12;
 @breakpoints: ~'xs' 0 20em, ~'sm' 20em 30em, ~'md' 30em 48em, ~'lg' 48em 64em, ~'xl' 64em 75em, ~'xxl' 75em 90em;
 ```
 
-- `@columns` (_int_) The number of columns per row. (default: `12`)
 - `@breakpoints` (_array_) Responsive breakpoints (eg. `~'xs' 0 20em, ~'sm' 20em 30em`)
     - `selector` (_string_) Breakpoint selector (eg. `~'xs'`)
     - `min` (_em_) Minimum breakpoint width (eg. `0`)
@@ -24,7 +22,7 @@ Inflex is a responsive design grid, utilising the power of the **flex** display 
 ### How it works:
 
 - Inflex works around two core concepts - **rows** and **columns**. An inflex element can act as both a row and a column; this works great for nesting columns and producing flexible layouts that work great responsively.
-- **Rows** are flex containers that group together columns; columns can be grouped both _horizontally_ (default) and _vertically_.
+- **Rows** are flex containers that group together columns; columns can be grouped both _horizontally_ (default) and _vertically_. There should be no more than 12 columns within a row.
 - **Columns** are flex items that contain your content. Columns should always be direct children of rows.
 - Inflex does not use CSS classes; instead all options are declared through a custom `data-inflex` attribute, as a space separated list - removing any risk of framework conflicts.
 - Inflex comes with a core set of options that make **sizing**, **positioning** and **ordering** a breeze; as well as some optional modules which help tackle concepts such as box-model spacing and element visibility.
