@@ -1,0 +1,73 @@
+/*
+ * [visibility.less] - Copyright (c) inflex.io.
+ */
+
+// *
+// **
+// ****
+// *********************************************************************************************************
+// Mixins
+// *********************************************************************************************************
+// ****
+// **
+// *
+
+	// Iterate Visibility Breakpoints
+	// ---------------------------------------------------------
+
+	.iterate-visibility-breakpoints (@breakpoints)
+	{
+	    .iterate ();
+
+	    .iterate (@i: 1) when (@i <= length(@breakpoints))
+	    {
+	        .iterate (@i + 1);
+
+			@breakpoint: extract(@breakpoints, @i);
+
+			@selector: extract(@breakpoint, 1);
+
+			@minimum: extract(@breakpoint, 2);
+
+			@maximum: extract(@breakpoint, 3);
+
+			// Compose visibility rules
+
+			@media (min-width: @minimum) and (max-width: @maximum)
+			{
+				[data-inflex~='hide:@{selector}']{ display: none; }
+			}
+
+			@media (min-width: (@maximum + 0.0625)) // +1px
+			{
+				[data-inflex~='hide:gt:@{selector}']{ display: none; }
+			}
+
+			@media (min-width: @minimum)
+			{
+				[data-inflex~='hide:gte:@{selector}']{ display: none; }
+			}
+
+			@media (max-width: @minimum)
+			{
+				[data-inflex~='hide:lt:@{selector}']{ display: none; }
+			}
+
+			@media (max-width: @maximum)
+			{
+				[data-inflex~='hide:lte:@{selector}']{ display: none; }
+			}
+	    }
+	}
+
+// *
+// **
+// ****
+// *********************************************************************************************************
+// Output
+// *********************************************************************************************************
+// ****
+// **
+// *
+
+	.iterate-visibility-breakpoints (@breakpoints);

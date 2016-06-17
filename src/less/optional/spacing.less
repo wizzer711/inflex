@@ -1,0 +1,142 @@
+/*
+ * [spacing.less] - Copyright (c) inflex.io.
+ */
+
+// *
+// **
+// ****
+// *********************************************************************************************************
+// Mixins
+// *********************************************************************************************************
+// ****
+// **
+// *
+
+	// Iterate Spacing Breakpoints
+	// ---------------------------------------------------------
+
+	.iterate-spacing-breakpoints (@breakpoints)
+	{
+	    .iterate ();
+
+	    .iterate (@i: 1) when (@i <= length(@breakpoints))
+	    {
+	        .iterate (@i + 1);
+
+	        @breakpoint: extract(@breakpoints, @i);
+
+			@selector: extract(@breakpoint, 1);
+
+			@minimum: extract(@breakpoint, 2);
+
+			@maximum: extract(@breakpoint, 3);
+
+	        @media (max-width: @maximum)
+	        {
+	        	.construct-spacing (~'@{selector}:');
+	        }
+	    }
+	}
+
+	// Construct Spacing
+	// ---------------------------------------------------------
+
+	.construct-spacing (@selector: ~'')
+	{
+		.iterate ();
+
+	    .iterate (@i: 1) when (@i <= length(@spacing))
+	    {
+	        .iterate (@i + 1);
+
+	        @group: extract(@spacing, @i);
+
+			@space: extract(@group, 1);
+
+			@unit: extract(@group, 2);
+
+			[data-inflex~='@{selector}PA@{space}']
+			{
+				padding: @unit;
+			}
+
+			[data-inflex~='@{selector}PV@{space}']
+			{
+				padding-top: @unit; padding-bottom: @unit;
+			}
+
+			[data-inflex~='@{selector}PH@{space}']
+			{
+				padding-left: @unit; padding-right: @unit;
+			}
+
+			[data-inflex~='@{selector}PT@{space}']
+			{
+				padding-top: @unit;
+			}
+
+			[data-inflex~='@{selector}PR@{space}']
+			{
+				padding-right: @unit;
+			}
+
+			[data-inflex~='@{selector}PB@{space}']
+			{
+				padding-bottom: @unit;
+			}
+
+			[data-inflex~='@{selector}PL@{space}']
+			{
+				padding-left: @unit;
+			}
+
+			[data-inflex~='@{selector}MT@{space}']
+			{
+				margin-top: @unit;
+			}
+
+			[data-inflex~='@{selector}MR@{space}']
+			{
+				margin-right: @unit;
+			}
+
+			[data-inflex~='@{selector}MB@{space}']
+			{
+				margin-bottom: @unit;
+			}
+
+			[data-inflex~='@{selector}ML@{space}']
+			{
+				margin-left: @unit;
+			}
+
+			[data-inflex~='@{selector}MA@{space}']
+			{
+				margin: @unit;
+			}
+
+			[data-inflex~='@{selector}MV@{space}']
+			{
+				margin-top: @unit; margin-bottom: @unit;
+			}
+
+			[data-inflex~='@{selector}MH@{space}']
+			{
+				margin-left: @unit; margin-right: @unit;
+			}
+	    }
+	}
+
+// *
+// **
+// ****
+// *********************************************************************************************************
+// Output
+// *********************************************************************************************************
+// ****
+// **
+// *
+
+	.construct-spacing (); // Global spacing rules
+
+	.iterate-spacing-breakpoints (@breakpoints);

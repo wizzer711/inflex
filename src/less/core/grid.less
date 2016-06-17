@@ -1,0 +1,220 @@
+/*
+ * [grid.less] - Copyright (c) inflex.io.
+ */
+
+// *
+// **
+// ****
+// *********************************************************************************************************
+// Mixins
+// *********************************************************************************************************
+// ****
+// **
+// *
+
+	// Iterate Column Breakpoints
+	// ---------------------------------------------------------
+
+	.iterate-column-breakpoints (@breakpoints)
+	{
+	    .iterate ();
+
+	    .iterate (@i: 1) when (@i <= length(@breakpoints))
+	    {
+	        .iterate (@i + 1);
+
+	        @breakpoint: extract(@breakpoints, @i);
+
+			@selector: extract(@breakpoint, 1);
+
+			@minimum: extract(@breakpoint, 2);
+
+			@maximum: extract(@breakpoint, 3);
+
+			.construct-locked-columns (@selector, @maximum);
+
+	        @media (max-width: @maximum)
+	        {
+	        	.construct-fluid-columns (@selector);
+	        }
+	    }
+	}
+
+	// Construct Locked Columns
+	// ---------------------------------------------------------
+
+	.construct-locked-columns (@selector, @maximum)
+	{
+	    .iterate (12);
+
+		.iterate (@i) when (@i > 0)
+	    {
+	        .iterate (@i - 1);
+
+	        @width: (@maximum / 12) * @i;
+
+			[data-inflex~='@@{selector}:@{i}'] when (isstring(@selector))
+			{
+				flex-basis: @width; max-width: @width;
+			}
+	    }
+	}
+
+	// Construct Fluid Columns & Ordering
+	// ---------------------------------------------------------
+
+	.construct-fluid-columns (@selector: null, @divide: ~':')
+	{
+		.iterate (12);
+
+		.iterate (@i) when (@i > 0)
+	    {
+	        .iterate (@i - 1);
+
+	        @width: (100% / 12) * @i;
+
+	       	[data-inflex~='@{selector}@{divide}@{i}'] when (isstring(@selector))
+			{
+				flex-basis: @width; max-width: @width;
+			}
+			
+			[data-inflex~='@{selector}#@{i}'] when (isstring(@selector))
+			{
+				order: @i;
+			}
+	    }
+	}
+
+// *
+// **
+// ****
+// *********************************************************************************************************
+// Output
+// *********************************************************************************************************
+// ****
+// **
+// *
+
+	// Flex
+	// ---------------------------------------------------------
+
+	[data-inflex~="flex"] { display: flex; }
+
+	[data-inflex~="flex:inline"] { display: inline-flex; }
+
+	// Wrap
+	// ---------------------------------------------------------
+
+	[data-inflex~="wrap"] { flex-wrap: wrap; }
+
+	[data-inflex~="wrap:reverse"] { flex-wrap: wrap-reverse; }
+	
+	[data-inflex~="wrap:no"] { flex-wrap: nowrap; }
+
+	// Direction
+	// ---------------------------------------------------------
+
+	[data-inflex~="dir:row"] { flex-direction: row; }
+
+	[data-inflex~="dir:row-reverse"] { flex-direction: row-reverse; }
+
+	[data-inflex~="dir:col"] { flex-direction: column; }
+
+	[data-inflex~="dir:col-reverse"] { flex-direction: column-reverse; }
+
+	// Alignment along the main axis of the current line
+	// ---------------------------------------------------------
+
+	[data-inflex~="jc:center"] { justify-content: center; }
+
+	[data-inflex~="jc:start"] { justify-content: flex-start; }
+
+	[data-inflex~="jc:end"] { justify-content: flex-end; }
+
+	[data-inflex~="jc:around"] { justify-content: space-around; }
+
+	[data-inflex~="jc:between"] { justify-content: space-between; }
+
+	// Alignment on the cross axis when a SINGLE line.
+	// ---------------------------------------------------------
+
+	[data-inflex~="ai:stretch"] { align-items: stretch; }
+
+	[data-inflex~="ai:start"] { align-items: flex-start; }
+
+	[data-inflex~="ai:end"] { align-items: flex-end; }
+
+	[data-inflex~="ai:center"] { align-items: center; }
+
+	[data-inflex~="ai:baseline"] { align-items: baseline; }
+
+	// Alignment on the cross axis when MULTIPLE lines.
+	// ---------------------------------------------------------
+
+	[data-inflex~="ac:start"] { align-content: flex-start; }
+
+	[data-inflex~="ac:end"] { align-content: flex-end; }
+
+	[data-inflex~="ac:center"] { align-content: center; }
+
+	[data-inflex~="ac:around"] { align-content: space-around; }
+
+	[data-inflex~="ac:between"] { align-content: space-between; }
+
+	[data-inflex~="ac:stretch"] { align-content: stretch; }
+
+	// Shrink
+	// ---------------------------------------------------------
+
+	[data-inflex~="shrink"] { flex-shrink: 1; }
+
+	[data-inflex~="shrink:no"] { flex-shrink: 0; }
+
+	// Grow
+	// ---------------------------------------------------------
+
+	[data-inflex~='grow']
+	{
+		flex-grow: 1; max-width: 100%;
+	}
+
+	// Default Row
+	// ---------------------------------------------------------
+
+	[data-inflex~='row']
+	{
+		&:extend([data-inflex~="flex"]);
+
+		&:extend([data-inflex~="wrap"]);
+		
+		&:extend([data-inflex~="jc:center"]);
+	}
+
+	// Default Column
+	// ---------------------------------------------------------
+
+	[data-inflex~="col"]
+	{
+		order     : 12;
+		flex-basis: auto;
+		flex-grow : 0;
+	}
+
+	// Debug
+	// ---------------------------------------------------------
+
+	[data-inflex~="debug"] [data-inflex~="col"], [data-inflex~="debug"][data-inflex~="col"],
+	{
+		box-shadow: inset 0 0 0 1px rgba(0,0,0,0.30), inset 0 1000vh 0 0 rgba(0,0,0,0.10);
+	}
+
+	// Fluid Columns [1-12]
+	// ---------------------------------------------------------
+
+	.construct-fluid-columns (~'', ~'');
+
+	// Breakpoint Columns [xs|sm|md|lg|xl|xxl]
+	// ---------------------------------------------------------
+
+	.iterate-column-breakpoints (@breakpoints);
+
