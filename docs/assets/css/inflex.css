@@ -125,11 +125,6 @@ body {
   -ms-flex-negative: 0;
       flex-shrink: 0;
 }
-[data-inflex~='grow'] {
-  -ms-flex-positive: 1;
-      flex-grow: 1;
-  max-width: 100%;
-}
 [data-inflex~="col"] {
   -ms-flex-order: 12;
       order: 12;
@@ -1269,6 +1264,11 @@ body {
     -ms-flex-order: 12;
         order: 12;
   }
+}
+[data-inflex~='grow'] {
+  -ms-flex-positive: 1;
+      flex-grow: 1;
+  max-width: 100%;
 }
 /*
  * [spacing.less] - Copyright (c) inflex.io.
