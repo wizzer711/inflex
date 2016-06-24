@@ -12,10 +12,10 @@
 // **
 // *
 
-	// Iterate Column Breakpoints
+	// Iterate Locked Column Breakpoints
 	// ---------------------------------------------------------
 
-	.iterate-column-breakpoints (@breakpoints)
+	.iterate-locked-column-breakpoints (@breakpoints)
 	{
 	    .iterate ();
 
@@ -32,11 +32,6 @@
 			@maximum: extract(@breakpoint, 3);
 
 			.construct-locked-columns (@selector, @maximum);
-
-	        @media (max-width: @maximum)
-	        {
-	        	.construct-fluid-columns (@selector);
-	        }
 	    }
 	}
 
@@ -57,6 +52,32 @@
 			{
 				flex-basis: @width; max-width: @width;
 			}
+	    }
+	}
+
+	// Iterate Fluid Column Breakpoints
+	// ---------------------------------------------------------
+
+	.iterate-fluid-column-breakpoints (@breakpoints)
+	{
+	    .iterate ();
+
+	    .iterate (@i: 1) when (@i <= length(@breakpoints))
+	    {
+	        .iterate (@i + 1);
+
+	        @breakpoint: extract(@breakpoints, @i);
+
+			@selector: extract(@breakpoint, 1);
+
+			@minimum: extract(@breakpoint, 2);
+
+			@maximum: extract(@breakpoint, 3);
+
+	        @media (max-width: @maximum)
+	        {
+	        	.construct-fluid-columns (@selector);
+	        }
 	    }
 	}
 
@@ -205,10 +226,15 @@
 
 	.construct-fluid-columns (~'', ~'');
 
-	// Breakpoint Columns [xs|sm|md|lg|xl|xxl]
+	// Locked Breakpoint Columns @[xs|sm|md|lg|xl|xxl]:[1-12]
 	// ---------------------------------------------------------
 
-	.iterate-column-breakpoints (@breakpoints);
+	.iterate-locked-column-breakpoints (@breakpoints);
+
+	// Fluid Breakpoint Columns [xs|sm|md|lg|xl|xxl]:[1-12]
+	// ---------------------------------------------------------
+
+	.iterate-fluid-column-breakpoints (@breakpoints);
 
 	// Grow (! Declaration Order Critical)
 	// ---------------------------------------------------------
