@@ -22,10 +22,11 @@
  * **
  */
 
-    autoprefixer = require('autoprefixer-core'),    // https://www.npmjs.org/package/autoprefixer-core
+    autoprefixer = require('autoprefixer'),         // https://www.npmjs.org/package/autoprefixer
     bower        = require('gulp-bower'),           // https://www.npmjs.org/package/gulp-bower
     bowerFiles   = require('main-bower-files'),     // https://www.npmjs.org/package/main-bower-files
     cache        = require('gulp-cached'),          // https://www.npmjs.org/package/gulp-cached
+    cleanCSS     = require('gulp-clean-css'),       // https://www.npmjs.org/package/gulp-clean-css
     concat       = require('gulp-concat'),          // https://www.npmjs.org/package/gulp-concat
     debug        = require('gulp-debug'),           // https://www.npmjs.org/package/gulp-debug
     del          = require('del'),                  // https://www.npmjs.org/package/del
@@ -35,7 +36,6 @@
     gulpif       = require('gulp-if'),              // https://www.npmjs.org/package/gulp-if
     jshint       = require('gulp-jshint'),          // https://www.npmjs.org/package/gulp-jshint
     less         = require('gulp-less'),            // https://www.npmjs.org/package/gulp-less
-    minifycss    = require('gulp-minify-css'),      // https://www.npmjs.org/package/gulp-minify-css
     notify       = require('gulp-notify'),          // https://www.npmjs.org/package/gulp-notify
     plumber      = require('gulp-plumber'),         // https://www.npmjs.org/package/gulp-plumber
     postcss      = require('gulp-postcss'),         // https://www.npmjs.org/package/gulp-postcss
@@ -149,7 +149,7 @@
             .pipe(cache('inflex:styles'))
             .pipe(gulp.dest('../dist/css/'))
             .pipe(gulp.dest('../docs/assets/css/'))
-            .pipe(minifycss())
+            .pipe(cleanCSS())
             .pipe(rename({ suffix: '.min' }))
             .pipe(header(pkg.copyright.join('\n'), { pkg: pkg }))
             .pipe(gulp.dest('../dist/css/'))
@@ -186,7 +186,7 @@
         .pipe(less({paths: ['../src/less/']})) // Finds @imports relative to itself first - beware duplicates
         .pipe(postcss(processors))
         .pipe(gulp.dest('../docs/assets/css/'))
-        .pipe(minifycss())
+        .pipe(cleanCSS())
         .pipe(rename({suffix: '.min'}))
         .pipe(header(pkg.copyright.join('\n'), { pkg: pkg }))
         .pipe(gulp.dest('../docs/assets/css/'))
