@@ -12,16 +12,16 @@
 // **
 // *
 
-	// Iterate Locked Column Breakpoints
+	// Iterate Column Breakpoints
 	// ---------------------------------------------------------
 
-	.iterate-locked-column-breakpoints (@breakpoints)
+	.iterate-column-breakpoints (@breakpoints)
 	{
 	    .iterate ();
 
-	    .iterate (@i: 1) when (@i <= length(@breakpoints))
+	    .iterate (@i: length(@breakpoints)) when (@i > 0)
 	    {
-	        .iterate (@i + 1);
+	        .iterate (@i - 1);
 
 	        @breakpoint: extract(@breakpoints, @i);
 
@@ -31,60 +31,28 @@
 
 			@maximum: extract(@breakpoint, 3);
 
-			.construct-locked-columns (@selector, @maximum);
-	    }
-	}
-
-	// Construct Locked Columns
-	// ---------------------------------------------------------
-
-	.construct-locked-columns (@selector, @maximum)
-	{
-	    .iterate (12);
-
-		.iterate (@i) when (@i > 0)
-	    {
-	        .iterate (@i - 1);
-
-	        @width: (@maximum / 12) * @i;
-
-			[data-inflex~='@@{selector}:@{i}'] when (isstring(@selector))
+			& when (@minimum = 0)
 			{
-				flex-basis: @width; max-width: @width;
+				@media (min-width: @minimum)
+		        {
+		        	.construct-columns (@selector, @maximum, ~':');
+		        }
+			}
+
+			& when (@minimum > 0)
+			{
+				@media (min-width: (@minimum + 0.0625))
+		        {
+		        	.construct-columns (@selector, @maximum, ~':');
+		        }
 			}
 	    }
 	}
 
-	// Iterate Fluid Column Breakpoints
+	// Construct Columns
 	// ---------------------------------------------------------
 
-	.iterate-fluid-column-breakpoints (@breakpoints)
-	{
-	    .iterate ();
-
-	    .iterate (@i: 1) when (@i <= length(@breakpoints))
-	    {
-	        .iterate (@i + 1);
-
-	        @breakpoint: extract(@breakpoints, @i);
-
-			@selector: extract(@breakpoint, 1);
-
-			@minimum: extract(@breakpoint, 2);
-
-			@maximum: extract(@breakpoint, 3);
-
-	        @media (max-width: @maximum)
-	        {
-	        	.construct-fluid-columns (@selector);
-	        }
-	    }
-	}
-
-	// Construct Fluid Columns & Ordering
-	// ---------------------------------------------------------
-
-	.construct-fluid-columns (@selector: null, @divide: ~':')
+	.construct-columns (@selector: ~'', @maximum: null, @divide: ~'')
 	{
 		.iterate (12);
 
@@ -92,16 +60,35 @@
 	    {
 	        .iterate (@i - 1);
 
-	        @width: (100% / 12) * @i;
+			& when (isstring(@selector))
+			{
+				// Column Order
+				// ---------------------------------------------------------
 
-	       	[data-inflex~='@{selector}@{divide}@{i}'] when (isstring(@selector))
-			{
-				flex-basis: @width; max-width: @width;
+	        	[data-inflex~='@{selector}#@{i}'] { order: @i; }
+
+				// Flexible Width (%)
+				// ---------------------------------------------------------
+				
+				@fluid-width: (100% / 12) * @i;
+
+		       	[data-inflex~='@{selector}@{divide}@{i}']
+				{
+					flex-basis: @fluid-width; max-width: @fluid-width;
+				}
 			}
-			
-			[data-inflex~='@{selector}#@{i}'] when (isstring(@selector))
+
+			& when (isstring(@selector)) and (isnumber(@maximum))
 			{
-				order: @i;
+				// Fixed Width (em)
+				// ---------------------------------------------------------
+
+				@fixed-width: (@maximum / 12) * @i;
+
+				[data-inflex~='@@{selector}:@{i}']
+				{
+					flex-basis: @fixed-width; max-width: @fixed-width;
+				}
 			}
 	    }
 	}
@@ -224,17 +211,12 @@
 	// Fluid Columns [1-12]
 	// ---------------------------------------------------------
 
-	.construct-fluid-columns (~'', ~'');
+	.construct-columns ();
 
-	// Locked Breakpoint Columns @[xs|sm|md|lg|xl|xxl]:[1-12]
+	// Breakpoint Columns [xs|sm|md|lg|xl|xxl]:[1-12]
 	// ---------------------------------------------------------
 
-	.iterate-locked-column-breakpoints (@breakpoints);
-
-	// Fluid Breakpoint Columns [xs|sm|md|lg|xl|xxl]:[1-12]
-	// ---------------------------------------------------------
-
-	.iterate-fluid-column-breakpoints (@breakpoints);
+	.iterate-column-breakpoints (@breakpoints);
 
 	// Grow (! Declaration Order Critical)
 	// ---------------------------------------------------------
@@ -243,4 +225,3 @@
 	{
 		flex-grow: 1; max-width: 100%;
 	}
-
