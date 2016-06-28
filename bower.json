@@ -1,0 +1,19 @@
+{
+	"name": "inflex",
+  	"version": "1.0.0",
+  	"license": "MIT",
+  	"description": "Inflex is a responsive design grid, utilising the power of the flex display property.",
+  	"homepage": "https://github.com/chris-garner/inflex",
+	"main": [
+		"./dist/css/inflex.min.css"
+	],
+	"dependencies": {},
+	"ignore": [
+		"**/.*",
+	    "build",
+	    "node_modules",
+	    "bower_components",
+	    "test",
+	    "tests"
+	]
+}
