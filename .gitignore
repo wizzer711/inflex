@@ -20,6 +20,7 @@
 .settings
 *.sublime-project
 *.sublime-workspace
+npm-debug.log*
 Thumbs.db
 
 # Folders to ignore
