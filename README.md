@@ -4,6 +4,14 @@ Inflex is a mobile-first, responsive design grid - built to utilise the power of
 
 ---
 
+## Quick Start
+
+* [Download the latest release](https://github.com/chris-garner/inflex/archive/1.1.0.zip).
+* Clone the repo: `git clone https://github.com/chris-garner/inflex.git`.
+* Install with [Bower](http://bower.io): `bower install inflex`.
+
+---
+
 ## Configuration Variables:
 
 ```
