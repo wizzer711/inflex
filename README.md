@@ -1,6 +1,6 @@
 # Inflex.io
 
-Inflex is a responsive design grid, utilising the power of the **flex** display property. Inflex supports all modern browsers.
+Inflex is a mobile-first, responsive design grid - built to utilise the power of the **flex** display property. Inflex supports all modern browsers.
 
 ---
 
@@ -31,7 +31,7 @@ Inflex is a responsive design grid, utilising the power of the **flex** display 
 
 - By default, Inflex provides **six** responsive breakpoints (`xs`, `sm`, `md`, `lg`, `xl` and `xxl`) which can be configured in `inflex/config.less`.
 - These breakpoints exist so you can easily adapt layouts for different device sizes, without writing additional CSS.
-- Breakpoints trigger based on their **maximum width**, meaning any breakpoint specific declarations apply to that one breakpoint, and all those below it - unless of course, they're subsequently overridden.
+- Adopting a mobile-first approach, breakpoints trigger based on their **minimum width**, meaning any breakpoint specific declarations apply to that one breakpoint and all those above it - unless of course, they're subsequently overridden.
 
 ### Rows
 
@@ -43,19 +43,19 @@ Inflex is a responsive design grid, utilising the power of the **flex** display 
 ### Columns
 
 - Columns are defined using: `data-inflex="col"`.
-- Columns can be completely fluid (**%**), like a traditional grid, or 'locked' to a relative width (**em**) based on **N/12th's** of a specified breakpoint. A locked column will automatically become fluid when it's width exceeds that of the viewport.
-- To lock a column to the full width of the **md** breakpoint I would use `data-inflex="col @md:12"`. Note how the **@** symbol is used to instruct the locking behaviour.
-- The behaviour of _both_ locked and fluid columns can be overridden by breakpoint specific declarations. Remember, smaller breakpoints automatically inherit declarations of larger ones.
+- Columns can be completely fluid (**%**), like a traditional grid, or 'locked' to a relative width (**em**) based on **N/12th's** of a specified breakpoint. Without any declarations, a column will determine its width automatically - based on its inner contents.
+- To lock a column to the full width of the **md** breakpoint you would use `data-inflex="col @md:12"`. Note how the **@** symbol is used to instruct the locking behaviour.
+- Both locked and fluid columns can be overridden by breakpoint specific declarations. Remember, larger breakpoints automatically inherit declarations from smaller ones.
 - Unlike other grids, Inflex _does not_ create gutters between columns. It is recommended that margin and padding rules are handled on a case-by-case basis. Fortunately, inflex provides an optional module to assist with this: `inflex/spacing.less`.
 
 ### An Example:
 
-In this basic example we construct two equal width columns. When the **md** breakpoint triggers, both columns become full width (100%) and stack on top of each other.
+In this basic example we construct two full width columns, stacked one on top of each other. When the **md** breakpoint triggers, both columns become half width and sit side-by-side.
 
 ```
 <div data-inflex="row">
-    <div data-inflex="col 6 md:12"></div>
-    <div data-inflex="col 6 md:12"></div>
+    <div data-inflex="col 12 md:6"></div>
+    <div data-inflex="col 12 md:6"></div>
 </div>
 ```
 
@@ -68,13 +68,13 @@ In this basic example we construct two equal width columns. When the **md** brea
 - Fluid columns are percentage based, like most traditional grids.
 - Fluid columns _only_ wrap when you exceed 12 columns.
 - Define how many columns a column should span `[1-12]`, by adding a span value to the inflex attribute. For example, define a full width column using `data-inflex="col 12"`.
-- You can override the span value for a specific breakpoint, by prefixing `[selector]:`. For example `[xs|sm|md|lg|xl|xxl]:[1-12]`. Remember, overrides are inherited by smaller breakpoints.
-- Note: It does not matter what order you specify options in your inflex attribute. Smaller breakpoint declarations always override large ones.
+- You can override the span value above a specific breakpoint, by prefixing `[selector]:`. For example `[xs|sm|md|lg|xl|xxl]:[1-12]`. Remember, all overrides are inherited by larger breakpoints.
+- Note: It does not matter what order you specify options in your inflex attribute. Larger breakpoint declarations always override smaller ones.
 
 ```
 <div data-inflex="row">
-    <div data-inflex="col 3 md:6 xs:12"></div>
-    <div data-inflex="col 9 md:6 xs:12"></div>
+    <div data-inflex="col 12 md:6 lg:3"></div>
+    <div data-inflex="col 12 md:6 lg:9"></div>
 </div>
 ```
 
@@ -86,32 +86,30 @@ In this basic example we construct two equal width columns. When the **md** brea
 
 - Locked columns have a relative fixed width (em).
 - Locked columns are based on **N/12th's** of a specified breakpoint - meaning there are 72 possible lock widths available: `@[xs|sm|md|lg|xl|xxl]:[1-12]`
-- Locked columns automatically become fluid when their width exceeds that of the viewport.
 - To lock a column you simply prefix your `selector:span` value with the **@** symbol.
-- Fluid and breakpoint specific declarations **will** override locked columns.
 
-In this example, the first column is locked at a width of 20em (**@xs:12**) until the **md** breakpoint triggers, at which point it becomes a full width column. The second column is fluid and set to consume any remaining space in the row, until it also becomes full width at the **md** breakpoint.
+In this example, both columns start full width and stacked. When the **lg** breakpoint triggers, the first column locks to **4/12th's** of the viewport width, whilst the second column occupies all remaining space.
 
 ```
 <div data-inflex="row">
-    <div data-inflex="col @xs:12 md:12"></div>
-    <div data-inflex="col 1 grow md:12"></div>
+    <div data-inflex="col 12 @lg:4"></div>
+    <div data-inflex="col 1 grow"></div>
 </div>
 ```
 
 ### Column Ordering
 
-- All columns have a default flex order of 12, meaning if no order is set - columns will automatically line up in the order they were specified.
+- All columns have a default flex order of 12, meaning if no order is set - columns will automatically align in the order they were specified.
 - You can set specific column orders by adding `#[1-12]` to your inflex attribute.
 - You can override the order value for a specific breakpoint, by prefixing `[selector]#`. For example `[xs|sm|md|lg|xl|xxl]#[1-12]`.
 
-In this example, the order of the three columns are reversed when the **md** breakpoint triggers.
+In this example, the order of the three columns are reversed until the **md** breakpoint triggers.
 
 ```
 <div data-inflex="row">
-    <div data-inflex="col 4 md#3"></div>
-    <div data-inflex="col 4 md#2"></div>
-    <div data-inflex="col 4 md#1"></div>
+    <div data-inflex="col 4 #3 md#1">A</div>
+    <div data-inflex="col 4 #2 md#2">B</div>
+    <div data-inflex="col 4 #1 md#3">C</div>
 </div>
 ```
 
