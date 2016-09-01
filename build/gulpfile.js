@@ -25,6 +25,7 @@
     autoprefixer = require('autoprefixer'),         // https://www.npmjs.org/package/autoprefixer
     bower        = require('gulp-bower'),           // https://www.npmjs.org/package/gulp-bower
     bowerFiles   = require('main-bower-files'),     // https://www.npmjs.org/package/main-bower-files
+    bump         = require('gulp-bump'),            // https://www.npmjs.com/package/gulp-bump
     cache        = require('gulp-cached'),          // https://www.npmjs.org/package/gulp-cached
     cleanCSS     = require('gulp-clean-css'),       // https://www.npmjs.org/package/gulp-clean-css
     concat       = require('gulp-concat'),          // https://www.npmjs.org/package/gulp-concat
@@ -40,6 +41,7 @@
     plumber      = require('gulp-plumber'),         // https://www.npmjs.org/package/gulp-plumber
     postcss      = require('gulp-postcss'),         // https://www.npmjs.org/package/gulp-postcss
     rename       = require('gulp-rename'),          // https://www.npmjs.org/package/gulp-rename
+    semver       = require('semver'),               // https://www.npmjs.com/package/semver
     uglify       = require('gulp-uglify'),          // https://www.npmjs.org/package/gulp-uglify
     watch        = require('gulp-watch'),           // https://www.npmjs.org/package/gulp-watch
     processors   = [autoprefixer()];
@@ -79,6 +81,8 @@
 
     gulp.task('bower:process:dependencies', function()
     {
+        console.log('Processing dependencies');
+
         var sieve = { js: filter('**/*.js'), css: filter('**/*.css') };
 
         var files = bowerFiles(); if (!files.length) return;           
@@ -91,7 +95,7 @@
         .pipe(uglify())
         .pipe(header('/*! <%= file.relative %> */'))
         .pipe(concat(pkg.prefix + 'vendors.min.js'))
-        .pipe(cache('bower:scripts'))
+        // .pipe(cache('bower:scripts'))
         .pipe(gulp.dest('../docs/assets/js/'))
         .pipe(sieve.js.restore())
 
@@ -99,7 +103,7 @@
         .pipe(sieve.css)
         .pipe(header('/*! <%= file.relative %> */'))
         .pipe(concat(pkg.prefix + 'vendors.min.css'))
-        .pipe(cache('bower:styles'))
+        // .pipe(cache('bower:styles'))
         .pipe(gulp.dest('../docs/assets/css/'))
         .pipe(sieve.css.restore())
 
@@ -146,7 +150,7 @@
             .pipe(plumber())
             .pipe(less({paths: ['../libs']}))
             .pipe(postcss(processors))
-            .pipe(cache('inflex:styles'))
+            // .pipe(cache('inflex:styles'))
             .pipe(gulp.dest('../dist/css/'))
             .pipe(gulp.dest('../docs/assets/css/'))
             .pipe(cleanCSS())
@@ -226,6 +230,49 @@
             })
         );
     });
+
+/*
+ * **
+ * ****
+ * **********************************************************************************************************
+ * Bump Tasks */ gulp.task('bump', ['bump:version', 'bump:rebuild']); /*
+ * ********************************************************************************************************** 
+ * ****
+ * **
+ */
+
+    gulp.task('bump:version', function()
+    {
+        var params = { version: process.argv.indexOf("--version"), type: process.argv.indexOf("--type") }; // Get passed params (eg. gulp bump --type major)
+
+        var type = (params.type >- 1)? process.argv[params.type + 1] : 'patch'; // Set bump type: patch (x.x.1), minor (x.1.x), major (1.x.x)
+
+        var options = { version: semver.inc(pkg.version, type), type: type }; // Set bump options
+
+        if (params.version >- 1){ options = { version: process.argv[params.version + 1] }}; // Override version number, if specified
+
+        pkg.version = options.version; // Update global package version for pending rebuild
+
+        return gulp.src(['./package.json', '../bower.json'], { base: "./" })
+        // ↓↓↓↓↓↓
+        .pipe(bump(options))
+        .pipe(gulp.dest('./'))
+        // ↑↑↑↑↑↑
+        .pipe(notify(
+            {
+                title   : 'Success',
+                subtitle: 'Version bumped (v' + pkg.version + '):',
+                message : '"<%= file.relative %>"',
+                icon    : null
+            })
+        );
+    });
+
+    gulp.task('bump:rebuild', ['bump:version'], function()
+        {
+            gulp.start('default')
+        }
+    );
 
 /*
  * **

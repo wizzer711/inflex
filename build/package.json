@@ -27,16 +27,17 @@
     "framework",
     "responsive"
   ],
-  "scripts":
-  {
+  "scripts": {
     "build": "sudo npm update && bower update && gulp && gulp watch",
-    "watch": "gulp watch"
+    "watch": "gulp watch",
+    "bump": "gulp bump"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.3",
     "del": "^2.2.0",
     "gulp": "^3.8.9",
     "gulp-bower": "0.0.13",
+    "gulp-bump": "^2.2.0",
     "gulp-cached": "^1.0.1",
     "gulp-clean-css": "^2.0",
     "gulp-concat": "^2.4.1",
@@ -55,6 +56,7 @@
     "gulp-watch": "^4.3.5",
     "jshint": "^2.9.1",
     "jshint-stylish": "^2.1",
-    "main-bower-files": "^2.1.0"
+    "main-bower-files": "^2.1.0",
+    "semver": "^5.3.0"
   }
 }
