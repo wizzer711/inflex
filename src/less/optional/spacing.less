@@ -19,9 +19,9 @@
 	{
 	    .iterate ();
 
-	    .iterate (@i: 1) when (@i <= length(@breakpoints))
+	    .iterate (@i: length(@breakpoints)) when (@i > 0)
 	    {
-	        .iterate (@i + 1);
+	        .iterate (@i - 1);
 
 	        @breakpoint: extract(@breakpoints, @i);
 
@@ -31,10 +31,21 @@
 
 			@maximum: extract(@breakpoint, 3);
 
-	        @media (max-width: @maximum)
-	        {
-	        	.construct-spacing (~'@{selector}:');
-	        }
+			& when (@minimum = 0)
+			{
+				@media (min-width: @minimum)
+		        {
+		        	.construct-spacing (~'@{selector}:');
+		        }
+			}
+
+			& when (@minimum > 0)
+			{
+				@media (min-width: (@minimum + 0.0625))
+		        {
+		        	.construct-spacing (~'@{selector}:');
+		        }
+			}
 	    }
 	}
 

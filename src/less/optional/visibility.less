@@ -19,11 +19,11 @@
 	{
 	    .iterate ();
 
-	    .iterate (@i: 1) when (@i <= length(@breakpoints))
+	    .iterate (@i: length(@breakpoints)) when (@i > 0)
 	    {
-	        .iterate (@i + 1);
+	        .iterate (@i - 1);
 
-			@breakpoint: extract(@breakpoints, @i);
+	        @breakpoint: extract(@breakpoints, @i);
 
 			@selector: extract(@breakpoint, 1);
 
