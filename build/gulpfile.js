@@ -32,6 +32,7 @@
     debug        = require('gulp-debug'),           // https://www.npmjs.org/package/gulp-debug
     del          = require('del'),                  // https://www.npmjs.org/package/del
     filter       = require('gulp-filter'),          // https://www.npmjs.org/package/gulp-filter
+    git          = require('gulp-git'),             // https://www.npmjs.org/package/gulp-git
     gulp         = require('gulp'),                 // https://www.npmjs.org/package/gulp
     header       = require('gulp-header'),          // https://www.npmjs.org/package/gulp-header
     gulpif       = require('gulp-if'),              // https://www.npmjs.org/package/gulp-if
@@ -271,6 +272,16 @@
     gulp.task('bump:rebuild', ['bump:version'], function()
         {
             gulp.start('default')
+        }
+    );
+
+    gulp.task('tag', function()
+        {
+            git.tag(pkg.version, 'Version ' + pkg.version, function (err)
+                {
+                    if (err) throw err;
+                }
+            );
         }
     );
 

@@ -43,6 +43,7 @@
     "gulp-concat": "^2.4.1",
     "gulp-debug": "^2.1.2",
     "gulp-filter": "^4.0.0",
+    "gulp-git": "^1.11.3",
     "gulp-header": "^1.2.2",
     "gulp-if": "^2.0.0",
     "gulp-inject": "^4.1.0",
