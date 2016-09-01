@@ -2,15 +2,11 @@
 
 Inflex is a mobile-first, responsive design grid - built to utilise the power of the **flex** display property. Inflex supports all modern browsers.
 
----
-
 ## Quick Start
 
 * [Download the latest release](https://github.com/chris-garner/inflex/archive/1.1.0.zip).
 * Clone the repo: `git clone https://github.com/chris-garner/inflex.git`.
 * Install with [Bower](http://bower.io): `bower install inflex`.
-
----
 
 ## Configuration Variables:
 
@@ -22,8 +18,6 @@ Inflex is a mobile-first, responsive design grid - built to utilise the power of
     - `selector` (_string_) Breakpoint selector (eg. `~'xs'`)
     - `min` (_em_) Minimum breakpoint width (eg. `0`)
     - `max` (_em_) Maximum breakpoint width (eg. `20em`)
-
----
 
 ## In Brief...
 
@@ -66,8 +60,6 @@ In this basic example we construct two full width columns, stacked one on top of
     <div data-inflex="col 12 md:6"></div>
 </div>
 ```
-
----
 
 ## In Detail...
 
@@ -120,8 +112,6 @@ In this example, the order of the three columns are reversed until the **md** br
     <div data-inflex="col 4 #1 md#3">C</div>
 </div>
 ```
-
----
 
 ## TODO:
 
