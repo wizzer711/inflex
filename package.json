@@ -1,6 +1,6 @@
 {
   "name": "inflex",
-  "version": "1.1.18",
+  "version": "1.1.19",
   "prefix": "inflex.",
   "description": "Inflex is a responsive design grid, utilising the power of the flex display property.",
   "repository": "chris-garner/inflex",
