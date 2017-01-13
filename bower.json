@@ -5,7 +5,9 @@
   	"description": "Inflex is a responsive design grid, utilising the power of the flex display property.",
   	"homepage": "https://github.com/chris-garner/inflex",
 	"main": [
-		"./dist/css/inflex.css"
+		"./dist/css/inflex.min.css",
+		"./dist/js/inflex.min.js",
+		"./dist/fonts/icons/*"
 	],
 	"dependencies": {},
 	"devDependencies":
