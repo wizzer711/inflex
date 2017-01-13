@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2016 Chris Garner, inflex.io
+Copyright (c) 2017 Chris Garner, inflex.io
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
