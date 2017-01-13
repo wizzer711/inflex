@@ -223,6 +223,16 @@
         }
     );
 
+/*
+ * **
+ * ****
+ * **********************************************************************************************************
+ * Git Tasks */ /*
+ * ********************************************************************************************************** 
+ * ****
+ * **
+ */
+
     gulp.task('git:add', function(){
 
         return gulp.src('.').pipe(git.add({args: '-u'}));
@@ -237,6 +247,14 @@
         
         git.tag(pkg.version, 'Version ' + pkg.version, function (err){
             
+            if (err) throw err;
+        });
+    });
+
+    gulp.task('git:push', function(){
+     
+        git.push('origin', 'master', function (err){
+
             if (err) throw err;
         });
     });
