@@ -1,0 +1,39 @@
+// ---------------------------------------------------------------------------------------------------------
+// Code
+// ---------------------------------------------------------------------------------------------------------
+
+	& when (@breakpoint-attr = @data-attr)
+	{
+		code, kbd, pre, samp
+		{
+			font-size: @font-size;
+			font-family: @font-family-monospace;
+		}
+
+		code
+		{
+			overflow: auto;
+			font-size: @code--font-size;
+			line-height: @code--line-height;
+			padding: @code--padding;
+			border-style: @code--border-style;
+			border-width: @code--border-width;
+			border-color: @code--border-color;
+			border-radius: @code--border-radius;
+			background-color: @code--background-color;
+		}
+
+		pre
+		{
+			tab-size: 2;
+			overflow: auto;
+
+			& > code
+			{
+				display: block;
+				line-height: @pre--line-height;
+				padding: @pre--padding;
+				background: @pre--background-color;
+			}
+		}
+	}

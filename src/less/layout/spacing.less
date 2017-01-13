@@ -1,0 +1,95 @@
+// ---------------------------------------------------------------------------------------------------------
+// Mixins
+// ---------------------------------------------------------------------------------------------------------
+
+	.construct-spacing (@bpo, @bpc)
+	{
+		.iterate ();
+
+	    .iterate (@i: length(@spacing)) when (@i > 0)
+	    {
+	        .iterate (@i - 1);
+
+	        @group: extract(@spacing, @i);
+
+			@space: extract(@group, 1);
+
+			@unit: extract(@group, 2);
+
+			[data-inflex~='@{bpo}padding:a@{space}@{bpc}']
+			{
+				padding: @unit !important;
+			}
+
+			[data-inflex~='@{bpo}padding:v@{space}@{bpc}']
+			{
+				padding-top: @unit !important;; padding-bottom: @unit !important;
+			}
+
+			[data-inflex~='@{bpo}padding:h@{space}@{bpc}']
+			{
+				padding-left: @unit !important;; padding-right: @unit !important;
+			}
+
+			[data-inflex~='@{bpo}padding:t@{space}@{bpc}']
+			{
+				padding-top: @unit !important;
+			}
+
+			[data-inflex~='@{bpo}padding:r@{space}@{bpc}']
+			{
+				padding-right: @unit !important;
+			}
+
+			[data-inflex~='@{bpo}padding:b@{space}@{bpc}']
+			{
+				padding-bottom: @unit !important;
+			}
+
+			[data-inflex~='@{bpo}padding:l@{space}@{bpc}']
+			{
+				padding-left: @unit !important;
+			}
+
+			[data-inflex~='@{bpo}margin:t@{space}@{bpc}']
+			{
+				margin-top: @unit !important;
+			}
+
+			[data-inflex~='@{bpo}margin:r@{space}@{bpc}']
+			{
+				margin-right: @unit !important;
+			}
+
+			[data-inflex~='@{bpo}margin:b@{space}@{bpc}']
+			{
+				margin-bottom: @unit !important;
+			}
+
+			[data-inflex~='@{bpo}margin:l@{space}@{bpc}']
+			{
+				margin-left: @unit !important;
+			}
+
+			[data-inflex~='@{bpo}margin:a@{space}@{bpc}']
+			{
+				margin: @unit !important;
+			}
+
+			[data-inflex~='@{bpo}margin:v@{space}@{bpc}']
+			{
+				margin-top: @unit !important; margin-bottom: @unit !important;
+			}
+
+			[data-inflex~='@{bpo}margin:h@{space}@{bpc}']
+			{
+				margin-left: @unit !important; margin-right: @unit !important;
+			}
+	    }
+	}
+
+// ---------------------------------------------------------------------------------------------------------
+// Output
+// ---------------------------------------------------------------------------------------------------------
+
+	.construct-spacing (@bpo, @bpc); // Global spacing rules

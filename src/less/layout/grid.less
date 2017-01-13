@@ -1,0 +1,166 @@
+// ---------------------------------------------------------------------------------------------------------
+// Construct Grid Columns
+// ---------------------------------------------------------------------------------------------------------
+
+	.construct-columns (@bpo, @bpc, @breakpoint-max)
+	{
+		.iterate (12);
+
+		.iterate (@i) when (@i > 0)
+	    {
+	        .iterate (@i - 1);
+
+	        // Column Order
+
+        	[data-inflex~='@{bpo}#@{i}@{bpc}']
+        	{
+        		order: @i;
+        	}
+
+        	// Flexible Width (%)
+
+	       	[data-inflex~='@{bpo}@{i}@{bpc}']
+			{
+				flex-basis: (100% / 12) * @i; 
+				max-width : (100% / 12) * @i;
+			}
+
+			// Fixed Width (em)
+
+			[data-inflex~='@{bpo}@@{i}@{bpc}']
+			{
+				flex-basis: (@breakpoint-max / 12) * @i;
+				max-width : (@breakpoint-max / 12) * @i;
+			}
+	    }
+	}
+
+// ---------------------------------------------------------------------------------------------------------
+// Output (! Declaration Order Critical)
+// ---------------------------------------------------------------------------------------------------------
+
+	& when (@breakpoint-attr = @data-attr)
+	{
+		// Default Row
+
+		[data-inflex~='row']
+		{
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+
+		// Default Column
+
+		[data-inflex~="col"]
+		{
+			order     : 12;
+			flex-basis: auto;
+			flex-grow : 0;
+		}
+
+		// Debug
+
+		[data-inflex~="debug"] [data-inflex~="col"], [data-inflex~="debug"][data-inflex~="col"],
+		{
+			box-shadow: inset 0 0 0 1px rgba(0,0,0,0.30), inset 0 1000vh 0 0 rgba(0,0,0,0.10);
+		}
+	}
+
+	// Flex
+
+	[data-inflex~='@{bpo}flex@{bpc}'] { display: flex; }
+
+	[data-inflex~='@{bpo}flex:inline@{bpc}'] { display: inline-flex; }
+
+	// Wrap
+
+	[data-inflex~='@{bpo}wrap@{bpc}'] { flex-wrap: wrap; }
+
+	[data-inflex~='@{bpo}wrap:reverse@{bpc}'] { flex-wrap: wrap-reverse; }
+	
+	[data-inflex~='@{bpo}wrap:no@{bpc}'] { flex-wrap: nowrap; }
+
+	// Direction
+
+	[data-inflex~='@{bpo}dir:row@{bpc}'] { flex-direction: row; }
+
+	[data-inflex~='@{bpo}dir:row-reverse@{bpc}'] { flex-direction: row-reverse; }
+
+	[data-inflex~='@{bpo}dir:col@{bpc}'] { flex-direction: column; }
+
+	[data-inflex~='@{bpo}dir:col-reverse@{bpc}'] { flex-direction: column-reverse; }
+
+	// Justify Content
+
+	[data-inflex~='@{bpo}jc:center@{bpc}'] { justify-content: center; }
+
+	[data-inflex~='@{bpo}jc:start@{bpc}'] { justify-content: flex-start; }
+
+	[data-inflex~='@{bpo}jc:end@{bpc}'] { justify-content: flex-end; }
+
+	[data-inflex~='@{bpo}jc:around@{bpc}'] { justify-content: space-around; }
+
+	[data-inflex~='@{bpo}jc:between@{bpc}'] { justify-content: space-between; }
+
+	// Align Items
+
+	[data-inflex~='@{bpo}ai:stretch@{bpc}'] { align-items: stretch; }
+
+	[data-inflex~='@{bpo}ai:start@{bpc}'] { align-items: flex-start; }
+
+	[data-inflex~='@{bpo}ai:end@{bpc}'] { align-items: flex-end; }
+
+	[data-inflex~='@{bpo}ai:center@{bpc}'] { align-items: center; }
+
+	[data-inflex~='@{bpo}ai:baseline@{bpc}'] { align-items: baseline; }
+
+	// Align Content
+
+	[data-inflex~='@{bpo}ac:start@{bpc}'] { align-content: flex-start; }
+
+	[data-inflex~='@{bpo}ac:end@{bpc}'] { align-content: flex-end; }
+
+	[data-inflex~='@{bpo}ac:center@{bpc}'] { align-content: center; }
+
+	[data-inflex~='@{bpo}ac:around@{bpc}'] { align-content: space-around; }
+
+	[data-inflex~='@{bpo}ac:between@{bpc}'] { align-content: space-between; }
+
+	[data-inflex~='@{bpo}ac:stretch@{bpc}'] { align-content: stretch; }
+
+	// Align Self
+
+	[data-inflex~='@{bpo}as:auto@{bpc}'] { align-self: auto; }
+
+	[data-inflex~='@{bpo}as:baseline@{bpc}'] { align-self: baseline; }
+
+	[data-inflex~='@{bpo}as:center@{bpc}'] { align-self: center; }
+
+	[data-inflex~='@{bpo}as:end@{bpc}'] { align-self: flex-end; }
+
+	[data-inflex~='@{bpo}as:start@{bpc}'] { align-self: flex-start; }
+
+	[data-inflex~='@{bpo}as:stretch@{bpc}'] { align-self: stretch; }
+
+	// Shrink
+
+	[data-inflex~='@{bpo}shrink@{bpc}'] { flex-shrink: 1; }
+
+	[data-inflex~='@{bpo}shrink:no@{bpc}'] { flex-shrink: 0; }
+
+	// Grow
+
+	[data-inflex~='@{bpo}grow@{bpc}'] { flex-grow: 1; max-width: 100% !important; }
+	
+	[data-inflex~='@{bpo}grow:priority@{bpc}'] { flex-grow: 999; max-width: 100% !important; }
+	
+	[data-inflex~='@{bpo}grow:no@{bpc}'] { flex-grow: 0; }
+
+	// Stretch
+
+	[data-inflex~='@{bpo}stretch@{bpc}'] { width: 100%; }
+
+	// Construct Columns
+
+	.construct-columns (@bpo, @bpc, @breakpoint-max);

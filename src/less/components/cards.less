@@ -1,0 +1,30 @@
+// ---------------------------------------------------------------------------------------------------------
+// Card Styles
+// ---------------------------------------------------------------------------------------------------------
+
+	& when (@breakpoint-attr = @data-attr)
+	{
+		[data-inflex~='card']
+		{
+			border-radius: @card--border-radius;
+			box-shadow   : @card--box-shadow;
+			background   : @card--background-color;
+			overflow     : hidden;
+		}
+
+		[data-inflex~='card:header'],
+		[data-inflex~='card:body'],
+		[data-inflex~='card:footer']
+		{
+			padding: @card--padding;
+		}
+
+		[data-inflex~='card:header'] + [data-inflex~='card:body'],
+		[data-inflex~='card:body'] + [data-inflex~='card:body'],
+		[data-inflex~='card:body'] + [data-inflex~='card:footer']
+		{
+			border-top-style: @component--border-style;
+			border-top-width: @component--border-width;
+			border-top-color: @card--border-color;	
+		}
+	}

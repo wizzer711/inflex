@@ -1,0 +1,135 @@
+// ---------------------------------------------------------------------------------------------------------
+// Mixin: Iterate Colors
+// ---------------------------------------------------------------------------------------------------------
+
+	.iterate-colors ()
+	{
+		.iterate ();
+
+	    .iterate (@i: 1) when (@i <= length(@palettes))
+	    {
+	        .iterate (@i + 1);
+
+	        @_name: extract(@palettes, @i);
+
+	        @_palette: 'palette-@{_name}';
+	        
+	        @_primary: extract(@@_palette, 1);
+
+	        @_lighter: extract(@@_palette, 2);
+
+	        @_darker: extract(@@_palette, 3);
+
+	        @_contrast: extract(@@_palette, 4);
+
+			// Theme
+
+			[data-inflex~="theme:@{_name}"]:not([disabled])
+			{
+				// Ghost (default)
+
+				&[data-inflex~="button"]
+				{
+					color: @_primary;
+
+					border-color: transparent;
+
+					&:hover { color: darken(@_primary, 5%); }
+
+					&:active { color: darken(@_primary, 10%); }
+				}
+
+				// Flat
+
+				&[data-inflex~="button:flat"]
+				{
+					background-color: @_primary;
+
+					border-color: transparent;
+
+					color: @_contrast;
+
+					&:hover { background-color: darken(@_primary, 5%); }
+
+					&:active { background-color: darken(@_primary, 10%); }
+				}
+
+				// Outline
+
+				&[data-inflex~="button:outline"]
+				{
+					color: @_primary;
+
+					border-color: @_primary;
+
+					&:hover
+					{
+						color: @_contrast;
+
+						background-color: @_primary;
+					}
+
+					&:active
+					{
+						border-color: darken(@_primary, 7.5%);
+						
+						background-color: darken(@_primary, 7.5%);
+					}
+				}
+
+				// Gradient
+
+				&[data-inflex~="button:gradient"]
+				{
+					background-color: @_primary;
+
+					background-image: linear-gradient(to bottom, transparent 0%, fade(black, 15%) 100%);
+
+					border-color: @_primary transparent mix(black, @_primary, 15%) transparent;
+
+					color: @_contrast;
+
+					&:hover
+					{
+						background-color: darken(@_primary, 5%);
+
+						border-top-color: darken(@_primary, 5%);
+
+						border-bottom-color: mix(black, darken(@_primary, 5%), 15%);
+					}
+
+					&:active
+					{
+						background-color: darken(@_primary, 10%);
+
+						border-top-color: darken(@_primary, 10%);
+
+						border-bottom-color: mix(black, darken(@_primary, 10%), 15%);
+					}
+				}
+			}
+
+			// Color
+
+			[data-inflex~="color:@{_name}"]
+			{
+				color: @_primary;
+			}
+
+			// Background
+
+			[data-inflex~="background:@{_name}"]
+			{
+				background: @_primary;
+			}
+	    }
+	}
+
+// ---------------------------------------------------------------------------------------------------------
+// Output
+// ---------------------------------------------------------------------------------------------------------
+
+	& when (@breakpoint-attr = @data-attr)
+	{
+		.iterate-colors();
+	}

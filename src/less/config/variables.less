@@ -1,0 +1,216 @@
+// ---------------------------------------------------------------------------------------------------------
+// Inflex Attribute
+// ---------------------------------------------------------------------------------------------------------
+
+	@data-attr: ~'data-inflex';
+
+// ---------------------------------------------------------------------------------------------------------
+// Configuration Variables
+// ---------------------------------------------------------------------------------------------------------
+
+	@breakpoints: ~'' 0 20em, ~'sm' 20em 30em, ~'md' 30em 48em, ~'lg' 48em 64em, ~'xl' 64em 75em, ~'xxl' 75em 90em; // key | min-width (em) | max-width (em)
+
+	@spacing: ~'0' 0, ~'25' 0.25em, ~'50' 0.50em, ~'75' 0.75em, ~'100' 1em, ~'150' 1.5em, ~'200' 2em, ~'300' 3em; // selector | space (em)
+
+	@border-radius: 0.3em;
+
+// ---------------------------------------------------------------------------------------------------------
+// Colors
+// ---------------------------------------------------------------------------------------------------------
+
+	// Brand
+
+	@palette-1: #0081FF default default #FFFFFF;
+
+	// System
+
+	@palette-success: #00D5AC default default #FFFFFF;
+
+	@palette-caution: #FFD52A default default #FFFFFF;
+
+	@palette-warning: #FF9436 default default #FFFFFF;
+
+	@palette-danger: #FF4C49 default default #FFFFFF;
+
+	@palette-info: #1CBBFF default default #FFFFFF;
+
+	@palette-disabled: #EEEEEE default default #BBBBBB;
+
+	// Monochrome
+
+	@palette-white: #FFFFFF default default #444444;
+	
+	@palette-smoke: #f6f7f9 default default #808080;
+	
+	@palette-light: #dadfea default default #808080;
+	
+	@palette-grey: #989ba0 default default #FFFFFF;
+	
+	@palette-dark: #444444 default default #FFFFFF;
+	
+	@palette-black: #222222 default default #FFFFFF;
+
+// ---------------------------------------------------------------------------------------------------------
+// Palettes
+// ---------------------------------------------------------------------------------------------------------
+
+	@palettes:
+
+	~'1',
+
+	~'success', ~'caution', ~'warning', ~'danger', ~'info',
+
+	~'white', ~'smoke', ~'light', ~'grey', ~'dark', ~'black';
+
+// ---------------------------------------------------------------------------------------------------------
+// Global Typography
+// ---------------------------------------------------------------------------------------------------------
+
+	// https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/
+
+	@font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+
+	@font-family-serif: Georgia, "Times New Roman", Times, serif;
+
+	@font-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+	@font-family: @font-family-sans-serif;
+
+	@font-size: 16px;
+
+	@font-sizes: ~'xxs' 0.8125em, ~'xs' 0.875em, ~'sm' 0.9375em, ~'lg' 1.125em, ~'xl' 1.375em, ~'xxl' 1.625em; // selector | size(em)
+
+	@line-height: 1.5em;
+
+	@font-weight: 400;
+
+	@strong-weight: 600;
+
+	@font-smoothing: antialiased;
+
+	@text-rendering: auto;
+
+	@text-color: #666666;
+
+// ---------------------------------------------------------------------------------------------------------
+// Headings
+// ---------------------------------------------------------------------------------------------------------
+
+	@h1: 2.5em, 1.3em, 200, 400; // font-size | line-height | font-weight | font-weight (strong)
+
+	@h2: 2em, 1.3em, 200, 400; // font-size | line-height | font-weight | font-weight (strong)
+
+	@h3: 1.75em, 1.3em, 200, 400; // font-size | line-height | font-weight | font-weight (strong)
+
+	@h4: 1.5em, 1.3em, 200, 400; // font-size | line-height | font-weight | font-weight (strong)
+
+	@h5: 1.25em, 1.3em, 200, 400; // font-size | line-height | font-weight | font-weight (strong)
+
+	@h6: 1em, 1.3em, 200, 400; // font-size | line-height | font-weight | font-weight (strong)
+
+// ---------------------------------------------------------------------------------------------------------
+// Blockquotes
+// ---------------------------------------------------------------------------------------------------------
+
+	@blockquote--font-size: 1.125em;
+	
+	@blockquote--border-width: 0.1875em;
+
+	@blockquote--text-color: extract(@palette-grey, 1);
+
+	@blockquote--border-color: extract(@palette-light, 1);
+
+// ---------------------------------------------------------------------------------------------------------
+// Links
+// ---------------------------------------------------------------------------------------------------------
+
+	@link--color: extract(@palette-1, 1);
+
+	@link--decoration: none;
+
+	@link--hover-decoration: underline;
+
+// ---------------------------------------------------------------------------------------------------------
+// Component: Defaults
+// ---------------------------------------------------------------------------------------------------------
+
+	@component--text-color: @text-color;
+	
+	@component--placeholder-color: fade(@text-color, 50%);
+	
+	@component--border-style: solid;
+	
+	@component--border-width: 0.0625em;
+	
+	@component--border-color: rgba(0,0,0,0.15);
+
+	@component--border-radius: 0.3em;
+	
+	@component--background-color: white;
+
+	@component--box-shadow: 0 1px 4px 0 rgba(0,0,0, 0.1);
+
+	@component--height: 2.5em;
+
+	@component--sizes: ~'xs' 1.875em 0.6875 0.875, ~'sm' 2.25em 0.75 0.9375, ~'lg' 3.125em 0.875 1.125, ~'xl' 3.75em 0.9375 1.25; // key | height (em) | downscale | upscale
+
+	@component--padding-y: 0.375em;
+
+	@component--padding-multiplier: 0.3125;
+
+// ---------------------------------------------------------------------------------------------------------
+// Component: Button
+// ---------------------------------------------------------------------------------------------------------
+
+	@button--border-style: @component--border-style;
+
+	@button--border-width: @component--border-width;
+
+	@button--border-radius: @component--border-radius;
+
+// ---------------------------------------------------------------------------------------------------------
+// Component: Button
+// ---------------------------------------------------------------------------------------------------------
+
+	@card--background-color: @component--background-color;
+
+	@card--border-radius: @component--border-radius;
+	
+	@card--border-color: rgba(0,0,0, 0.075);
+	
+	@card--box-shadow: @component--box-shadow;
+	
+	@card--padding: 1.5em;
+
+// ---------------------------------------------------------------------------------------------------------
+// Component: Code/Pre
+// ---------------------------------------------------------------------------------------------------------
+
+	@code--font-size: 0.0875em;
+	
+	@code--line-height: 0.0875em;
+
+	@code--font-size: 0.875em;
+
+	@code--line-height: @line-height;
+	
+	@code--padding: 0.125em 0.375em;
+
+	@code--border-style: @component--border-style;
+	
+	@code--border-width: @component--border-width;
+
+	@code--border-color: rgba(0,0,0, 0.075);
+	
+	@code--border-radius: @component--border-radius;
+
+	@code--background-color: rgba(0,0,0,0.05);
+
+	@pre--padding: 1.5em;
+	
+	@pre--line-height: 2em;
+	
+	@pre--background-color: @component--background-color;
+
+
+

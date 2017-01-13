@@ -1,0 +1,59 @@
+body {
+  overflow: hidden;
+}
+header#app-header {
+  position: fixed;
+  height: 60px;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+main#app-main {
+  position: fixed;
+  top: 60px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  -webkit-transition: -webkit-transform ease-out 0.3s;
+  transition: -webkit-transform ease-out 0.3s;
+  transition: transform ease-out 0.3s;
+  transition: transform ease-out 0.3s, -webkit-transform ease-out 0.3s;
+}
+@media (min-width: 64em) {
+  main#app-main {
+    left: 20em;
+  }
+}
+@media (max-width: 64em) {
+  body.app-menu main#app-main {
+    -webkit-transform: translateX(20em);
+            transform: translateX(20em);
+  }
+  body.app-menu main#app-main:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
+}
+div#app-nav {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+div.app-pane {
+  position: relative;
+  height: 100%;
+}
+.app-scroll {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}

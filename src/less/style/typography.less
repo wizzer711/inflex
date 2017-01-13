@@ -1,0 +1,209 @@
+& when (@breakpoint-attr = @data-attr)
+{
+	// ---------------------------------------------------------------------------------------------------------
+	// Base Type Styles
+	// ---------------------------------------------------------------------------------------------------------
+
+		body
+		{
+			font-family            : @font-family;
+			font-size              : @font-size;
+			font-weight            : @font-weight;
+			line-height            : @line-height;
+			color                  : @text-color;
+			text-rendering         : @text-rendering;
+			-webkit-font-smoothing : @font-smoothing;
+			-moz-osx-font-smoothing: grayscale;
+		}
+
+		:before, :after
+		{
+			font-family            : inherit;
+			font-size              : inherit;
+			font-weight            : inherit;
+			line-height            : inherit;
+			color                  : inherit;
+			text-rendering         : inherit;
+			-webkit-font-smoothing : inherit;
+			-moz-osx-font-smoothing: inherit;
+		}
+
+	// ---------------------------------------------------------------------------------------------------------
+	// Anchor Links
+	// ---------------------------------------------------------------------------------------------------------
+
+		a
+		{
+			color: @link--color;
+			text-decoration: @link--decoration;
+			background-color: transparent;
+
+			&:hover, &:active
+			{
+				text-decoration: @link--hover-decoration;
+				text-underline-position: under;
+				outline: 0;
+			}
+		}
+
+	// ---------------------------------------------------------------------------------------------------------
+	// Text Semantics
+	// ---------------------------------------------------------------------------------------------------------
+
+		abbr
+		{
+			cursor: help;
+			border-bottom: 1px dotted;
+		}
+
+		dfn
+		{
+		    font-style: italic;
+		}
+
+		mark
+		{
+			background: #ff0;
+			color     : #000;
+		}
+
+		small
+		{
+			font-size  : 81.25%;
+			line-height: 81.25%;
+		}
+
+		sub, sup
+		{
+			font-size     : 81.25%;
+			line-height   : 0;
+			position      : relative;
+			vertical-align: baseline;
+		}
+
+		sup
+		{
+			top: -0.5em;
+		}
+
+		sub
+		{
+			bottom: -0.25em;
+		}
+
+	// ---------------------------------------------------------------------------------------------------------
+	// Emphasis
+	// ---------------------------------------------------------------------------------------------------------
+
+		b, strong
+		{
+			font-weight: @strong-weight;
+		}
+
+	// ---------------------------------------------------------------------------------------------------------
+	// Headings
+	// ---------------------------------------------------------------------------------------------------------
+
+		.construct-header-styles ();
+
+	    .construct-header-styles (@i: 6) when (@i > 0)
+	    {
+	        .construct-header-styles (@i - 1);
+
+	        @_header: ~'h@{i}';
+
+	        @_options: @@_header;
+
+	        @{_header}, [data-inflex~="@{_header}"]
+	        {
+	        	font-size: extract(@_options, 1);
+
+	        	line-height: extract(@_options, 2);
+
+	        	font-weight: extract(@_options, 3);
+
+	        	& strong, & b { font-weight: extract(@_options, 4); }
+	        }
+	    }
+
+	// ---------------------------------------------------------------------------------------------------------
+	// Horizontal Rules
+	// ---------------------------------------------------------------------------------------------------------
+
+	    hr
+		{
+			height: 0;
+			border-style: solid;
+			border-width: 0 0 1px 0;
+			box-sizing: content-box;
+		}
+
+	// ---------------------------------------------------------------------------------------------------------
+	// Blockquotes
+	// ---------------------------------------------------------------------------------------------------------
+
+		blockquote
+		{
+			font-size   : @blockquote--font-size;
+			line-height : @line-height;
+			padding     : 0.5em 0 0.5em 1em;
+			border-style: solid;
+			border-width: 0 0 0 @blockquote--border-width;
+			border-color: @blockquote--border-color;
+			color       : @blockquote--text-color;
+		}
+    //
+}
+
+// ---------------------------------------------------------------------------------------------------------
+// Alignment (Responsive)
+// ---------------------------------------------------------------------------------------------------------
+
+	[data-inflex~="@{bpo}text:left@{bpc}"]
+	{
+		text-align: left;
+	}
+
+	[data-inflex~="@{bpo}text:center@{bpc}"]
+	{
+		text-align: center;
+	}
+
+	[data-inflex~="@{bpo}text:right@{bpc}"]
+	{
+		text-align: right;
+	}
+
+	[data-inflex~="@{bpo}text:justify@{bpc}"]
+	{
+		text-align: center;
+	}
+
+// ---------------------------------------------------------------------------------------------------------
+// Font Sizing (Responsive)
+// ---------------------------------------------------------------------------------------------------------
+
+	.construct-font-sizing(@bpo, @bpc);
+
+	.construct-font-sizing (@bpo, @bpc)
+	{
+		.iterate ();
+
+	    .iterate (@i: 1) when (@i <= length(@font-sizes))
+	    {
+	        .iterate (@i + 1);
+
+	        @_group: extract(@font-sizes, @i);
+
+			@_size: extract(@_group, 1);
+
+			@_unit: extract(@_group, 2);
+
+			[data-inflex~="@{bpo}text:@{_size}@{bpc}"]
+			{
+				font-size: @_unit;
+
+				line-height: @line-height;
+			}
+	    }
+	}

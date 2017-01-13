@@ -1,33 +1,54 @@
-/*
- * [inflex.less] - Copyright (c) inflex.io.
- */
+// ---------------------------------------------------------------------------------------------------------
+// Import Configuration Variables
+// ---------------------------------------------------------------------------------------------------------
 
-// *
-// **
-// ****
-// *********************************************************************************************************
-// Core
-// *********************************************************************************************************
-// ****
-// **
-// *
+	@import (once, reference) "./config/variables.less";
 
-	@import "./core/config.less";
-
-	@import "./core/reset.less";
+	@import (once, optional, reference) "./config/custom.less";
 	
-	@import "./core/grid.less";
+	@import (once, reference) "./config/mixins.less";
 
-// *
-// **
-// ****
-// *********************************************************************************************************
-// Optional
-// *********************************************************************************************************
-// ****
-// **
-// *
-	
-	@import "./optional/spacing.less";
-	
-	@import "./optional/visibility.less";
+// ---------------------------------------------------------------------------------------------------------
+// Iterate Breakpoints
+// ---------------------------------------------------------------------------------------------------------
+
+	.iterate-breakpoints (@breakpoints)
+	{
+	    .iterate ();
+
+	    .iterate (@i: length(@breakpoints)) when (@i > 0)
+	    {
+	        .iterate (@i - 1);
+
+	        @breakpoint: extract(@breakpoints, @i);
+
+			@breakpoint-name: extract(@breakpoint, 1);
+
+			@breakpoint-min: extract(@breakpoint, 2);
+
+			@breakpoint-max: extract(@breakpoint, 3);
+
+			& when (@breakpoint-min = 0)
+			{
+				@breakpoint-attr: @data-attr;
+
+				@bpo: ~''; @bpc: ~'';
+
+	        	@import (multiple) "./core/includes.less";
+			}
+
+			& when (@breakpoint-min > 0)
+			{
+				@media (min-width: @breakpoint-min)
+		        {
+		        	@breakpoint-attr: ~'@{data-attr}-@{breakpoint-name}';
+
+		        	@bpo: ~'@{breakpoint-name}('; @bpc: ~')';
+
+		        	@import (multiple) "./core/includes.less";
+		        }
+			}
+	    }
+	}
+
+	.iterate-breakpoints (@breakpoints);

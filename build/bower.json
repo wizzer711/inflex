@@ -6,7 +6,15 @@
 	"main": [
 		"./dist/css/inflex.css"
 	],
-	"dependencies": {},
+	"devDependencies":
+	{
+		"material-design-icons": "~2.2"
+	},
+	"overrides": {
+		"material-design-icons": {
+			"main": ["./iconfont/*.eot"]
+		}
+	},
 	"ignore": [
 		"**/.*",
 	    "build",

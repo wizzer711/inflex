@@ -123,7 +123,7 @@
  * **
  * ****
  * **********************************************************************************************************
- * Inflex Tasks */ gulp.task('inflex:build', ['inflex:process:styles']); /*
+ * Inflex Tasks */ gulp.task('inflex:build', ['inflex:process:styles','inflex:process:scripts']); /*
  * ********************************************************************************************************** 
  * ****
  * **
@@ -169,6 +169,35 @@
             }))
         }
     );
+
+    // Inflex | Process scripts
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    gulp.task('inflex:process:scripts', function()
+    {
+        return gulp.src(['../src/js/!(*.min).js'])
+        // ↓↓↓↓↓↓
+        .pipe(plumber())
+        .pipe(jshint('../src/js/.jshintrc'))
+        .pipe(jshint.reporter('jshint-stylish'))
+        .pipe(concat('inflex.js'))
+        .pipe(cache('inflex:scripts'))
+        .pipe(gulp.dest('../dist/js/'))
+        .pipe(gulp.dest('../docs/assets/js/'))
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(uglify())
+        .pipe(gulp.dest('../dist/js/'))
+        .pipe(gulp.dest('../docs/assets/js/'))
+        // ↑↑↑↑↑↑
+        .pipe(notify(
+            {
+                title   : 'Success',
+                subtitle: 'Inflex build complete:',
+                message : '"<%= file.relative %>"',
+                icon    : null
+            })
+        );
+    });
 
 /*
  * **
@@ -301,6 +330,8 @@
     gulp.task('inflex:watch', function()
         {
             gulp.watch(['../src/less/**/*.less'], ['inflex:process:styles']);
+
+            gulp.watch(['../src/js/!(*.min).js'], ['inflex:process:scripts']);
         }
     );
 
