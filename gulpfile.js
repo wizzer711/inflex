@@ -133,7 +133,7 @@
             return gulp.src('./src/less/inflex.less')
             // ↓↓↓↓↓↓
             .pipe(plumber())
-            .pipe(less({paths: ['./libs']}))
+            .pipe(less({paths: ['./src/less/imports']}))
             .pipe(postcss(processors))
             // .pipe(cache('inflex:styles'))
             .pipe(gulp.dest('./dist/css/'))
