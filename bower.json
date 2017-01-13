@@ -7,7 +7,7 @@
 	"main": [
 		"./dist/css/inflex.css",
 		"./dist/js/inflex.js",
-		"./dist/fonts/icons/*"
+		"./dist/fonts/icons"
 	],
 	"dependencies": {},
 	"devDependencies":
