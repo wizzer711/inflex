@@ -253,7 +253,7 @@
 
     gulp.task('git:push', function(){
      
-        git.push('origin', 'master', function (err){
+        git.push('origin', 'master', {args: " --tags"}, function (err){
 
             if (err) throw err;
         });
