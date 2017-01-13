@@ -7,18 +7,16 @@
 	"main": [
 		"./dist/css/inflex.css"
 	],
-	"dependencies":
+	"dependencies": {},
+	"devDependencies":
 	{
-		"material-design-icons": "~2.2"
+		"material-design-icons": "~3.0"
 	},
 	"overrides": {
 		"material-design-icons": {
 			"main": ["./iconfont/*"]
 		}
 	},
-	"ignoredDependencies": [
-		"material-design-icons"
-	],
 	"ignore": [
 		"**/.*",
 	    "build",
