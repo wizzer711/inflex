@@ -186,6 +186,7 @@
         .pipe(gulp.dest('../docs/assets/js/'))
         .pipe(rename({ suffix: '.min' }))
         .pipe(uglify())
+        .pipe(header(pkg.copyright.join('\n'), { pkg: pkg }))
         .pipe(gulp.dest('../dist/js/'))
         .pipe(gulp.dest('../docs/assets/js/'))
         // ↑↑↑↑↑↑
