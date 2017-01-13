@@ -1,5 +1,5 @@
 /*!
- * Inflex v1.1.14 (http://inflex.io)
+ * Inflex v1.1.15 (http://inflex.io)
  * Copyright (c) 2017, Chris Garner
  * Licensed under MIT (https://github.com/chris-garner/inflex/blob/master/LICENSE.md)
  */
