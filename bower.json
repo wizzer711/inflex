@@ -16,6 +16,9 @@
 			"main": ["./iconfont/*"]
 		}
 	},
+	"ignoredDependencies": [
+		"material-design-icons"
+	],
 	"ignore": [
 		"**/.*",
 	    "build",
