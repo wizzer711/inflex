@@ -214,31 +214,26 @@ th {
 [data-inflex~='ai:stretch'] {
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
-              -ms-grid-row-align: stretch;
           align-items: stretch;
 }
 [data-inflex~='ai:start'] {
   -webkit-box-align: start;
       -ms-flex-align: start;
-              -ms-grid-row-align: flex-start;
           align-items: flex-start;
 }
 [data-inflex~='ai:end'] {
   -webkit-box-align: end;
       -ms-flex-align: end;
-              -ms-grid-row-align: flex-end;
           align-items: flex-end;
 }
 [data-inflex~='ai:center'] {
   -webkit-box-align: center;
       -ms-flex-align: center;
-              -ms-grid-row-align: center;
           align-items: center;
 }
 [data-inflex~='ai:baseline'] {
   -webkit-box-align: baseline;
       -ms-flex-align: baseline;
-              -ms-grid-row-align: baseline;
           align-items: baseline;
 }
 [data-inflex~='ac:start'] {
@@ -267,6 +262,7 @@ th {
 }
 [data-inflex~='as:auto'] {
   -ms-flex-item-align: auto;
+      -ms-grid-row-align: auto;
       align-self: auto;
 }
 [data-inflex~='as:baseline'] {
@@ -275,6 +271,7 @@ th {
 }
 [data-inflex~='as:center'] {
   -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
       align-self: center;
 }
 [data-inflex~='as:end'] {
@@ -287,6 +284,7 @@ th {
 }
 [data-inflex~='as:stretch'] {
   -ms-flex-item-align: stretch;
+      -ms-grid-row-align: stretch;
       align-self: stretch;
 }
 [data-inflex~='shrink'] {
@@ -2209,31 +2207,26 @@ pre > code {
   [data-inflex~='sm(ai:stretch)'] {
     -webkit-box-align: stretch;
         -ms-flex-align: stretch;
-                -ms-grid-row-align: stretch;
             align-items: stretch;
   }
   [data-inflex~='sm(ai:start)'] {
     -webkit-box-align: start;
         -ms-flex-align: start;
-                -ms-grid-row-align: flex-start;
             align-items: flex-start;
   }
   [data-inflex~='sm(ai:end)'] {
     -webkit-box-align: end;
         -ms-flex-align: end;
-                -ms-grid-row-align: flex-end;
             align-items: flex-end;
   }
   [data-inflex~='sm(ai:center)'] {
     -webkit-box-align: center;
         -ms-flex-align: center;
-                -ms-grid-row-align: center;
             align-items: center;
   }
   [data-inflex~='sm(ai:baseline)'] {
     -webkit-box-align: baseline;
         -ms-flex-align: baseline;
-                -ms-grid-row-align: baseline;
             align-items: baseline;
   }
   [data-inflex~='sm(ac:start)'] {
@@ -2262,6 +2255,7 @@ pre > code {
   }
   [data-inflex~='sm(as:auto)'] {
     -ms-flex-item-align: auto;
+        -ms-grid-row-align: auto;
         align-self: auto;
   }
   [data-inflex~='sm(as:baseline)'] {
@@ -2270,6 +2264,7 @@ pre > code {
   }
   [data-inflex~='sm(as:center)'] {
     -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
         align-self: center;
   }
   [data-inflex~='sm(as:end)'] {
@@ -2282,6 +2277,7 @@ pre > code {
   }
   [data-inflex~='sm(as:stretch)'] {
     -ms-flex-item-align: stretch;
+        -ms-grid-row-align: stretch;
         align-self: stretch;
   }
   [data-inflex~='sm(shrink)'] {
@@ -3122,31 +3118,26 @@ pre > code {
   [data-inflex~='md(ai:stretch)'] {
     -webkit-box-align: stretch;
         -ms-flex-align: stretch;
-                -ms-grid-row-align: stretch;
             align-items: stretch;
   }
   [data-inflex~='md(ai:start)'] {
     -webkit-box-align: start;
         -ms-flex-align: start;
-                -ms-grid-row-align: flex-start;
             align-items: flex-start;
   }
   [data-inflex~='md(ai:end)'] {
     -webkit-box-align: end;
         -ms-flex-align: end;
-                -ms-grid-row-align: flex-end;
             align-items: flex-end;
   }
   [data-inflex~='md(ai:center)'] {
     -webkit-box-align: center;
         -ms-flex-align: center;
-                -ms-grid-row-align: center;
             align-items: center;
   }
   [data-inflex~='md(ai:baseline)'] {
     -webkit-box-align: baseline;
         -ms-flex-align: baseline;
-                -ms-grid-row-align: baseline;
             align-items: baseline;
   }
   [data-inflex~='md(ac:start)'] {
@@ -3175,6 +3166,7 @@ pre > code {
   }
   [data-inflex~='md(as:auto)'] {
     -ms-flex-item-align: auto;
+        -ms-grid-row-align: auto;
         align-self: auto;
   }
   [data-inflex~='md(as:baseline)'] {
@@ -3183,6 +3175,7 @@ pre > code {
   }
   [data-inflex~='md(as:center)'] {
     -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
         align-self: center;
   }
   [data-inflex~='md(as:end)'] {
@@ -3195,6 +3188,7 @@ pre > code {
   }
   [data-inflex~='md(as:stretch)'] {
     -ms-flex-item-align: stretch;
+        -ms-grid-row-align: stretch;
         align-self: stretch;
   }
   [data-inflex~='md(shrink)'] {
@@ -4035,31 +4029,26 @@ pre > code {
   [data-inflex~='lg(ai:stretch)'] {
     -webkit-box-align: stretch;
         -ms-flex-align: stretch;
-                -ms-grid-row-align: stretch;
             align-items: stretch;
   }
   [data-inflex~='lg(ai:start)'] {
     -webkit-box-align: start;
         -ms-flex-align: start;
-                -ms-grid-row-align: flex-start;
             align-items: flex-start;
   }
   [data-inflex~='lg(ai:end)'] {
     -webkit-box-align: end;
         -ms-flex-align: end;
-                -ms-grid-row-align: flex-end;
             align-items: flex-end;
   }
   [data-inflex~='lg(ai:center)'] {
     -webkit-box-align: center;
         -ms-flex-align: center;
-                -ms-grid-row-align: center;
             align-items: center;
   }
   [data-inflex~='lg(ai:baseline)'] {
     -webkit-box-align: baseline;
         -ms-flex-align: baseline;
-                -ms-grid-row-align: baseline;
             align-items: baseline;
   }
   [data-inflex~='lg(ac:start)'] {
@@ -4088,6 +4077,7 @@ pre > code {
   }
   [data-inflex~='lg(as:auto)'] {
     -ms-flex-item-align: auto;
+        -ms-grid-row-align: auto;
         align-self: auto;
   }
   [data-inflex~='lg(as:baseline)'] {
@@ -4096,6 +4086,7 @@ pre > code {
   }
   [data-inflex~='lg(as:center)'] {
     -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
         align-self: center;
   }
   [data-inflex~='lg(as:end)'] {
@@ -4108,6 +4099,7 @@ pre > code {
   }
   [data-inflex~='lg(as:stretch)'] {
     -ms-flex-item-align: stretch;
+        -ms-grid-row-align: stretch;
         align-self: stretch;
   }
   [data-inflex~='lg(shrink)'] {
@@ -4948,31 +4940,26 @@ pre > code {
   [data-inflex~='xl(ai:stretch)'] {
     -webkit-box-align: stretch;
         -ms-flex-align: stretch;
-                -ms-grid-row-align: stretch;
             align-items: stretch;
   }
   [data-inflex~='xl(ai:start)'] {
     -webkit-box-align: start;
         -ms-flex-align: start;
-                -ms-grid-row-align: flex-start;
             align-items: flex-start;
   }
   [data-inflex~='xl(ai:end)'] {
     -webkit-box-align: end;
         -ms-flex-align: end;
-                -ms-grid-row-align: flex-end;
             align-items: flex-end;
   }
   [data-inflex~='xl(ai:center)'] {
     -webkit-box-align: center;
         -ms-flex-align: center;
-                -ms-grid-row-align: center;
             align-items: center;
   }
   [data-inflex~='xl(ai:baseline)'] {
     -webkit-box-align: baseline;
         -ms-flex-align: baseline;
-                -ms-grid-row-align: baseline;
             align-items: baseline;
   }
   [data-inflex~='xl(ac:start)'] {
@@ -5001,6 +4988,7 @@ pre > code {
   }
   [data-inflex~='xl(as:auto)'] {
     -ms-flex-item-align: auto;
+        -ms-grid-row-align: auto;
         align-self: auto;
   }
   [data-inflex~='xl(as:baseline)'] {
@@ -5009,6 +4997,7 @@ pre > code {
   }
   [data-inflex~='xl(as:center)'] {
     -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
         align-self: center;
   }
   [data-inflex~='xl(as:end)'] {
@@ -5021,6 +5010,7 @@ pre > code {
   }
   [data-inflex~='xl(as:stretch)'] {
     -ms-flex-item-align: stretch;
+        -ms-grid-row-align: stretch;
         align-self: stretch;
   }
   [data-inflex~='xl(shrink)'] {
@@ -5861,31 +5851,26 @@ pre > code {
   [data-inflex~='xxl(ai:stretch)'] {
     -webkit-box-align: stretch;
         -ms-flex-align: stretch;
-                -ms-grid-row-align: stretch;
             align-items: stretch;
   }
   [data-inflex~='xxl(ai:start)'] {
     -webkit-box-align: start;
         -ms-flex-align: start;
-                -ms-grid-row-align: flex-start;
             align-items: flex-start;
   }
   [data-inflex~='xxl(ai:end)'] {
     -webkit-box-align: end;
         -ms-flex-align: end;
-                -ms-grid-row-align: flex-end;
             align-items: flex-end;
   }
   [data-inflex~='xxl(ai:center)'] {
     -webkit-box-align: center;
         -ms-flex-align: center;
-                -ms-grid-row-align: center;
             align-items: center;
   }
   [data-inflex~='xxl(ai:baseline)'] {
     -webkit-box-align: baseline;
         -ms-flex-align: baseline;
-                -ms-grid-row-align: baseline;
             align-items: baseline;
   }
   [data-inflex~='xxl(ac:start)'] {
@@ -5914,6 +5899,7 @@ pre > code {
   }
   [data-inflex~='xxl(as:auto)'] {
     -ms-flex-item-align: auto;
+        -ms-grid-row-align: auto;
         align-self: auto;
   }
   [data-inflex~='xxl(as:baseline)'] {
@@ -5922,6 +5908,7 @@ pre > code {
   }
   [data-inflex~='xxl(as:center)'] {
     -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
         align-self: center;
   }
   [data-inflex~='xxl(as:end)'] {
@@ -5934,6 +5921,7 @@ pre > code {
   }
   [data-inflex~='xxl(as:stretch)'] {
     -ms-flex-item-align: stretch;
+        -ms-grid-row-align: stretch;
         align-self: stretch;
   }
   [data-inflex~='xxl(shrink)'] {

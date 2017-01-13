@@ -60,63 +60,47 @@
     // Bower | Nuke & rebuild libraries
     // ---------------------------------------------------------
 
-    gulp.task('bower:nuke', function()
-    {
-        del(['../libs/*/', '!../libs/_*/'], { force: true }, function()
-            {
-               gulp.start('bower:build');
-            }
-        );
+    gulp.task('bower:nuke', function(){
+
+        del(['./libs/*'], { dryRun: false }).then(paths => {
+
+            console.log('Deleted:\n', paths.join('\n'));
+
+            gulp.start('bower:build');
+        });
     });
 
     // Bower | Install/Update packages
     // ---------------------------------------------------------
 
-    gulp.task('bower:install', function(cb)
-    {
-        bower({cmd: 'update'}).on('end', cb);
+    gulp.task('bower:install', function(){
+
+        return bower({ cmd: 'update' });
     });
 
     // Bower | Process & distribute dependencies
     // ---------------------------------------------------------
 
-    gulp.task('bower:process:dependencies', function()
-    {
-        console.log('Processing dependencies');
+    gulp.task('bower:process:dependencies', function(){
 
-        var sieve = { js: filter('**/*.js'), css: filter('**/*.css') };
+        const iconFilter = filter(['**/MaterialIcons*.*'], { restore: true });
 
-        var files = bowerFiles(); if (!files.length) return;           
+        var files = bowerFiles(); if (!files.length) return;
 
         return gulp.src(files)
-
-        // JS
+         // ↓↓↓↓↓↓
         .pipe(plumber())
-        .pipe(sieve.js)
-        .pipe(uglify())
-        .pipe(header('/*! <%= file.relative %> */'))
-        .pipe(concat(pkg.prefix + 'vendors.min.js'))
-        // .pipe(cache('bower:scripts'))
-        .pipe(gulp.dest('../docs/assets/js/'))
-        .pipe(sieve.js.restore())
+        .pipe(iconFilter)
+        .pipe(gulp.dest('./dist/fonts/icons'))
+        .pipe(iconFilter.restore)
+        // ↑↑↑↑↑↑
+        .pipe(notify({
 
-        // CSS
-        .pipe(sieve.css)
-        .pipe(header('/*! <%= file.relative %> */'))
-        .pipe(concat(pkg.prefix + 'vendors.min.css'))
-        // .pipe(cache('bower:styles'))
-        .pipe(gulp.dest('../docs/assets/css/'))
-        .pipe(sieve.css.restore())
-
-        // Notify
-        .pipe(notify(
-            {
-                title   : 'Success',
-                subtitle: 'Bower dependencies processed:',
-                message : '"<%= file.relative %>"',
-                icon    : null
-            })
-        );
+            title   : 'Success',
+            subtitle: 'Bower dependencies processed:',
+            message : '"<%= file.relative %>"',
+            icon    : null
+        }));
     });
 
 /*
@@ -134,7 +118,7 @@
 
     gulp.task('inflex:nuke', function()
     {
-        del(['../dist/css/', '../dist/js/'], { force: true }, function()
+        del(['./dist/css/', './dist/js/'], { force: true }, function()
             {
                 gulp.start('inflex:build');
             }
@@ -146,19 +130,17 @@
 
     gulp.task('inflex:process:styles', function()
         {
-            return gulp.src('../src/less/inflex.less')
+            return gulp.src('./src/less/inflex.less')
             // ↓↓↓↓↓↓
             .pipe(plumber())
-            .pipe(less({paths: ['../libs']}))
+            .pipe(less({paths: ['./libs']}))
             .pipe(postcss(processors))
             // .pipe(cache('inflex:styles'))
-            .pipe(gulp.dest('../dist/css/'))
-            .pipe(gulp.dest('../docs/assets/css/'))
+            .pipe(gulp.dest('./dist/css/'))
             .pipe(cleanCSS())
             .pipe(rename({ suffix: '.min' }))
             .pipe(header(pkg.copyright.join('\n'), { pkg: pkg }))
-            .pipe(gulp.dest('../dist/css/'))
-            .pipe(gulp.dest('../docs/assets/css/'))
+            .pipe(gulp.dest('./dist/css/'))
             // ↑↑↑↑↑↑
             .pipe(notify
             ({
@@ -175,87 +157,23 @@
 
     gulp.task('inflex:process:scripts', function()
     {
-        return gulp.src(['../src/js/!(*.min).js'])
+        return gulp.src(['./src/js/!(*.min).js'])
         // ↓↓↓↓↓↓
         .pipe(plumber())
-        .pipe(jshint('../src/js/.jshintrc'))
+        .pipe(jshint('./src/js/.jshintrc'))
         .pipe(jshint.reporter('jshint-stylish'))
         .pipe(concat('inflex.js'))
         .pipe(cache('inflex:scripts'))
-        .pipe(gulp.dest('../dist/js/'))
-        .pipe(gulp.dest('../docs/assets/js/'))
+        .pipe(gulp.dest('./dist/js/'))
         .pipe(rename({ suffix: '.min' }))
         .pipe(uglify())
         .pipe(header(pkg.copyright.join('\n'), { pkg: pkg }))
-        .pipe(gulp.dest('../dist/js/'))
-        .pipe(gulp.dest('../docs/assets/js/'))
+        .pipe(gulp.dest('./dist/js/'))
         // ↑↑↑↑↑↑
         .pipe(notify(
             {
                 title   : 'Success',
                 subtitle: 'Inflex build complete:',
-                message : '"<%= file.relative %>"',
-                icon    : null
-            })
-        );
-    });
-
-/*
- * **
- * ****
- * **********************************************************************************************************
- * Documentation Tasks */ gulp.task('docs:build', ['docs:process:styles','docs:process:scripts']); /*
- * ********************************************************************************************************** 
- * ****
- * **
- */
-
-    // Documentation | Process styles
-    // ---------------------------------------------------------
-
-    gulp.task('docs:process:styles', function()
-    {
-        return gulp.src(['../docs/assets/css/*.less'])
-        // ↓↓↓↓↓↓
-        .pipe(plumber())
-        .pipe(less({paths: ['../src/less/']})) // Finds @imports relative to itself first - beware duplicates
-        .pipe(postcss(processors))
-        .pipe(gulp.dest('../docs/assets/css/'))
-        .pipe(cleanCSS())
-        .pipe(rename({suffix: '.min'}))
-        .pipe(header(pkg.copyright.join('\n'), { pkg: pkg }))
-        .pipe(gulp.dest('../docs/assets/css/'))
-        // ↑↑↑↑↑↑
-        .pipe(notify(
-            {
-                title   : 'Success',
-                subtitle: 'Documentation style(s) processed:',
-                message : '"<%= file.relative %>"',
-                icon    : null
-            })
-        );
-    });
-
-    // Documentation | Process scripts
-    // ---------------------------------------------------------
-
-    gulp.task('docs:process:scripts', function()
-    {
-        return gulp.src(['../docs/assets/js/!(*.min).js'])
-        // ↓↓↓↓↓↓
-        .pipe(plumber())
-        .pipe(jshint('.jshintrc'))
-        .pipe(jshint.reporter('jshint-stylish'))
-        .pipe(gulp.dest('../docs/assets/js/'))
-        .pipe(rename({suffix: '.min'}))
-        .pipe(uglify())
-        .pipe(header(pkg.copyright.join('\n'), { pkg: pkg }))
-        .pipe(gulp.dest('../docs/assets/js/'))
-        // ↑↑↑↑↑↑
-        .pipe(notify(
-            {
-                title   : 'Success',
-                subtitle: 'Documentation script(s) processed:',
                 message : '"<%= file.relative %>"',
                 icon    : null
             })
@@ -284,7 +202,7 @@
 
         pkg.version = options.version; // Update global package version for pending rebuild
 
-        return gulp.src(['./package.json', '../bower.json'], { base: "./" })
+        return gulp.src(['./package.json', './bower.json'], { base: "./" })
         // ↓↓↓↓↓↓
         .pipe(bump(options))
         .pipe(gulp.dest('./'))
@@ -319,7 +237,7 @@
  * **
  * ****
  * **********************************************************************************************************
- * Watch Tasks */ gulp.task('watch', ['inflex:watch', 'docs:watch']); /*
+ * Watch Tasks */ gulp.task('watch', ['inflex:watch']); /*
  * ********************************************************************************************************** 
  * ****
  * **
@@ -330,20 +248,9 @@
 
     gulp.task('inflex:watch', function()
         {
-            gulp.watch(['../src/less/**/*.less'], ['inflex:process:styles']);
+            gulp.watch(['./src/less/**/*.less'], ['inflex:process:styles']);
 
-            gulp.watch(['../src/js/!(*.min).js'], ['inflex:process:scripts']);
-        }
-    );
-
-    // Docs | Watch files
-    // ---------------------------------------------------------
-
-    gulp.task('docs:watch', function() 
-        {
-            gulp.watch(['../docs/assets/css/**/*.less'], ['docs:process:styles']);
-
-            gulp.watch(['../docs/assets/js/!(*.min).js'], ['docs:process:scripts']);
+            gulp.watch(['./src/js/!(*.min).js'], ['inflex:process:scripts']);
         }
     );
 
@@ -351,7 +258,7 @@
  * **
  * ****
  * **********************************************************************************************************
- * Default Tasks */ gulp.task('default', ['bower:build', 'inflex:build', 'docs:build']); /*
+ * Default Tasks */ gulp.task('default', ['bower:build', 'inflex:build']); /*
  * ********************************************************************************************************** 
  * ****
  * **
