@@ -112,8 +112,6 @@
 
 									return (selected.length)? 1 : state;
 
-									return 1;
-
 								default:
 
 								return (el.value.length)? 1 : state;
