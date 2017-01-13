@@ -223,15 +223,23 @@
         }
     );
 
-    gulp.task('tag', function()
-        {
-            git.tag(pkg.version, 'Version ' + pkg.version, function (err)
-                {
-                    if (err) throw err;
-                }
-            );
-        }
-    );
+    gulp.task('git:add', function(){
+
+        return gulp.src('./*').pipe(git.add({args: '-u'}));
+    });
+
+    gulp.task('git:commit', function(){
+     
+        return gulp.src('./*').pipe(git.commit('Version Bump (' + pkg.version + ')'));
+    });
+
+    gulp.task('git:tag', function(){
+        
+        git.tag(pkg.version, 'Version ' + pkg.version, function (err){
+            
+            if (err) throw err;
+        });
+    });
 
 /*
  * **

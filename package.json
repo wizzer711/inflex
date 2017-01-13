@@ -1,6 +1,6 @@
 {
   "name": "inflex",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "prefix": "inflex.",
   "description": "Inflex is a responsive design grid, utilising the power of the flex display property.",
   "repository": "chris-garner/inflex",
@@ -30,7 +30,7 @@
   "scripts": {
     "build": "sudo npm update && bower update && gulp && gulp watch",
     "watch": "gulp watch",
-    "bump": "gulp bump"
+    "bump": "gulp bump && gulp git:add && gulp git:commit && gulp git:tag"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.3",
