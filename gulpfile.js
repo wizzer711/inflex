@@ -225,12 +225,12 @@
 
     gulp.task('git:add', function(){
 
-        return gulp.src('./*').pipe(git.add({args: '-u'}));
+        return gulp.src('.').pipe(git.add({args: '-u'}));
     });
 
     gulp.task('git:commit', function(){
      
-        return gulp.src('./*').pipe(git.commit('Version Bump (' + pkg.version + ')'));
+        return gulp.src('.').pipe(git.commit('Version Bump (' + pkg.version + ')'));
     });
 
     gulp.task('git:tag', function(){
