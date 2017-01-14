@@ -1,0 +1,50 @@
+// ---------------------------------------------------------------------------------------------------------
+// Alert Themes
+// ---------------------------------------------------------------------------------------------------------
+
+    .iterate-alert--palettes ()
+	{
+		.iterate ();
+
+	    .iterate (@i: 1) when (@i <= length(@alert--palettes))
+	    {
+	        .iterate (@i + 1);
+
+	        @_name: extract(@alert--palettes, @i);
+
+	        @_palette: 'palette-@{_name}';
+	        
+	        @_primary: extract(@@_palette, 1);
+
+	        @_lighter: extract(@@_palette, 2);
+
+	        @_darker: extract(@@_palette, 3);
+
+	        @_contrast: extract(@@_palette, 4);
+
+			[data-inflex~="alert:@{_name}"]{
+
+				border-color: @_primary;
+				background-color: mix(@_primary, @alert--mix-color, @alert--mix-strength);
+
+				&, a { color: @_primary; }
+			}
+	    }
+	}
+
+// ---------------------------------------------------------------------------------------------------------
+// Alert Styles
+// ---------------------------------------------------------------------------------------------------------
+
+	& when (@breakpoint-attr = @data-attr)
+	{
+		[data-inflex*='alert:']
+		{
+            padding: @alert--padding;
+			border-radius: @alert--border-radius;
+            border-style: @alert--border-style;
+            border-width: @alert--border-width;
+		}
+
+        .iterate-alert--palettes ();
+	}

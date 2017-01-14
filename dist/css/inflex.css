@@ -970,37 +970,37 @@ h4,
 [data-inflex~="h4"] {
   font-size: 1.5em;
   line-height: 1.3em;
-  font-weight: 200;
+  font-weight: 400;
 }
 h4 strong,
 [data-inflex~="h4"] strong,
 h4 b,
 [data-inflex~="h4"] b {
-  font-weight: 400;
+  font-weight: 600;
 }
 h5,
 [data-inflex~="h5"] {
   font-size: 1.25em;
   line-height: 1.3em;
-  font-weight: 200;
+  font-weight: 400;
 }
 h5 strong,
 [data-inflex~="h5"] strong,
 h5 b,
 [data-inflex~="h5"] b {
-  font-weight: 400;
+  font-weight: 600;
 }
 h6,
 [data-inflex~="h6"] {
   font-size: 1em;
   line-height: 1.3em;
-  font-weight: 200;
+  font-weight: 400;
 }
 h6 strong,
 [data-inflex~="h6"] strong,
 h6 b,
 [data-inflex~="h6"] b {
-  font-weight: 400;
+  font-weight: 600;
 }
 hr {
   height: 0;
@@ -1760,6 +1760,52 @@ blockquote {
   /* Support for IE. */
   -webkit-font-feature-settings: 'liga';
           font-feature-settings: 'liga';
+}
+[data-inflex*='alert:'] {
+  padding: 1.5em;
+  border-radius: 0.3em;
+  border-style: solid;
+  border-width: 0.0625em;
+}
+[data-inflex~="alert:info"] {
+  border-color: #1CBBFF;
+  background-color: rgba(28, 187, 255, 0.05);
+}
+[data-inflex~="alert:info"],
+[data-inflex~="alert:info"] a {
+  color: #1CBBFF;
+}
+[data-inflex~="alert:danger"] {
+  border-color: #FF4C49;
+  background-color: rgba(255, 76, 73, 0.05);
+}
+[data-inflex~="alert:danger"],
+[data-inflex~="alert:danger"] a {
+  color: #FF4C49;
+}
+[data-inflex~="alert:warning"] {
+  border-color: #FF9436;
+  background-color: rgba(255, 148, 54, 0.05);
+}
+[data-inflex~="alert:warning"],
+[data-inflex~="alert:warning"] a {
+  color: #FF9436;
+}
+[data-inflex~="alert:caution"] {
+  border-color: #FFD52A;
+  background-color: rgba(255, 213, 42, 0.05);
+}
+[data-inflex~="alert:caution"],
+[data-inflex~="alert:caution"] a {
+  color: #FFD52A;
+}
+[data-inflex~="alert:success"] {
+  border-color: #00D5AC;
+  background-color: rgba(0, 213, 172, 0.05);
+}
+[data-inflex~="alert:success"],
+[data-inflex~="alert:success"] a {
+  color: #00D5AC;
 }
 button,
 input[type='button'],

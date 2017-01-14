@@ -108,11 +108,11 @@
 
 	@h3: 1.75em, 1.3em, 200, 400; // font-size | line-height | font-weight | font-weight (strong)
 
-	@h4: 1.5em, 1.3em, 200, 400; // font-size | line-height | font-weight | font-weight (strong)
+	@h4: 1.5em, 1.3em, 400, 600; // font-size | line-height | font-weight | font-weight (strong)
 
-	@h5: 1.25em, 1.3em, 200, 400; // font-size | line-height | font-weight | font-weight (strong)
+	@h5: 1.25em, 1.3em, 400, 600; // font-size | line-height | font-weight | font-weight (strong)
 
-	@h6: 1em, 1.3em, 200, 400; // font-size | line-height | font-weight | font-weight (strong)
+	@h6: 1em, 1.3em, 400, 600; // font-size | line-height | font-weight | font-weight (strong)
 
 // ---------------------------------------------------------------------------------------------------------
 // Blockquotes
@@ -163,6 +163,24 @@
 	@component--padding-y: 0.375em;
 
 	@component--padding-multiplier: 0.3125;
+
+// ---------------------------------------------------------------------------------------------------------
+// Component: Alert
+// ---------------------------------------------------------------------------------------------------------
+
+	@alert--border-radius: @component--border-radius;
+	
+	@alert--border-style: @component--border-style;
+
+	@alert--border-width: @component--border-width;
+
+	@alert--padding: 1.5em;
+	
+	@alert--palettes: ~'success', ~'caution', ~'warning', ~'danger', ~'info';
+	
+	@alert--mix-color: transparent;
+	
+	@alert--mix-strength: 5%;
 
 // ---------------------------------------------------------------------------------------------------------
 // Component: Button
