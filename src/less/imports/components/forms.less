@@ -66,7 +66,7 @@
 			    border-right-color: transparent;
 			    border-radius: 0;
 
-			    + label
+			    ~ label
 				{
 					position: absolute;
 					top: 0; left: 0;
@@ -89,14 +89,14 @@
 
 			input, textarea, select:not([multiple])
 			{
-				&, + label
+				&, ~ label
 				{
 					line-height: @_innerHeight * 0.66;
 
 					padding: (@_innerHeight * 0.33) @_paddingX 0;
 				}
 
-				&[data-inflex~='state:1'] + label
+				&[data-inflex~='state:1'] ~ label
 			    {
 					padding-top: 0 !important;
 
@@ -176,14 +176,14 @@
 				{
 					&[data-inflex~='@{bpo}size:@{_name}@{bpc}']
 					{
-						&, + label
+						&, ~ label
 						{
 							line-height: @_innerHeight * 0.66;
 							
 							padding: (@_innerHeight * 0.33) @_paddingX 0;
 						}
 
-						&[data-inflex~='state:1'] + label
+						&[data-inflex~='state:1'] ~ label
 					    {
 							transform: scale(@_downScale);
 
