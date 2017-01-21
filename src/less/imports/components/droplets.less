@@ -1,0 +1,39 @@
+// ---------------------------------------------------------------------------------------------------------
+// Droplet Styles
+// ---------------------------------------------------------------------------------------------------------
+
+	& when (@breakpoint-attr = @data-attr)
+	{
+        [data-inflex~='droplet'], [data-inflex~='droplet:toggled']{
+
+            position: relative;
+        }
+
+        [data-inflex~='droplet'] > [data-inflex*='droplet:src']{
+
+            display: none;
+        }
+
+        [data-inflex~='droplet:toggled'] > [data-inflex*='droplet:src']{
+
+            display: block; z-index: 1;
+        }
+
+        [data-inflex*='droplet:src']{
+
+            position: absolute;
+            width: 240px;
+            border-radius: .3em;
+            box-shadow: 0 1px 4px 0 rgba(0,0,0,.15);
+            background: #fff;
+            overflow: hidden;
+            padding: 1.5em;
+            top: ~'calc(100% + 0.5em)';
+
+            &[data-inflex~='droplet:src:right']{ left: auto; right: 0; }
+
+            &[data-inflex~='droplet:src:left']{ left: 0; right: auto; }
+
+            &[data-inflex~='droplet:src:center']{ right: 50%; transform: translateX(50%); }
+        }
+	}

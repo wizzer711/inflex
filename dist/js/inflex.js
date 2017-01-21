@@ -117,6 +117,46 @@
 								return (el.value.length)? 1 : state;
 							}
 						}
+					},
+
+					// Droplets
+					// ---------------------------------------------------------
+
+					droplet: {
+
+						listeners: function (){
+
+							var self = this;
+
+							$('[data-inflex~="droplet"]').on('click', '[data-inflex~="droplet:toggle"]', function(event){
+
+								event.stopPropagation();
+
+								var $droplet = $(event.delegateTarget);
+								
+								self.toggle($('[data-inflex~="droplet:toggled"]'), "droplet:toggled", "droplet"); // Close all droplets
+
+								self.toggle($droplet, "droplet", "droplet:toggled"); // Open droplet
+
+								$document.off('click.offDroplet').on('click.offDroplet', function(event){
+
+									if (!$droplet.find($(event.target)).length){
+
+										self.toggle($droplet, "droplet:toggled", "droplet");
+
+										$document.off('click.offDroplet');
+									}
+								});
+							});
+						},
+
+						toggle: function ($droplets, find, replace){
+
+							 $droplets.attr('data-inflex', function(){
+
+								return $(this).data('inflex').replace(find, replace);
+							});
+						}
 					}
 				};
 
@@ -137,6 +177,8 @@
 						initiate.resize.listener();
 
 						initiate.input.listeners();
+
+						initiate.droplet.listeners();
 					}
 				);
 
