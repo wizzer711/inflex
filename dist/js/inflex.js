@@ -79,11 +79,11 @@
 								{
 									var $elem = $(this),
 
-									inflex = $elem.attr('data-inflex').replace(/\bstate:[0,1]\b/g, '');  // Remove existing state
+									inflex = ($elem.attr('data-inflex') || '').replace(/\bstate:[0,1]\b/g, '');  // Remove existing state
 
 									inflex += ' state:' + input.state(this, ''); // Determine new state
 
-									$elem.attr('data-inflex', inflex.replace(/\s+/g, ' ')); // Update data-inflex attribute
+									$elem.attr('data-inflex', inflex.trim().replace(/\s+/g, ' ')); // Update data-inflex attribute
 								}
 							);
 
@@ -91,7 +91,7 @@
 								{
 									var $elem = $(this),
 
-									inflex = $elem.attr('data-inflex').replace(/\bstate:[0,1]\b/g, ''); // Remove existing state
+									inflex = ($elem.attr('data-inflex') || '').replace(/\bstate:[0,1]\b/g, ''); // Remove existing state
 
 									inflex += ' state:' + input.state(this, 0); // Determine new state
 
