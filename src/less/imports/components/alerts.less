@@ -2,12 +2,12 @@
 // Alert Themes
 // ---------------------------------------------------------------------------------------------------------
 
-    .iterate-alert--palettes ()
-	{
+    .iterate-alert--palettes (){
+
 		.iterate ();
 
-	    .iterate (@i: 1) when (@i <= length(@alert--palettes))
-	    {
+	    .iterate (@i: 1) when (@i <= length(@alert--palettes)){
+
 	        .iterate (@i + 1);
 
 	        @_name: extract(@alert--palettes, @i);
@@ -36,10 +36,10 @@
 // Alert Styles
 // ---------------------------------------------------------------------------------------------------------
 
-	& when (@breakpoint-attr = @data-attr)
-	{
-		[data-inflex*='alert:']
-		{
+	& when (@breakpoint-attr = @data-attr){
+
+		[data-inflex*='alert:']{
+
             padding: @alert--padding;
 			border-radius: @alert--border-radius;
             border-style: @alert--border-style;
