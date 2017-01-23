@@ -22,13 +22,13 @@
         [data-inflex*='droplet:src']{
 
             position: absolute;
-            width: 240px;
-            border-radius: .3em;
-            box-shadow: 0 1px 4px 0 rgba(0,0,0,.15);
-            background: #fff;
             overflow: hidden;
-            padding: 1.5em;
             top: ~'calc(100% + 0.5em)';
+            width: @droplet--width;
+            border-radius: @droplet--border-radius;
+            box-shadow: @droplet--box-shadow;
+            background: @droplet--background-color;
+            padding: @droplet--padding;
 
             &[data-inflex~='droplet:src:right']{ left: auto; right: 0; }
 
