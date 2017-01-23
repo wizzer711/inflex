@@ -1,0 +1,51 @@
+// ---------------------------------------------------------------------------------------------------------
+// Label Themes
+// ---------------------------------------------------------------------------------------------------------
+
+    .iterate-label--palettes ()
+	{
+		.iterate ();
+
+	    .iterate (@i: 1) when (@i <= length(@label--palettes))
+	    {
+	        .iterate (@i + 1);
+
+	        @_name: extract(@label--palettes, @i);
+
+	        @_palette: 'palette-@{_name}';
+	        
+	        @_primary: extract(@@_palette, 1);
+
+	        @_lighter: extract(@@_palette, 2);
+
+	        @_darker: extract(@@_palette, 3);
+
+	        @_contrast: extract(@@_palette, 4);
+
+			[data-inflex~="label:@{_name}"]{
+
+				color: @_contrast;
+				background-color: @_primary;
+			}
+	    }
+	}
+
+// ---------------------------------------------------------------------------------------------------------
+// Label Styles
+// ---------------------------------------------------------------------------------------------------------
+
+	& when (@breakpoint-attr = @data-attr){
+
+		[data-inflex*='label:']{
+
+            display: inline-block;
+            font-weight: @label--font-weight;
+            font-size: @label--font-size;
+            line-height: @label--line-height;
+            padding: @label--padding;
+            border-radius: @label--border-radius;
+            vertical-align: middle;
+		}
+
+        .iterate-label--palettes ();
+	}

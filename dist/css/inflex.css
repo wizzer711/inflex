@@ -2211,6 +2211,35 @@ pre > code {
   -webkit-transform: translateX(50%);
           transform: translateX(50%);
 }
+[data-inflex*='label:'] {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  line-height: 1.5em;
+  padding: 0.09375em 0.40625em;
+  border-radius: 0.3em;
+  vertical-align: middle;
+}
+[data-inflex~="label:info"] {
+  color: #FFFFFF;
+  background-color: #1CBBFF;
+}
+[data-inflex~="label:danger"] {
+  color: #FFFFFF;
+  background-color: #FF4C49;
+}
+[data-inflex~="label:warning"] {
+  color: #FFFFFF;
+  background-color: #FF9436;
+}
+[data-inflex~="label:caution"] {
+  color: #FFFFFF;
+  background-color: #FFD52A;
+}
+[data-inflex~="label:success"] {
+  color: #FFFFFF;
+  background-color: #00D5AC;
+}
 @media (min-width: 20em) {
   [data-inflex~='sm(flex)'] {
     display: -webkit-box;
