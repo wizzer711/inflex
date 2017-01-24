@@ -2,16 +2,16 @@
 // Code
 // ---------------------------------------------------------------------------------------------------------
 
-	& when (@breakpoint-attr = @data-attr)
-	{
-		code, kbd, pre, samp
-		{
+	& when (@compile-once){
+
+		code, kbd, pre, samp {
+
 			font-size: @font-size;
 			font-family: @font-family-monospace;
 		}
 
-		code
-		{
+		code {
+
 			overflow: auto;
 			font-size: @code--font-size;
 			line-height: @code--line-height;
@@ -23,8 +23,8 @@
 			background-color: @code--background-color;
 		}
 
-		pre
-		{
+		pre {
+			
 			tab-size: 2;
 			overflow: auto;
 

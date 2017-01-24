@@ -1,11 +1,11 @@
-& when (@breakpoint-attr = @data-attr)
-{
+& when (@compile-once){
+
 	// ---------------------------------------------------------------------------------------------------------
 	// Base Type Styles
 	// ---------------------------------------------------------------------------------------------------------
 
-		body
-		{
+		body {
+
 			font-family            : @font-family;
 			font-size              : @font-size;
 			font-weight            : @font-weight;
@@ -16,8 +16,8 @@
 			-moz-osx-font-smoothing: grayscale;
 		}
 
-		:before, :after
-		{
+		:before, :after {
+
 			font-family            : inherit;
 			font-size              : inherit;
 			font-weight            : inherit;
@@ -32,14 +32,14 @@
 	// Anchor Links
 	// ---------------------------------------------------------------------------------------------------------
 
-		a
-		{
+		a {
+
 			color: @link--color;
 			text-decoration: @link--decoration;
 			background-color: transparent;
 
-			&:hover, &:active
-			{
+			&:hover, &:active {
+
 				text-decoration: @link--hover-decoration;
 				outline: 0;
 			}
@@ -49,44 +49,44 @@
 	// Text Semantics
 	// ---------------------------------------------------------------------------------------------------------
 
-		abbr
-		{
+		abbr {
+
 			cursor: help;
 			border-bottom: 1px dotted;
 		}
 
-		dfn
-		{
+		dfn {
+
 		    font-style: italic;
 		}
 
-		mark
-		{
+		mark {
+
 			background: #ff0;
 			color     : #000;
 		}
 
-		small
-		{
+		small {
+
 			font-size  : 81.25%;
 			line-height: 81.25%;
 		}
 
-		sub, sup
-		{
+		sub, sup {
+
 			font-size     : 81.25%;
 			line-height   : 0;
 			position      : relative;
 			vertical-align: baseline;
 		}
 
-		sup
-		{
+		sup {
+
 			top: -0.5em;
 		}
 
-		sub
-		{
+		sub {
+
 			bottom: -0.25em;
 		}
 
@@ -94,8 +94,8 @@
 	// Emphasis
 	// ---------------------------------------------------------------------------------------------------------
 
-		b, strong
-		{
+		b, strong {
+
 			font-weight: @strong-weight;
 		}
 
@@ -103,18 +103,18 @@
 	// Headings
 	// ---------------------------------------------------------------------------------------------------------
 
-		.construct-header-styles ();
+		.construct-header-styles();
 
-	    .construct-header-styles (@i: 6) when (@i > 0)
-	    {
-	        .construct-header-styles (@i - 1);
+	    .construct-header-styles (@i: 6) when (@i > 0){
+
+	        .construct-header-styles(@i - 1);
 
 	        @_header: ~'h@{i}';
 
 	        @_options: @@_header;
 
-	        @{_header}, [data-inflex~="@{_header}"]
-	        {
+	        @{_header}, [data-inflex~="@{_header}"]{
+
 	        	font-size: extract(@_options, 1);
 
 	        	line-height: extract(@_options, 2);
@@ -129,8 +129,8 @@
 	// Horizontal Rules
 	// ---------------------------------------------------------------------------------------------------------
 
-	    hr
-		{
+	    hr {
+
 			height: 0;
 			border-style: solid;
 			border-width: 0 0 1px 0;
@@ -141,8 +141,8 @@
 	// Blockquotes
 	// ---------------------------------------------------------------------------------------------------------
 
-		blockquote
-		{
+		blockquote {
+
 			font-size   : @blockquote--font-size;
 			line-height : @line-height;
 			padding     : 0.5em 0 0.5em 1em;
@@ -158,23 +158,23 @@
 // Alignment (Responsive)
 // ---------------------------------------------------------------------------------------------------------
 
-	[data-inflex~="@{bpo}text:left@{bpc}"]
-	{
+	[data-inflex~="@{bpo}text:left@{bpc}"]{
+
 		text-align: left;
 	}
 
-	[data-inflex~="@{bpo}text:center@{bpc}"]
-	{
+	[data-inflex~="@{bpo}text:center@{bpc}"]{
+
 		text-align: center;
 	}
 
-	[data-inflex~="@{bpo}text:right@{bpc}"]
-	{
+	[data-inflex~="@{bpo}text:right@{bpc}"]{
+
 		text-align: right;
 	}
 
-	[data-inflex~="@{bpo}text:justify@{bpc}"]
-	{
+	[data-inflex~="@{bpo}text:justify@{bpc}"]{
+
 		text-align: center;
 	}
 
@@ -184,13 +184,13 @@
 
 	.construct-font-sizing(@bpo, @bpc);
 
-	.construct-font-sizing (@bpo, @bpc)
-	{
-		.iterate ();
+	.construct-font-sizing (@bpo, @bpc){
 
-	    .iterate (@i: 1) when (@i <= length(@font-sizes))
-	    {
-	        .iterate (@i + 1);
+		.iterate();
+
+	    .iterate (@i: 1) when (@i <= length(@font-sizes)){
+			
+	        .iterate(@i + 1);
 
 	        @_group: extract(@font-sizes, @i);
 
@@ -198,8 +198,8 @@
 
 			@_unit: extract(@_group, 2);
 
-			[data-inflex~="@{bpo}text:@{_size}@{bpc}"]
-			{
+			[data-inflex~="@{bpo}text:@{_size}@{bpc}"]{
+
 				font-size: @_unit;
 
 				line-height: @line-height;

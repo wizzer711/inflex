@@ -2,9 +2,10 @@
 // 
 // ---------------------------------------------------------------------------------------------------------
 
-& when (@breakpoint-attr = @data-attr)
-{
+& when (@compile-once){
+
 	@font-face {
+
 		font-family: 'Material Icons';
 		font-style: normal;
 		font-weight: 400;
@@ -16,8 +17,8 @@
 			url('@{icon--path}MaterialIcons-Regular.ttf') format('truetype');
 	}
 
-	[data-inflex~="icon"]
-	{
+	[data-inflex~="icon"]{
+
 		font-family: 'Material Icons';
 		font-weight: normal;
 		font-style: normal;

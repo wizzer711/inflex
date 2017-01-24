@@ -4,11 +4,11 @@
 
     .iterate-alert--palettes (){
 
-		.iterate ();
+		.iterate();
 
 	    .iterate (@i: 1) when (@i <= length(@alert--palettes)){
 
-	        .iterate (@i + 1);
+	        .iterate(@i + 1);
 
 	        @_name: extract(@alert--palettes, @i);
 
@@ -36,7 +36,7 @@
 // Alert Styles
 // ---------------------------------------------------------------------------------------------------------
 
-	& when (@breakpoint-attr = @data-attr){
+	& when (@compile-once){
 
 		[data-inflex*='alert:']{
 
@@ -46,5 +46,5 @@
             border-width: @alert--border-width;
 		}
 
-        .iterate-alert--palettes ();
+        .iterate-alert--palettes();
 	}

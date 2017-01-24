@@ -2,13 +2,13 @@
 // Mixin: Iterate Colors
 // ---------------------------------------------------------------------------------------------------------
 
-	.iterate-colors ()
-	{
-		.iterate ();
+	.iterate-colors (){
 
-	    .iterate (@i: 1) when (@i <= length(@palettes))
-	    {
-	        .iterate (@i + 1);
+		.iterate();
+
+	    .iterate (@i: 1) when (@i <= length(@palettes)){
+
+	        .iterate(@i + 1);
 
 	        @_name: extract(@palettes, @i);
 
@@ -24,12 +24,12 @@
 
 			// Theme
 
-			[data-inflex~="theme:@{_name}"]:not([disabled])
-			{
+			[data-inflex~="theme:@{_name}"]:not([disabled]){
+
 				// Ghost (default)
 
-				&[data-inflex~="button"]
-				{
+				&[data-inflex~="button"]{
+
 					color: @_primary;
 
 					border-color: transparent;
@@ -41,8 +41,8 @@
 
 				// Flat
 
-				&[data-inflex~="button:flat"]
-				{
+				&[data-inflex~="button:flat"]{
+
 					background-color: @_primary;
 
 					border-color: transparent;
@@ -56,31 +56,31 @@
 
 				// Outline
 
-				&[data-inflex~="button:outline"]
-				{
-					color: @_primary;
+				&[data-inflex~="button:outline"]{
 
+					color: @_primary;
+					
 					border-color: @_primary;
 
-					&:hover
-					{
+					&:hover {
+
 						color: @_contrast;
 
 						background-color: @_primary;
 					}
 
-					&:active
-					{
+					&:active {
+
 						border-color: darken(@_primary, 7.5%);
-						
+
 						background-color: darken(@_primary, 7.5%);
 					}
 				}
 
 				// Gradient
 
-				&[data-inflex~="button:gradient"]
-				{
+				&[data-inflex~="button:gradient"]{
+
 					background-color: @_primary;
 
 					background-image: linear-gradient(to bottom, transparent 0%, fade(black, 15%) 100%);
@@ -89,8 +89,8 @@
 
 					color: @_contrast;
 
-					&:hover
-					{
+					&:hover {
+
 						background-color: darken(@_primary, 5%);
 
 						border-top-color: darken(@_primary, 5%);
@@ -98,8 +98,8 @@
 						border-bottom-color: mix(black, darken(@_primary, 5%), 15%);
 					}
 
-					&:active
-					{
+					&:active {
+
 						background-color: darken(@_primary, 10%);
 
 						border-top-color: darken(@_primary, 10%);
@@ -129,7 +129,7 @@
 // Output
 // ---------------------------------------------------------------------------------------------------------
 
-	& when (@breakpoint-attr = @data-attr)
-	{
+	& when (@compile-once){
+
 		.iterate-colors();
 	}

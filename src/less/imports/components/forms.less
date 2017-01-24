@@ -2,8 +2,8 @@
 // Shared Component Styles (Compile Once)
 // ---------------------------------------------------------------------------------------------------------
 
-	& when (@breakpoint-attr = @data-attr)
-	{
+	& when (@compile-once){
+
 		@_outerHeight: @component--height; // Includes border height
 		
 		@_innerHeight: @component--height - (@component--border-width * 2); // Excludes border height
@@ -12,8 +12,8 @@
 
 		@_paddingY: (@_innerHeight - 1.5) / 2; // Vertical padding = 1/2 component height, after line-height
 
-		textarea, select, input, button, a[data-inflex*='button']
-		{
+		textarea, select, input, button, a[data-inflex*='button']{
+
 			appearance   : none;
 			position     : relative;
 			max-width    : 100%;
@@ -28,16 +28,16 @@
 			&:focus { outline: 0; }
 		}
 
-		textarea, select[multiple]
-		{
+		textarea, select[multiple]{
+
 			display: block;
 			line-height: @line-height !important;
 			// padding-top: @_paddingX;
 			// padding-bottom: @_paddingX;
 		}
 
-		select:not([multiple])
-		{
+		select:not([multiple]){
+
 			padding: @_paddingY ((@_paddingX * 2) + 1em) @_paddingY @_paddingX;
 			background-color: white;
 			background-size: @font-size;
@@ -47,17 +47,17 @@
 			.background-svg-uri('chevron-down', @text-color);
 		}
 
-		button, a[data-inflex*='button'], input[type="submit"], input[type="reset"], input[type="button"]
-		{
+		button, a[data-inflex*='button'], input[type="submit"], input[type="reset"], input[type="button"]{
+
 			padding: @_paddingY (@_innerHeight * 0.375);
 		}
 
-		[data-inflex~='field:minimal']
-		{
+		[data-inflex~='field:minimal']{
+
 			position: relative;
 
-			input, textarea, select:not([multiple])
-			{
+			input, textarea, select:not([multiple]){
+
 				z-index: 1;
 				width: 100%;
 				background-color: transparent;
@@ -66,42 +66,39 @@
 			    border-right-color: transparent;
 			    border-radius: 0;
 
-			    ~ label
-				{
+			    ~ label {
+
 					position: absolute;
 					top: 0; left: 0;
 					border: @component--border-width solid transparent;
 					color: @component--placeholder-color;
 				}
 
-				&:not(:focus)::placeholder
-			    {
+				&:not(:focus)::placeholder {
+
 			    	color: transparent;
 			    }
 			}
 
-			input:-webkit-autofill
-			{
+			input:-webkit-autofill {
+
 				transition-property: background-color, color;
 				transition-duration: 0s;
 				transition-delay: 3600s;
 			}
 
-			input, textarea, select:not([multiple])
-			{
-				&, ~ label
-				{
-					line-height: @_innerHeight * 0.66;
+			input, textarea, select:not([multiple]){
 
+				&, ~ label {
+
+					line-height: @_innerHeight * 0.66;
 					padding: (@_innerHeight * 0.33) @_paddingX 0;
 				}
 
-				&[data-inflex~='state:1'] ~ label
-			    {
-					padding-top: 0 !important;
+				&[data-inflex~='state:1'] ~ label{
 
+					padding-top: 0 !important;
 					transform: scale(0.8125);
-				
 					transform-origin: @_paddingX (@_paddingX * -1);
 			    }
 			}
@@ -112,13 +109,13 @@
 // Component Sizes (Responsive)
 // ---------------------------------------------------------------------------------------------------------
 
-	.iterate--component-sizes (@bpo, @bpc)
-	{
-		.iterate ();
+	.iterate--component-sizes (@bpo, @bpc){
 
-	    .iterate (@i: 1) when (@i <= length(@component--sizes))
-	    {
-	        .iterate (@i + 1);
+		.iterate();
+
+	    .iterate (@i: 1) when (@i <= length(@component--sizes)){
+
+	        .iterate(@i + 1);
 
 	        @_group: extract(@component--sizes, @i);
 
@@ -136,20 +133,20 @@
 
 			@_paddingY: (@_innerHeight - 1.5) / 2;
 
-			textarea, input
-			{
-				&[data-inflex~='@{bpo}size:@{_name}@{bpc}']
-				{
+			textarea, input {
+
+				&[data-inflex~='@{bpo}size:@{_name}@{bpc}']{
+
 					min-height: @_outerHeight;
 
 			    	padding: @_paddingY @_paddingX;
 				}
 			}
 
-			button, a[data-inflex*='button']
-			{
-				&[data-inflex~='@{bpo}size:@{_name}@{bpc}']
-				{
+			button, a[data-inflex*='button']{
+
+				&[data-inflex~='@{bpo}size:@{_name}@{bpc}']{
+
 					min-height: @_outerHeight;
 
 		    		padding: @_paddingY (@_innerHeight * 0.375);
@@ -158,10 +155,10 @@
 				}
 			}
 
-			select:not([multiple])
-			{
-				&[data-inflex~='@{bpo}size:@{_name}@{bpc}']
-				{
+			select:not([multiple]){
+
+				&[data-inflex~='@{bpo}size:@{_name}@{bpc}']{
+
 					min-height: @_outerHeight;
 
 			    	padding: @_paddingY ((@_paddingX * 2) + 1em) @_paddingY @_paddingX;
@@ -170,23 +167,21 @@
 				}
 			}
 
-			[data-inflex~='field:minimal']
-			{
-				input, textarea, select:not([multiple])
-				{
-					&[data-inflex~='@{bpo}size:@{_name}@{bpc}']
-					{
-						&, ~ label
-						{
+			[data-inflex~='field:minimal']{
+
+				input, textarea, select:not([multiple]){
+
+					&[data-inflex~='@{bpo}size:@{_name}@{bpc}']{
+
+						&, ~ label {
+
 							line-height: @_innerHeight * 0.66;
-							
 							padding: (@_innerHeight * 0.33) @_paddingX 0;
 						}
 
-						&[data-inflex~='state:1'] ~ label
-					    {
-							transform: scale(@_downScale);
+						&[data-inflex~='state:1'] ~ label {
 
+							transform: scale(@_downScale);
 	    					transform-origin: @_paddingX (@_paddingX * -1);
 					    }
 					}
@@ -195,4 +190,4 @@
 	    }
 	}
 
-	.iterate--component-sizes (@bpo, @bpc);
+	.iterate--component-sizes(@bpo, @bpc);

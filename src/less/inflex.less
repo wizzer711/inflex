@@ -10,13 +10,13 @@
 // Iterate Breakpoints
 // ---------------------------------------------------------------------------------------------------------
 
-	.iterate-breakpoints (@breakpoints)
-	{
-	    .iterate ();
+	.iterate-breakpoints(@breakpoints){
 
-	    .iterate (@i: length(@breakpoints)) when (@i > 0)
-	    {
-	        .iterate (@i - 1);
+	    .iterate();
+
+	    .iterate(@i: length(@breakpoints)) when (@i > 0){
+
+	        .iterate(@i - 1);
 
 	        @breakpoint: extract(@breakpoints, @i);
 
@@ -26,20 +26,20 @@
 
 			@breakpoint-max: extract(@breakpoint, 3);
 
-			& when (@breakpoint-min = 0)
-			{
-				@breakpoint-attr: @data-attr;
+			& when (@breakpoint-min = 0){
+
+				@compile-once: true;
 
 				@bpo: ~''; @bpc: ~'';
 
 	        	@import (multiple) "./core/includes.less";
 			}
 
-			& when (@breakpoint-min > 0)
-			{
-				@media (min-width: @breakpoint-min)
-		        {
-		        	@breakpoint-attr: ~'@{data-attr}-@{breakpoint-name}';
+			& when (@breakpoint-min > 0){
+
+				@media (min-width: @breakpoint-min){
+
+					@compile-once: false;
 
 		        	@bpo: ~'@{breakpoint-name}('; @bpc: ~')';
 
@@ -49,4 +49,4 @@
 	    }
 	}
 
-	.iterate-breakpoints (@breakpoints);
+	.iterate-breakpoints(@breakpoints);

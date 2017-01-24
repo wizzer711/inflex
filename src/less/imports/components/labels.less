@@ -2,13 +2,13 @@
 // Label Themes
 // ---------------------------------------------------------------------------------------------------------
 
-    .iterate-label--palettes ()
-	{
-		.iterate ();
+    .iterate-label--palettes (){
+		
+		.iterate();
 
-	    .iterate (@i: 1) when (@i <= length(@label--palettes))
-	    {
-	        .iterate (@i + 1);
+	    .iterate (@i: 1) when (@i <= length(@label--palettes)){
+
+	        .iterate(@i + 1);
 
 	        @_name: extract(@label--palettes, @i);
 
@@ -34,7 +34,7 @@
 // Label Styles
 // ---------------------------------------------------------------------------------------------------------
 
-	& when (@breakpoint-attr = @data-attr){
+	& when (@compile-once){
 
 		[data-inflex*='label:']{
 
@@ -47,5 +47,5 @@
             vertical-align: middle;
 		}
 
-        .iterate-label--palettes ();
+        .iterate-label--palettes();
 	}

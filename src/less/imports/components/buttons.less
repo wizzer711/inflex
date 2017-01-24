@@ -2,14 +2,14 @@
 // Button Styles
 // ---------------------------------------------------------------------------------------------------------
 
-	& when (@breakpoint-attr = @data-attr)
-	{
+	& when (@compile-once){
+
 		button,
 		input[type='button'],
 		input[type='submit'],
 		input[type='reset'],
-		a[data-inflex*='button']
-		{
+		a[data-inflex*='button']{
+
 			display: inline-block;
 			cursor: pointer;
 			user-select: none;
@@ -33,18 +33,18 @@
 	// Disabled Buttons
 	// ---------------------------------------------------------------------------------------------------------
 
-		[data-inflex~='button:flat'][disabled]
-		{
+		[data-inflex~='button:flat'][disabled]{
+
 			background-color: extract(@palette-disabled, 1) !important;
 		}
 
-		[data-inflex~='button:outline'][disabled]
-		{
+		[data-inflex~='button:outline'][disabled]{
+
 			border-color: extract(@palette-disabled, 1) !important;
 		}
 
-		[data-inflex~='button:gradient'][disabled]
-		{
+		[data-inflex~='button:gradient'][disabled]{
+
 			background-color: extract(@palette-disabled, 1) !important;
 
 			background-image: linear-gradient(to bottom, transparent 0%, fade(black, 5%) 100%);
