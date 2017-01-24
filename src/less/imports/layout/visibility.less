@@ -18,31 +18,29 @@
 
 			@breakpoint-max: extract(@breakpoint, 3);
 
-			// Compose visibility rules
-
 			@media (min-width: @breakpoint-min) and (max-width: @breakpoint-max){
 
-				[data-inflex~='hide(@{breakpoint-name})']{ display: none; }
+				[data-inflex~='hide(@{breakpoint-name})']{ display: none !important; }
 			}
 
 			@media (min-width: (@breakpoint-max + 0.0625)){ // +1px
 
-				[data-inflex~='hide(gt:@{breakpoint-name})']{ display: none; }
+				[data-inflex~='hide(gt:@{breakpoint-name})']{ display: none !important; }
 			}
 
 			@media (min-width: @breakpoint-min){
 
-				[data-inflex~='hide(gte:@{breakpoint-name})']{ display: none; }
+				[data-inflex~='hide(gte:@{breakpoint-name})']{ display: none !important; }
 			}
 
 			@media (max-width: @breakpoint-min){
 
-				[data-inflex~='hide(lt:@{breakpoint-name})']{ display: none; }
+				[data-inflex~='hide(lt:@{breakpoint-name})']{ display: none !important; }
 			}
 
 			@media (max-width: @breakpoint-max){
 
-				[data-inflex~='hide(lte:@{breakpoint-name})']{ display: none; }
+				[data-inflex~='hide(lte:@{breakpoint-name})']{ display: none !important; }
 			}
 	    }
 	}
@@ -53,7 +51,7 @@
 
 	& when (@compile-once){
 
-		[data-inflex~='hide']{ display: none; }
+		[data-inflex~='hide']{ display: none !important; }
 
 		.iterate-visibility--breakpoints();
 	}
