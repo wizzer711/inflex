@@ -2096,7 +2096,9 @@ input[type="button"] {
 [data-inflex~='field:minimal'] textarea ~ label,
 [data-inflex~='field:minimal'] select:not([multiple]) ~ label {
   line-height: 1.5675em;
-  padding: 0.78375em 0.59375em 0;
+  padding-top: 0.78375em;
+  padding-bottom: 0;
+  padding-left: 0.59375em;
 }
 [data-inflex~='field:minimal'] input[data-inflex~='state:1'] ~ label,
 [data-inflex~='field:minimal'] textarea[data-inflex~='state:1'] ~ label,
@@ -2134,7 +2136,9 @@ select:not([multiple])[data-inflex~='size:xl'] {
 [data-inflex~='field:minimal'] textarea[data-inflex~='size:xl'] ~ label,
 [data-inflex~='field:minimal'] select:not([multiple])[data-inflex~='size:xl'] ~ label {
   line-height: 2.3925em;
-  padding: 1.19625em 0.90625em 0;
+  padding-top: 1.19625em;
+  padding-bottom: 0;
+  padding-left: 0.90625em;
 }
 [data-inflex~='field:minimal'] input[data-inflex~='size:xl'][data-inflex~='state:1'] ~ label,
 [data-inflex~='field:minimal'] textarea[data-inflex~='size:xl'][data-inflex~='state:1'] ~ label,
@@ -2171,7 +2175,9 @@ select:not([multiple])[data-inflex~='size:lg'] {
 [data-inflex~='field:minimal'] textarea[data-inflex~='size:lg'] ~ label,
 [data-inflex~='field:minimal'] select:not([multiple])[data-inflex~='size:lg'] ~ label {
   line-height: 1.98em;
-  padding: 0.99em 0.75em 0;
+  padding-top: 0.99em;
+  padding-bottom: 0;
+  padding-left: 0.75em;
 }
 [data-inflex~='field:minimal'] input[data-inflex~='size:lg'][data-inflex~='state:1'] ~ label,
 [data-inflex~='field:minimal'] textarea[data-inflex~='size:lg'][data-inflex~='state:1'] ~ label,
@@ -2208,7 +2214,9 @@ select:not([multiple])[data-inflex~='size:sm'] {
 [data-inflex~='field:minimal'] textarea[data-inflex~='size:sm'] ~ label,
 [data-inflex~='field:minimal'] select:not([multiple])[data-inflex~='size:sm'] ~ label {
   line-height: 1.4025em;
-  padding: 0.70125em 0.53125em 0;
+  padding-top: 0.70125em;
+  padding-bottom: 0;
+  padding-left: 0.53125em;
 }
 [data-inflex~='field:minimal'] input[data-inflex~='size:sm'][data-inflex~='state:1'] ~ label,
 [data-inflex~='field:minimal'] textarea[data-inflex~='size:sm'][data-inflex~='state:1'] ~ label,
@@ -2245,7 +2253,9 @@ select:not([multiple])[data-inflex~='size:xs'] {
 [data-inflex~='field:minimal'] textarea[data-inflex~='size:xs'] ~ label,
 [data-inflex~='field:minimal'] select:not([multiple])[data-inflex~='size:xs'] ~ label {
   line-height: 1.155em;
-  padding: 0.5775em 0.4375em 0;
+  padding-top: 0.5775em;
+  padding-bottom: 0;
+  padding-left: 0.4375em;
 }
 [data-inflex~='field:minimal'] input[data-inflex~='size:xs'][data-inflex~='state:1'] ~ label,
 [data-inflex~='field:minimal'] textarea[data-inflex~='size:xs'][data-inflex~='state:1'] ~ label,
@@ -3159,7 +3169,9 @@ pre > code {
   [data-inflex~='field:minimal'] textarea[data-inflex~='sm(size:xl)'] ~ label,
   [data-inflex~='field:minimal'] select:not([multiple])[data-inflex~='sm(size:xl)'] ~ label {
     line-height: 2.3925em;
-    padding: 1.19625em 0.90625em 0;
+    padding-top: 1.19625em;
+    padding-bottom: 0;
+    padding-left: 0.90625em;
   }
   [data-inflex~='field:minimal'] input[data-inflex~='sm(size:xl)'][data-inflex~='state:1'] ~ label,
   [data-inflex~='field:minimal'] textarea[data-inflex~='sm(size:xl)'][data-inflex~='state:1'] ~ label,
@@ -3196,7 +3208,9 @@ pre > code {
   [data-inflex~='field:minimal'] textarea[data-inflex~='sm(size:lg)'] ~ label,
   [data-inflex~='field:minimal'] select:not([multiple])[data-inflex~='sm(size:lg)'] ~ label {
     line-height: 1.98em;
-    padding: 0.99em 0.75em 0;
+    padding-top: 0.99em;
+    padding-bottom: 0;
+    padding-left: 0.75em;
   }
   [data-inflex~='field:minimal'] input[data-inflex~='sm(size:lg)'][data-inflex~='state:1'] ~ label,
   [data-inflex~='field:minimal'] textarea[data-inflex~='sm(size:lg)'][data-inflex~='state:1'] ~ label,
@@ -3233,7 +3247,9 @@ pre > code {
   [data-inflex~='field:minimal'] textarea[data-inflex~='sm(size:sm)'] ~ label,
   [data-inflex~='field:minimal'] select:not([multiple])[data-inflex~='sm(size:sm)'] ~ label {
     line-height: 1.4025em;
-    padding: 0.70125em 0.53125em 0;
+    padding-top: 0.70125em;
+    padding-bottom: 0;
+    padding-left: 0.53125em;
   }
   [data-inflex~='field:minimal'] input[data-inflex~='sm(size:sm)'][data-inflex~='state:1'] ~ label,
   [data-inflex~='field:minimal'] textarea[data-inflex~='sm(size:sm)'][data-inflex~='state:1'] ~ label,
@@ -3270,7 +3286,9 @@ pre > code {
   [data-inflex~='field:minimal'] textarea[data-inflex~='sm(size:xs)'] ~ label,
   [data-inflex~='field:minimal'] select:not([multiple])[data-inflex~='sm(size:xs)'] ~ label {
     line-height: 1.155em;
-    padding: 0.5775em 0.4375em 0;
+    padding-top: 0.5775em;
+    padding-bottom: 0;
+    padding-left: 0.4375em;
   }
   [data-inflex~='field:minimal'] input[data-inflex~='sm(size:xs)'][data-inflex~='state:1'] ~ label,
   [data-inflex~='field:minimal'] textarea[data-inflex~='sm(size:xs)'][data-inflex~='state:1'] ~ label,
@@ -4067,7 +4085,9 @@ pre > code {
   [data-inflex~='field:minimal'] textarea[data-inflex~='md(size:xl)'] ~ label,
   [data-inflex~='field:minimal'] select:not([multiple])[data-inflex~='md(size:xl)'] ~ label {
     line-height: 2.3925em;
-    padding: 1.19625em 0.90625em 0;
+    padding-top: 1.19625em;
+    padding-bottom: 0;
+    padding-left: 0.90625em;
   }
   [data-inflex~='field:minimal'] input[data-inflex~='md(size:xl)'][data-inflex~='state:1'] ~ label,
   [data-inflex~='field:minimal'] textarea[data-inflex~='md(size:xl)'][data-inflex~='state:1'] ~ label,
@@ -4104,7 +4124,9 @@ pre > code {
   [data-inflex~='field:minimal'] textarea[data-inflex~='md(size:lg)'] ~ label,
   [data-inflex~='field:minimal'] select:not([multiple])[data-inflex~='md(size:lg)'] ~ label {
     line-height: 1.98em;
-    padding: 0.99em 0.75em 0;
+    padding-top: 0.99em;
+    padding-bottom: 0;
+    padding-left: 0.75em;
   }
   [data-inflex~='field:minimal'] input[data-inflex~='md(size:lg)'][data-inflex~='state:1'] ~ label,
   [data-inflex~='field:minimal'] textarea[data-inflex~='md(size:lg)'][data-inflex~='state:1'] ~ label,
@@ -4141,7 +4163,9 @@ pre > code {
   [data-inflex~='field:minimal'] textarea[data-inflex~='md(size:sm)'] ~ label,
   [data-inflex~='field:minimal'] select:not([multiple])[data-inflex~='md(size:sm)'] ~ label {
     line-height: 1.4025em;
-    padding: 0.70125em 0.53125em 0;
+    padding-top: 0.70125em;
+    padding-bottom: 0;
+    padding-left: 0.53125em;
   }
   [data-inflex~='field:minimal'] input[data-inflex~='md(size:sm)'][data-inflex~='state:1'] ~ label,
   [data-inflex~='field:minimal'] textarea[data-inflex~='md(size:sm)'][data-inflex~='state:1'] ~ label,
@@ -4178,7 +4202,9 @@ pre > code {
   [data-inflex~='field:minimal'] textarea[data-inflex~='md(size:xs)'] ~ label,
   [data-inflex~='field:minimal'] select:not([multiple])[data-inflex~='md(size:xs)'] ~ label {
     line-height: 1.155em;
-    padding: 0.5775em 0.4375em 0;
+    padding-top: 0.5775em;
+    padding-bottom: 0;
+    padding-left: 0.4375em;
   }
   [data-inflex~='field:minimal'] input[data-inflex~='md(size:xs)'][data-inflex~='state:1'] ~ label,
   [data-inflex~='field:minimal'] textarea[data-inflex~='md(size:xs)'][data-inflex~='state:1'] ~ label,
@@ -4975,7 +5001,9 @@ pre > code {
   [data-inflex~='field:minimal'] textarea[data-inflex~='lg(size:xl)'] ~ label,
   [data-inflex~='field:minimal'] select:not([multiple])[data-inflex~='lg(size:xl)'] ~ label {
     line-height: 2.3925em;
-    padding: 1.19625em 0.90625em 0;
+    padding-top: 1.19625em;
+    padding-bottom: 0;
+    padding-left: 0.90625em;
   }
   [data-inflex~='field:minimal'] input[data-inflex~='lg(size:xl)'][data-inflex~='state:1'] ~ label,
   [data-inflex~='field:minimal'] textarea[data-inflex~='lg(size:xl)'][data-inflex~='state:1'] ~ label,
@@ -5012,7 +5040,9 @@ pre > code {
   [data-inflex~='field:minimal'] textarea[data-inflex~='lg(size:lg)'] ~ label,
   [data-inflex~='field:minimal'] select:not([multiple])[data-inflex~='lg(size:lg)'] ~ label {
     line-height: 1.98em;
-    padding: 0.99em 0.75em 0;
+    padding-top: 0.99em;
+    padding-bottom: 0;
+    padding-left: 0.75em;
   }
   [data-inflex~='field:minimal'] input[data-inflex~='lg(size:lg)'][data-inflex~='state:1'] ~ label,
   [data-inflex~='field:minimal'] textarea[data-inflex~='lg(size:lg)'][data-inflex~='state:1'] ~ label,
@@ -5049,7 +5079,9 @@ pre > code {
   [data-inflex~='field:minimal'] textarea[data-inflex~='lg(size:sm)'] ~ label,
   [data-inflex~='field:minimal'] select:not([multiple])[data-inflex~='lg(size:sm)'] ~ label {
     line-height: 1.4025em;
-    padding: 0.70125em 0.53125em 0;
+    padding-top: 0.70125em;
+    padding-bottom: 0;
+    padding-left: 0.53125em;
   }
   [data-inflex~='field:minimal'] input[data-inflex~='lg(size:sm)'][data-inflex~='state:1'] ~ label,
   [data-inflex~='field:minimal'] textarea[data-inflex~='lg(size:sm)'][data-inflex~='state:1'] ~ label,
@@ -5086,7 +5118,9 @@ pre > code {
   [data-inflex~='field:minimal'] textarea[data-inflex~='lg(size:xs)'] ~ label,
   [data-inflex~='field:minimal'] select:not([multiple])[data-inflex~='lg(size:xs)'] ~ label {
     line-height: 1.155em;
-    padding: 0.5775em 0.4375em 0;
+    padding-top: 0.5775em;
+    padding-bottom: 0;
+    padding-left: 0.4375em;
   }
   [data-inflex~='field:minimal'] input[data-inflex~='lg(size:xs)'][data-inflex~='state:1'] ~ label,
   [data-inflex~='field:minimal'] textarea[data-inflex~='lg(size:xs)'][data-inflex~='state:1'] ~ label,
@@ -5883,7 +5917,9 @@ pre > code {
   [data-inflex~='field:minimal'] textarea[data-inflex~='xl(size:xl)'] ~ label,
   [data-inflex~='field:minimal'] select:not([multiple])[data-inflex~='xl(size:xl)'] ~ label {
     line-height: 2.3925em;
-    padding: 1.19625em 0.90625em 0;
+    padding-top: 1.19625em;
+    padding-bottom: 0;
+    padding-left: 0.90625em;
   }
   [data-inflex~='field:minimal'] input[data-inflex~='xl(size:xl)'][data-inflex~='state:1'] ~ label,
   [data-inflex~='field:minimal'] textarea[data-inflex~='xl(size:xl)'][data-inflex~='state:1'] ~ label,
@@ -5920,7 +5956,9 @@ pre > code {
   [data-inflex~='field:minimal'] textarea[data-inflex~='xl(size:lg)'] ~ label,
   [data-inflex~='field:minimal'] select:not([multiple])[data-inflex~='xl(size:lg)'] ~ label {
     line-height: 1.98em;
-    padding: 0.99em 0.75em 0;
+    padding-top: 0.99em;
+    padding-bottom: 0;
+    padding-left: 0.75em;
   }
   [data-inflex~='field:minimal'] input[data-inflex~='xl(size:lg)'][data-inflex~='state:1'] ~ label,
   [data-inflex~='field:minimal'] textarea[data-inflex~='xl(size:lg)'][data-inflex~='state:1'] ~ label,
@@ -5957,7 +5995,9 @@ pre > code {
   [data-inflex~='field:minimal'] textarea[data-inflex~='xl(size:sm)'] ~ label,
   [data-inflex~='field:minimal'] select:not([multiple])[data-inflex~='xl(size:sm)'] ~ label {
     line-height: 1.4025em;
-    padding: 0.70125em 0.53125em 0;
+    padding-top: 0.70125em;
+    padding-bottom: 0;
+    padding-left: 0.53125em;
   }
   [data-inflex~='field:minimal'] input[data-inflex~='xl(size:sm)'][data-inflex~='state:1'] ~ label,
   [data-inflex~='field:minimal'] textarea[data-inflex~='xl(size:sm)'][data-inflex~='state:1'] ~ label,
@@ -5994,7 +6034,9 @@ pre > code {
   [data-inflex~='field:minimal'] textarea[data-inflex~='xl(size:xs)'] ~ label,
   [data-inflex~='field:minimal'] select:not([multiple])[data-inflex~='xl(size:xs)'] ~ label {
     line-height: 1.155em;
-    padding: 0.5775em 0.4375em 0;
+    padding-top: 0.5775em;
+    padding-bottom: 0;
+    padding-left: 0.4375em;
   }
   [data-inflex~='field:minimal'] input[data-inflex~='xl(size:xs)'][data-inflex~='state:1'] ~ label,
   [data-inflex~='field:minimal'] textarea[data-inflex~='xl(size:xs)'][data-inflex~='state:1'] ~ label,
@@ -6791,7 +6833,9 @@ pre > code {
   [data-inflex~='field:minimal'] textarea[data-inflex~='xxl(size:xl)'] ~ label,
   [data-inflex~='field:minimal'] select:not([multiple])[data-inflex~='xxl(size:xl)'] ~ label {
     line-height: 2.3925em;
-    padding: 1.19625em 0.90625em 0;
+    padding-top: 1.19625em;
+    padding-bottom: 0;
+    padding-left: 0.90625em;
   }
   [data-inflex~='field:minimal'] input[data-inflex~='xxl(size:xl)'][data-inflex~='state:1'] ~ label,
   [data-inflex~='field:minimal'] textarea[data-inflex~='xxl(size:xl)'][data-inflex~='state:1'] ~ label,
@@ -6828,7 +6872,9 @@ pre > code {
   [data-inflex~='field:minimal'] textarea[data-inflex~='xxl(size:lg)'] ~ label,
   [data-inflex~='field:minimal'] select:not([multiple])[data-inflex~='xxl(size:lg)'] ~ label {
     line-height: 1.98em;
-    padding: 0.99em 0.75em 0;
+    padding-top: 0.99em;
+    padding-bottom: 0;
+    padding-left: 0.75em;
   }
   [data-inflex~='field:minimal'] input[data-inflex~='xxl(size:lg)'][data-inflex~='state:1'] ~ label,
   [data-inflex~='field:minimal'] textarea[data-inflex~='xxl(size:lg)'][data-inflex~='state:1'] ~ label,
@@ -6865,7 +6911,9 @@ pre > code {
   [data-inflex~='field:minimal'] textarea[data-inflex~='xxl(size:sm)'] ~ label,
   [data-inflex~='field:minimal'] select:not([multiple])[data-inflex~='xxl(size:sm)'] ~ label {
     line-height: 1.4025em;
-    padding: 0.70125em 0.53125em 0;
+    padding-top: 0.70125em;
+    padding-bottom: 0;
+    padding-left: 0.53125em;
   }
   [data-inflex~='field:minimal'] input[data-inflex~='xxl(size:sm)'][data-inflex~='state:1'] ~ label,
   [data-inflex~='field:minimal'] textarea[data-inflex~='xxl(size:sm)'][data-inflex~='state:1'] ~ label,
@@ -6902,7 +6950,9 @@ pre > code {
   [data-inflex~='field:minimal'] textarea[data-inflex~='xxl(size:xs)'] ~ label,
   [data-inflex~='field:minimal'] select:not([multiple])[data-inflex~='xxl(size:xs)'] ~ label {
     line-height: 1.155em;
-    padding: 0.5775em 0.4375em 0;
+    padding-top: 0.5775em;
+    padding-bottom: 0;
+    padding-left: 0.4375em;
   }
   [data-inflex~='field:minimal'] input[data-inflex~='xxl(size:xs)'][data-inflex~='state:1'] ~ label,
   [data-inflex~='field:minimal'] textarea[data-inflex~='xxl(size:xs)'][data-inflex~='state:1'] ~ label,
