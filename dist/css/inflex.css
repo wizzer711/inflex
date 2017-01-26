@@ -1862,19 +1862,16 @@ blockquote {
   font-weight: normal;
   font-style: normal;
   font-size: 1.25em;
-  /* Preferred icon size */
-  display: inline-block;
   line-height: 1;
+  top: -0.0625em;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
   text-transform: none;
   letter-spacing: normal;
   word-wrap: normal;
   white-space: nowrap;
   direction: ltr;
-  width: 1em;
-  height: 1em;
-  margin-top: -5px;
-  margin-bottom: -1px;
-  vertical-align: middle;
   /* Support for all WebKit browsers. */
   -webkit-font-smoothing: antialiased;
   /* Support for Safari and Chrome. */
