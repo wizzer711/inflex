@@ -1,0 +1,123 @@
+[data-inflex~='field']{
+
+			display: inline-flex;
+			flex-wrap: wrap;
+
+			// input, select {
+
+			// 	width: 100%;
+			// }
+
+			& > label {
+
+    			order: -1;
+                width: 100%;
+			}
+		}
+
+
+[data-inflex~='field:minimal']{
+
+    position: relative;
+
+    input, textarea, select:not([multiple]){
+
+        z-index: 1;
+        width: 100%;
+        background-color: transparent;
+        border-top-color: transparent;
+        border-left-color: transparent;
+        border-right-color: transparent;
+        border-radius: 0;
+
+        ~ label {
+
+            position: absolute;
+            top: 0; left: 0;
+            border: @component--border-width solid transparent;
+            color: @component--placeholder-color;
+        }
+
+        &:not(:focus)::placeholder {
+
+            color: transparent;
+        }
+    }
+
+    input:-webkit-autofill {
+
+        transition-property: background-color, color;
+        transition-duration: 0s;
+        transition-delay: 3600s;
+    }
+
+    input, textarea, select:not([multiple]){
+
+        &, ~ label {
+
+            line-height: @_innerHeight * 0.66;
+            padding-top: @_innerHeight * 0.33;
+            padding-bottom: 0;
+            padding-left: @_paddingX;
+        }
+
+        &[data-inflex~='state:1'] ~ label{
+
+            padding-top: 0 !important;
+            transform: scale(0.8125);
+            transform-origin: @_paddingX (@_paddingX * -1);
+        }
+    }
+}
+
+.iterate--component-sizes (@bpo, @bpc){
+
+.iterate();
+
+.iterate (@i: 1) when (@i <= length(@component--sizes)){
+
+    .iterate(@i + 1);
+
+    @_group: extract(@component--sizes, @i);
+
+    @_name: extract(@_group, 1);
+
+    @_outerHeight: extract(@_group, 2);
+
+    @_innerHeight: @_outerHeight - (@component--border-width * 2);
+
+    @_downScale: extract(@_group, 3);
+
+    @_upScale: extract(@_group, 4);
+
+    @_paddingX: @_innerHeight * 0.25;
+
+    @_paddingY: (@_innerHeight - 1.5) / 2;
+
+    [data-inflex~='field:minimal']{
+
+        input, textarea, select:not([multiple]){
+
+            &[data-inflex~='@{bpo}size:@{_name}@{bpc}']{
+
+                &, ~ label {
+
+                    line-height: @_innerHeight * 0.66;
+                    padding-top: @_innerHeight * 0.33;
+                    padding-bottom: 0;
+                    padding-left: @_paddingX;
+                }
+
+                &[data-inflex~='state:1'] ~ label {
+
+                    transform: scale(@_downScale);
+                    transform-origin: @_paddingX (@_paddingX * -1);
+                }
+            }
+        }
+    }
+}
+}
+
+.iterate--component-sizes(@bpo, @bpc);
+

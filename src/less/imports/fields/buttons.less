@@ -1,0 +1,116 @@
+// ---------------------------------------------------------------------------------------------------------
+// Button Styles (Compile Once)
+// ---------------------------------------------------------------------------------------------------------
+
+	& when (@compile-once){
+
+		@_innerHeight: @component--height - (@component--border-width * 2); // Excludes border height
+
+		@_paddingX: @_innerHeight * 0.375; // Horizontal padding = 1/4 component height
+
+		button,
+		input[type='button'],
+		input[type='submit'],
+		input[type='reset'],
+		a[data-inflex*='button']{
+
+			&:extend([data-inflex~='input']);
+
+			&:extend([data-inflex~='input:default']);
+
+			cursor: pointer;
+			text-decoration: none !important;
+			padding-left: @_paddingX;
+			padding-right: @_paddingX;
+			transition-property: ~'color, background, border-color';
+			transition-timing-function: ~'ease-out';
+			transition-duration: 0.2s;
+
+			i { transform-origin: 100% 50%; }
+
+			&:focus { outline: 0; }
+
+			&:active { transition-duration: 0.1s; }
+
+			&[disabled]{ color: @component--disabled-text-color !important; }
+		}
+
+		// Disabled Button
+		// ----------------------------------------------------
+	
+		&[data-inflex~='button'][disabled]{
+
+			background-color: transparent !important;
+			
+			border-color: transparent !important;
+		}
+
+		&[data-inflex~='button:flat'][disabled]{
+
+			border-color: transparent !important;
+
+			background-color: @component--disabled-border-color !important;
+		}
+
+		&[data-inflex~='button:outline'][disabled]{
+
+			background-color: transparent !important;
+
+			border-color: @component--disabled-border-color !important;
+		}
+
+		&[data-inflex~='button:gradient'][disabled]{
+
+			background-color: @component--disabled-border-color !important;
+
+			background-image: linear-gradient(to bottom, transparent 0%, fade(black, 5%) 100%);
+
+			border-color: @component--disabled-border-color transparent mix(black, @component--disabled-border-color, 5%) transparent;
+		}
+	}
+
+// ---------------------------------------------------------------------------------------------------------
+// Button Sizes (Responsive)
+// ---------------------------------------------------------------------------------------------------------
+
+	.iterateButtonSizes (@bpo, @bpc){
+
+		.iterate();
+
+	    .iterate (@i: 1) when (@i <= length(@component--sizes)){
+
+	        .iterate(@i + 1);
+
+	        @_group: extract(@component--sizes, @i);
+
+			@_name: extract(@_group, 1);
+
+			@_outerHeight: extract(@_group, 2);
+
+			@_innerHeight: @_outerHeight - (@component--border-width * 2);
+
+			@_upScale: extract(@_group, 4);
+
+			@_paddingX: @_innerHeight * 0.375;
+
+			@_paddingY: (@_innerHeight - 1.5) / 2;
+
+			button,
+			input[type='button'],
+			input[type='submit'],
+			input[type='reset'],
+			a[data-inflex*='button']{
+				
+				&[data-inflex~='@{bpo}size:@{_name}@{bpc}']{
+
+					min-height: @_outerHeight;
+
+		    		padding: @_paddingY @_paddingX;
+
+					i { transform: scale(@_upScale); }
+				}
+			}
+	    }
+	}
+
+	.iterateButtonSizes(@bpo, @bpc);

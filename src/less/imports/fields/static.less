@@ -1,0 +1,50 @@
+// ---------------------------------------------------------------------------------------------------------
+// Input Styles (Compile Once)
+// ---------------------------------------------------------------------------------------------------------
+
+    & when (@compile-once){
+
+        [data-inflex~='input:static']{
+
+            &:extend([data-inflex~='input']);
+
+			&:extend([data-inflex~='input:default']);
+
+            white-space: nowrap;
+        }
+    }
+
+// ---------------------------------------------------------------------------------------------------------
+// Inputs Sizes (Responsive)
+// ---------------------------------------------------------------------------------------------------------
+
+	.iterateInputSizes (@bpo, @bpc){
+
+		.iterate();
+
+	    .iterate (@i: 1) when (@i <= length(@component--sizes)){
+
+	        .iterate(@i + 1);
+
+	        @_group: extract(@component--sizes, @i);
+
+			@_name: extract(@_group, 1);
+
+			@_outerHeight: extract(@_group, 2);
+
+			@_innerHeight: @_outerHeight - (@component--border-width * 2);
+
+			@_paddingX: @_innerHeight * 0.25;
+
+			@_paddingY: (@_innerHeight - 1.5) / 2;
+
+            [data-inflex~='input:static'][data-inflex~='@{bpo}size:@{_name}@{bpc}']{
+
+                min-height: @_outerHeight;
+
+                padding: @_paddingY @_paddingX;
+            }
+	    }
+	}
+
+	.iterateInputSizes(@bpo, @bpc);

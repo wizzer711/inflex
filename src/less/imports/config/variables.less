@@ -28,8 +28,6 @@
 
 	@palette-info: #0081FF default default #FFFFFF;
 
-	@palette-disabled: #EEEEEE default default #BBBBBB;
-
 	// Monochrome
 
 	@palette-white: #FFFFFF default default #444444;
@@ -131,7 +129,7 @@
 	@link--hover-decoration: underline;
 
 // ---------------------------------------------------------------------------------------------------------
-// Component: Defaults
+// Component: Default
 // ---------------------------------------------------------------------------------------------------------
 
 	@component--text-color: @text-color;
@@ -149,6 +147,8 @@
 	@component--background-color: white;
 
 	@component--box-shadow: 0 1px 4px 0 rgba(0,0,0, 0.1);
+	
+	@component--focus-color: #0081FF;
 
 	@component--height: 2.5em;
 
@@ -157,6 +157,16 @@
 	@component--padding-y: 0.375em;
 
 	@component--padding-multiplier: 0.3125;
+
+// ---------------------------------------------------------------------------------------------------------
+// Component: Disabled
+// ---------------------------------------------------------------------------------------------------------
+
+	@component--disabled-text-color: #BBBBBB;
+
+	@component--disabled-placeholder-color: #BBBBBB;
+
+	@component--disabled-border-color: #EEEEEE;
 
 // ---------------------------------------------------------------------------------------------------------
 // Component: Alert

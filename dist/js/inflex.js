@@ -1,199 +1,255 @@
- 	/* jshint strict:false */
- 	/* global $, jQuery, FastClick */
- 	/* exported inflex */
+/* jshint strict:false */
+/* global $, jQuery, FastClick */
+/* exported inflex */
 
- 	var $window = $(window), $document = $(document), $body;
+var $window = $(window), $document = $(document), $body;
 
- 	var inflex =
- 	{
- 		utils: (function ()
-		{
-			'use strict';
+var inflex = {
 
-			// *
-			// **
-			// ****
-			// *********************************************************************************************************
-			// Private Object & Methods
-			// *********************************************************************************************************
-			// ****
-			// **
-			// *
-		
-				var initiate =
-				{
-					body: function ()
-					{
-						$body = $body || $('body').removeClass('noscript');
+	utils: (function (){
 
-						if (typeof FastClick !== 'undefined')
-						{
-							FastClick.attach(document.body);
+		'use strict';
+
+		// --------------------------------------------------------------------------------------------------------
+		// Private Object & Methods
+		// --------------------------------------------------------------------------------------------------------
+
+		var initiate = {
+
+			body: function (){
+
+				$body = $body || $('body').removeClass('noscript');
+
+				if (typeof FastClick !== 'undefined'){
+
+					FastClick.attach(document.body);
+				}
+			},
+
+			// Window Resize Listener(s)
+			// ----------------------------------------------------
+
+			resize: {
+
+				timeout: null,
+
+				listener: function (){
+
+					var resize = this, prev = $window.width(); // Previous width
+
+					$window.on('resize', function(){
+
+						clearTimeout(resize.timeout);
+
+						if ($window.width() !== prev){ // Fix: stackoverflow.com/q/8898412/
+					
+							$('[data-inflex-monitor]').attr('data-inflex-monitor', 'resizing');
+
+							prev = $window.width();
 						}
-					},
 
-					// Window Resize Listener
-					// ---------------------------------------------------------
+						resize.timeout = setTimeout(function(){
 
-					resize:
-					{
-						timeout: null,
+							$document.trigger($.Event('inflex.resized'));
 
-						listener: function ()
-						{
-							var resize = this, prev = $window.width(); // Previous width
+							$('[data-inflex-monitor]').attr('data-inflex-monitor', '');
+						
+						}, 250);
+					});
+				}
+			},
 
-							$window.on('resize', function()
-								{
-									clearTimeout(resize.timeout);
+			// Input State Listener(s)
+			// ----------------------------------------------------
 
-									if ($window.width() !== prev) // Fix: stackoverflow.com/q/8898412/
-									{										
-										$('[data-inflex-monitor]').attr('data-inflex-monitor', 'resizing');
+			input: {
 
-										prev = $window.width();
-									}
+				listeners: function (){
 
-									resize.timeout = setTimeout(function()
-										{
-											$document.trigger($.Event('inflex.resized'));
+					var input = this;
 
-											$('[data-inflex-monitor]').attr('data-inflex-monitor', '');
-										}, 
-									250);
-								}
-							);
-						}
-					},
+					$('input, textarea, select').attr('data-inflex', function (){
 
-					// Input Listener(s) - Monitor Interaction States etc
-					// ---------------------------------------------------------
+						var $elem = $(this),
 
-					input:
-					{
-						listeners: function ()
-						{
-							var input = this;
+						inflex = ($elem.attr('data-inflex') || '').replace(/\bstate:[0,1]\b/g, '');  // Remove existing state
 
-							$('input, textarea, select').attr('data-inflex', function ()
-								{
-									var $elem = $(this),
+						inflex += ' state:' + input.state(this, ''); // Determine new state
 
-									inflex = ($elem.attr('data-inflex') || '').replace(/\bstate:[0,1]\b/g, '');  // Remove existing state
+						$elem.attr('data-inflex', inflex.trim().replace(/\s+/g, ' ')); // Update data-inflex attribute
+					});
 
-									inflex += ' state:' + input.state(this, ''); // Determine new state
+					$document.on('input change', 'input, textarea, select', function (){
 
-									$elem.attr('data-inflex', inflex.trim().replace(/\s+/g, ' ')); // Update data-inflex attribute
-								}
-							);
+						var $elem = $(this),
 
-							$document.on('input change', 'input, textarea, select', function ()
-								{
-									var $elem = $(this),
+						inflex = ($elem.attr('data-inflex') || '').replace(/\bstate:[0,1]\b/g, ''); // Remove existing state
 
-									inflex = ($elem.attr('data-inflex') || '').replace(/\bstate:[0,1]\b/g, ''); // Remove existing state
+						inflex += ' state:' + input.state(this, 0); // Determine new state
 
-									inflex += ' state:' + input.state(this, 0); // Determine new state
+						$elem.attr('data-inflex', inflex.replace(/\s+/g, ' ')); // Update data-inflex attribute
+					});
+				},
 
-									$elem.attr('data-inflex', inflex.replace(/\s+/g, ' ')); // Update data-inflex attribute
-								}
-							);
-						},
+				state: function (el, state){
 
-						state: function (el, state)
-						{
-							var $el = $(el);
+					var $el = $(el);
 
-							switch (el.nodeName)
-							{
-								case 'SELECT':
+					switch (el.nodeName){
 
-									var selected = $el.find(((state === 0)?':selected':'[selected]') + ':first').text();
+						case 'SELECT':
 
-									return (selected.length)? 1 : state;
+							var selected = $el.find(((state === 0)?':selected':'[selected]') + ':first').text();
 
-								default:
+							return (selected.length)? 1 : state;
 
-								return (el.value.length)? 1 : state;
+						default:
+
+						return (el.value.length)? 1 : state;
+					}
+				}
+			},
+
+			// Droplets
+			// ----------------------------------------------------
+
+			droplet: {
+
+				listeners: function (){
+
+					var self = this;
+
+					$('[data-inflex~="droplet"]').on('click', '[data-inflex~="droplet:toggle"]', function(event){
+
+						event.stopPropagation();
+
+						var $droplet = $(event.delegateTarget);
+						
+						self.toggle($('[data-inflex~="droplet:toggled"]'), "droplet:toggled", "droplet"); // Close all droplets
+
+						self.toggle($droplet, "droplet", "droplet:toggled"); // Open droplet
+
+						$document.off('click.offDroplet').on('click.offDroplet', function(event){
+
+							if (!$droplet.find($(event.target)).length){
+
+								self.toggle($droplet, "droplet:toggled", "droplet");
+
+								$document.off('click.offDroplet');
 							}
-						}
-					},
+						});
+					});
+				},
 
-					// Droplets
-					// ---------------------------------------------------------
+				toggle: function ($droplets, find, replace){
 
-					droplet: {
+						$droplets.attr('data-inflex', function (){
 
-						listeners: function (){
+						return $(this).data('inflex').replace(find, replace);
+					});
+				}
+			},
 
-							var self = this;
+			// Droplets
+			// ----------------------------------------------------
 
-							$('[data-inflex~="droplet"]').on('click', '[data-inflex~="droplet:toggle"]', function(event){
+			accordion: {
 
-								event.stopPropagation();
+				initiate: function (){
 
-								var $droplet = $(event.delegateTarget);
-								
-								self.toggle($('[data-inflex~="droplet:toggled"]'), "droplet:toggled", "droplet"); // Close all droplets
+					var initiate = this;
 
-								self.toggle($droplet, "droplet", "droplet:toggled"); // Open droplet
+					initiate.listeners();
 
-								$document.off('click.offDroplet').on('click.offDroplet', function(event){
+					initiate.calibration();
+				},
 
-									if (!$droplet.find($(event.target)).length){
+				listeners: function (){
 
-										self.toggle($droplet, "droplet:toggled", "droplet");
+					var accordion = this;
 
-										$document.off('click.offDroplet');
-									}
-								});
-							});
-						},
+					$('nav[data-inflex~="accordion"]').on('click', 'li[data-inflex~="accordion:parent"] > a span[data-inflex~="accordion:toggle"]', function (event){
 
-						toggle: function ($droplets, find, replace){
+						event.preventDefault(); event.stopPropagation(); // Stop event bubbling
 
-							 $droplets.attr('data-inflex', function(){
+						accordion.toggle($(this).parent('a'));
+					});
+					
+					$('nav[data-inflex~="accordion"]').on('click', 'li[data-inflex~="accordion:parent"]:not(.hc-expand) > a', function (event){
 
-								return $(this).data('inflex').replace(find, replace);
-							});
-						}
+						event.preventDefault();
+
+						accordion.toggle($(this));
+					});
+				},
+
+				calibration: function(){
+
+					$('nav[data-inflex~="accordion"] li[data-inflex~="accordion:parent"][data-active]').children('a').click(); // Expand active parent
+
+					$('nav[data-inflex~="accordion"] li[data-active]').parents('li[data-inflex~="accordion:parent"]').children('a').click(); // Expand parents of active child
+				},
+
+				toggle: function ($a){
+
+					var $li = $a.parents('li:first');
+
+					inflex.utils.findReplace($li, 'accordion:parent', 'accordion:parent:expand');
+
+					var $toggle = $a.children('span.hc-accordion-toggle');
+
+					var toggleIcon = $toggle.data('toggleIcon') || null;
+
+					if ($toggle.data('toggleIcon')){
+
+						var $icon = $toggle.children('i');
+
+						$toggle.data('toggleIcon', $icon.text());
+
+						$icon.text(toggleIcon);
 					}
-				};
+				}
+			}
+		};
 
-			// *
-			// **
-			// ****
-			// *********************************************************************************************************
-			// Invoke on DOM Ready
-			// *********************************************************************************************************
-			// ****
-			// **
-			// *
+		// --------------------------------------------------------------------------------------------------------
+		// Private Methods
+		// --------------------------------------------------------------------------------------------------------
 
-				$(function ()
-					{
-						initiate.body();
+		function findReplace ($el, find, replace){
 
-						initiate.resize.listener();
+			var regExp = new RegExp('\\b'+find+'\\b', 'g');
 
-						initiate.input.listeners();
+			var value = ($el.attr('data-inflex') || '').replace(regExp, replace); // Find and replace value
 
-						initiate.droplet.listeners();
-					}
-				);
+			$el.attr('data-inflex', value);
+		}
 
-			// *
-			// **
-			// ****
-			// *********************************************************************************************************
-			// Declare Public Accessible Methods
-			// *********************************************************************************************************
-			// ****
-			// **
-			// *
+		// --------------------------------------------------------------------------------------------------------
+		// Invoke on DOM Ready
+		// --------------------------------------------------------------------------------------------------------
 
-				return {};
-		    //
+		$(function (){
 
- 		})(document, window, jQuery)
- 	};
+			initiate.body();
+
+			initiate.resize.listener();
+
+			initiate.input.listeners();
+
+			initiate.droplet.listeners();
+
+			initiate.accordion.initiate();
+		});
+
+		// --------------------------------------------------------------------------------------------------------
+		// Declare Public Accessible Methods
+		// --------------------------------------------------------------------------------------------------------
+
+		return {
+
+			findReplace: findReplace
+		};
+
+	})(document, window, jQuery)
+};

@@ -1,0 +1,50 @@
+// ---------------------------------------------------------------------------------------------------------
+// Textarea Styles (Compile Once)
+// ---------------------------------------------------------------------------------------------------------
+
+    & when (@compile-once){
+
+        textarea {
+
+            &:extend([data-inflex~='input']);
+            
+            &:extend([data-inflex~='input:default']);
+
+            &:focus { &:extend([data-inflex~='input:focused']); }
+
+			&[disabled]{ &:extend([data-inflex~='input:disabled']); }
+        }
+    }
+
+// ---------------------------------------------------------------------------------------------------------
+// Textarea Sizes (Responsive)
+// ---------------------------------------------------------------------------------------------------------
+
+	.iterateTextareaSizes (@bpo, @bpc){
+
+		.iterate();
+
+	    .iterate (@i: 1) when (@i <= length(@component--sizes)){
+
+	        .iterate(@i + 1);
+
+	        @_group: extract(@component--sizes, @i);
+
+			@_name: extract(@_group, 1);
+
+			@_outerHeight: extract(@_group, 2);
+
+			@_innerHeight: @_outerHeight - (@component--border-width * 2);
+
+			@_paddingX: @_innerHeight * 0.25;
+
+			@_paddingY: (@_innerHeight - 1.5) / 2;
+
+            textarea[data-inflex~='@{bpo}size:@{_name}@{bpc}']{
+
+                padding: @_paddingY @_paddingX;
+            }
+	    }
+	}
+
+	.iterateTextareaSizes(@bpo, @bpc);

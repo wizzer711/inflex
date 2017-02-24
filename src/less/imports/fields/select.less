@@ -1,0 +1,90 @@
+// ---------------------------------------------------------------------------------------------------------
+// Select Styles (Compile Once)
+// ---------------------------------------------------------------------------------------------------------
+
+    & when (@compile-once){
+
+		select {
+
+			&:extend([data-inflex~='input']);
+
+			&:extend([data-inflex~='input:default']);
+
+			&:focus { &:extend([data-inflex~='input:focused']); }
+
+			&:disabled { &:extend([data-inflex~='input:disabled']); }
+
+			&:not([multiple]){
+
+				padding-right: (@_paddingX * 2) + 1em;
+
+				background-size: @font-size;
+
+				background-repeat: no-repeat;
+
+				background-position: right @_paddingX top 50%;
+
+				&:not([disabled]){
+
+					.background-svg-uri('chevron-down', @text-color);
+				}			
+
+				&[disabled]{
+
+					.background-svg-uri('chevron-down', @component--disabled-text-color);
+				}
+			}
+
+			&[multiple]{
+
+				display: block;
+
+				line-height: @line-height !important;
+			}
+		}
+    }
+
+// ---------------------------------------------------------------------------------------------------------
+// Select Sizes (Responsive)
+// ---------------------------------------------------------------------------------------------------------
+
+	.iterateSelectSizes (@bpo, @bpc){
+
+		.iterate();
+
+	    .iterate (@i: 1) when (@i <= length(@component--sizes)){
+
+	        .iterate(@i + 1);
+
+	        @_group: extract(@component--sizes, @i);
+
+			@_name: extract(@_group, 1);
+
+			@_outerHeight: extract(@_group, 2);
+
+			@_innerHeight: @_outerHeight - (@component--border-width * 2);
+
+			@_paddingX: @_innerHeight * 0.25;
+
+			@_paddingY: (@_innerHeight - 1.5) / 2;
+
+			select[data-inflex~='@{bpo}size:@{_name}@{bpc}']{
+
+				&:not([multiple]){
+
+					min-height: @_outerHeight;
+
+					padding: @_paddingY ((@_paddingX * 2) + 1em) @_paddingY @_paddingX;
+
+					background-position: right @_paddingX top 50%;
+				}
+
+				&[multiple]{
+
+					padding: @_paddingY @_paddingX;
+				}	
+			}
+	    }
+	}
+
+	.iterateSelectSizes(@bpo, @bpc);

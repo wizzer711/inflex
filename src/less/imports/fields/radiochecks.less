@@ -1,0 +1,156 @@
+& when (@compile-once){
+
+    div[data-inflex~='radiocheck'],
+    div[data-inflex~='radiocheck:block'],
+    div[data-inflex~='radiocheck:toggle']{
+
+        position: relative;
+
+        input[type='checkbox'], input[type='radio']{
+
+            // Don't hide inputs with display: none; as tabindex functionality breaks
+
+            position: fixed !important;
+            opacity: 0 !important;
+            width: 0 !important;
+            height: 0 !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            z-index: -100000 !important;
+        }
+    }
+
+    div[data-inflex~='radiocheck:toggle']{
+
+        label {
+
+            &:extend([data-inflex~='input'] all);
+            &:extend([data-inflex~='input:default']);
+        }
+    }
+
+
+    div[data-inflex~='radiocheck'],
+    div[data-inflex~='radiocheck:block']{
+
+        left: -0.5em;
+
+        input[type='checkbox'], input[type='radio']{
+
+            & + label {
+
+                position: relative;
+                align-items: center;
+                margin-left: 0.5em; // Required when using 'spaceless'
+
+                &:before {
+
+                    content: '';
+                    display: block;
+                    box-sizing: border-box;
+                    flex-shrink: 0;
+                    width: 1em;
+                    height: 1em;
+                    margin: 0 0.25em 0 0;
+                    background-color: white;
+                    border-style: @component--border-style;
+                    border-width: @component--border-width;
+                    border-color: @component--border-color;
+                    transition: background ease-out 0.12s, border-color ease-out 0.12s;
+                }
+            }
+
+            &:checked + label:before {
+
+                background-color: extract(@palette-info, 1);
+            }
+
+            &:checked + label:after {
+
+                content: '';
+            }
+
+            &[disabled] + label {
+
+                color: @component--disabled-text-color !important;
+
+                &:before {
+
+                    border-color: @component--disabled-border-color !important;
+                }
+            }
+
+            &[disabled]:checked + label:before {
+
+                background-color: @component--disabled-text-color !important;
+            }
+
+        }
+
+        input[type='checkbox']{
+
+            & + label:before {
+
+                border-radius: 0.15em;
+            }
+
+            & + label:after {
+
+                position: absolute;
+                top: 50%;
+                left: 0.5em;
+                display: block;
+                width: .333em;
+                height: .666em;
+                transform: rotate(45deg) translate(-55%, -55%);
+                transform-origin: 0 0;
+                box-shadow: inset -2px -2px 0 0 white;
+            }
+        }
+
+        input[type='radio']{
+
+            & + label:before {
+
+                border-radius: 50%;
+            }
+
+            & + label:after {
+                
+                content: '';
+                position: absolute;
+                display: block;
+                font-size: 0.5em;
+                width: 1em;
+                height: 1em;
+                top: 50%;
+                left: 0;
+                background: white;
+                border-radius: 50%;
+                transform: scale(0) translate(50%, -50%);
+                transition: transform ease-out 0.12s 0.08s;
+                transform-origin: 100% 0;
+            }
+
+            & + label:active:before {
+
+                border-color: extract(@palette-info, 1);
+            }
+
+            &:checked + label:after {
+                
+                transform: scale(1) translate(50%, -50%);
+            }
+        }
+    }
+
+    div[data-inflex~='radiocheck'] > label {
+
+        display: inline-flex;
+    }
+    
+    div[data-inflex~='radiocheck:block'] > label {
+
+        display: flex;
+    }
+}

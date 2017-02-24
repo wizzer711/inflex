@@ -1,0 +1,70 @@
+// ---------------------------------------------------------------------------------------------------------
+// Input Styles (Compile Once)
+// ---------------------------------------------------------------------------------------------------------
+
+    & when (@compile-once){
+
+        input[type="text"],
+		input[type="email"],
+		input[type="password"],
+		input[type="color"],
+		input[type="date"],
+		input[type="datetime"],
+		input[type="datetime-local"],
+		input[type="email"],
+		input[type="month"],
+		input[type="number"],
+		input[type="range"],
+		input[type="search"],
+		input[type="tel"],
+		input[type="time"],
+		input[type="url"],
+		input[type="week"]{
+
+            &:extend([data-inflex~='input']);
+
+			&:extend([data-inflex~='input:default']);
+
+            &:focus { &:extend([data-inflex~='input:focused']); }
+
+			&[disabled] { &:extend([data-inflex~='input:disabled']); }
+        }
+    }
+
+// ---------------------------------------------------------------------------------------------------------
+// Inputs Sizes (Responsive)
+// ---------------------------------------------------------------------------------------------------------
+
+	.iterateInputSizes (@bpo, @bpc){
+
+		.iterate();
+
+	    .iterate (@i: 1) when (@i <= length(@component--sizes)){
+
+	        .iterate(@i + 1);
+
+	        @_group: extract(@component--sizes, @i);
+
+			@_name: extract(@_group, 1);
+
+			@_outerHeight: extract(@_group, 2);
+
+			@_innerHeight: @_outerHeight - (@component--border-width * 2);
+
+			@_paddingX: @_innerHeight * 0.25;
+
+			@_paddingY: (@_innerHeight - 1.5) / 2;
+
+            input:not([type="checkbox"]):not([type="radio"]):not([type="range"]){
+
+                &[data-inflex~='@{bpo}size:@{_name}@{bpc}']{
+
+					min-height: @_outerHeight;
+
+			    	padding: @_paddingY @_paddingX;
+				}
+            }
+	    }
+	}
+
+	.iterateInputSizes(@bpo, @bpc);

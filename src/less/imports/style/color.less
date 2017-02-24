@@ -2,7 +2,7 @@
 // Mixin: Iterate Colors
 // ---------------------------------------------------------------------------------------------------------
 
-	.iterate-colors (){
+	.iterateColors (){
 
 		.iterate();
 
@@ -34,6 +34,8 @@
 
 					border-color: transparent;
 
+					background-color: transparent;
+
 					&:hover { color: darken(@_primary, 5%); }
 
 					&:active { color: darken(@_primary, 10%); }
@@ -61,6 +63,8 @@
 					color: @_primary;
 					
 					border-color: @_primary;
+
+					background: transparent;
 
 					&:hover {
 
@@ -113,14 +117,14 @@
 
 			[data-inflex~="color:@{_name}"]{
 
-				color: @_primary;
+				color: @_primary !important;
 			}
 
 			// Background
 
 			[data-inflex~="background:@{_name}"]{
 
-				background: @_primary;
+				background: @_primary !important;
 			}
 	    }
 	}
@@ -131,5 +135,5 @@
 
 	& when (@compile-once){
 
-		.iterate-colors();
+		.iterateColors();
 	}
