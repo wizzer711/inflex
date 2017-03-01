@@ -1,0 +1,78 @@
+// ---------------------------------------------------------------------------------------------------------
+// Range Styles (Compile Once)
+// ---------------------------------------------------------------------------------------------------------
+
+	& when (@compile-once){
+
+		.track() {
+			width: 100%;
+			height: @range-track-height;
+			cursor: pointer;
+			animate: 0.2s;
+		}
+		.thumb() {
+			height: @range-thumb-height;
+			width: @range-thumb-width;
+			border-radius: @range-thumb-radius;
+			border-color: @range-thumb-border-color;
+			background: @range-thumb-color;
+			cursor: pointer;
+		}
+		
+		[data-inflex~='range'], [data-inflex~='range:vertical'], [data-inflex~='range:verticalgrouped'] {
+			input[type=range] {
+				-webkit-appearance: none;
+				margin: @range-thumb-height/2 0;
+				width: 100%;
+				&:focus { outline: none; }
+				&::-webkit-slider-runnable-track {
+					.track();
+					background: @range-track-color;
+					border-radius: @range-track-radius;
+					border: 1px solid @range-track-color;
+				}
+				&::-webkit-slider-thumb {
+					.thumb();
+					-webkit-appearance: none;
+					margin-top: ((-1px * 2 + @range-track-height) / 2) - (@range-thumb-height / 2);
+				}
+				&::-moz-range-track {
+					.track();
+					background: @range-track-color;
+					border-radius: @range-track-radius;
+					border: 1px solid @range-track-color;
+				}
+				&::-moz-range-thumb { .thumb(); }
+				&::-ms-track {
+					.track(); 
+					background: transparent;
+					border-color: transparent;
+					border-width: @range-thumb-width 0;
+					color: transparent;
+				}
+				&::-ms-fill-lower {
+					background: darken(@range-track-color, @range-contrast);
+					border: 1px solid @range-track-color;
+					border-radius: @range-track-radius*2;
+				}
+				&::-ms-fill-upper {
+					background: @range-track-color;
+					border: 1px solid @range-track-color;
+					border-radius: @range-track-radius*2;
+				}
+				&::-ms-thumb { .thumb(); }
+				&:focus::-ms-fill-lower { background: @range-track-color; }
+				&:focus::-ms-fill-upper, &:focus::-webkit-slider-runnable-track { background: lighten(@range-track-color, @range-contrast); }
+			}
+		}
+
+		[data-inflex~='range:vertical'] {
+			input[type="range"] {
+				transform: rotate(270deg);
+				-moz-transform: rotate(270deg);
+				background-color: transparent;
+				margin: 45% 0;
+			}
+		}
+
+	}
