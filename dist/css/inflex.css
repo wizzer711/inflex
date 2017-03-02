@@ -2217,12 +2217,9 @@ div[data-inflex~='radiocheck:block'],
 div[data-inflex~='radiocheck:toggle'] {
   position: relative;
 }
-div[data-inflex~='radiocheck'] input[type='checkbox'],
-div[data-inflex~='radiocheck:block'] input[type='checkbox'],
-div[data-inflex~='radiocheck:toggle'] input[type='checkbox'],
-div[data-inflex~='radiocheck'] input[type='radio'],
-div[data-inflex~='radiocheck:block'] input[type='radio'],
-div[data-inflex~='radiocheck:toggle'] input[type='radio'] {
+div[data-inflex~='radiocheck'] input,
+div[data-inflex~='radiocheck:block'] input,
+div[data-inflex~='radiocheck:toggle'] input {
   position: fixed !important;
   opacity: 0 !important;
   width: 0 !important;
@@ -2231,24 +2228,78 @@ div[data-inflex~='radiocheck:toggle'] input[type='radio'] {
   margin: 0 !important;
   z-index: -100000 !important;
 }
+div[data-inflex~='radiocheck'] input[disabled] + label,
+div[data-inflex~='radiocheck:block'] input[disabled] + label,
+div[data-inflex~='radiocheck:toggle'] input[disabled] + label {
+  cursor: not-allowed;
+}
+[data-inflex~='radiocheck:hover'],
+div[data-inflex~='radiocheck'] input:not([disabled]):not(:checked) + label:hover:before,
+div[data-inflex~='radiocheck:block'] input:not([disabled]):not(:checked) + label:hover:before,
+div[data-inflex~='radiocheck:toggle'] input:not([disabled]):not(:checked) + label:hover {
+  background-color: #f9f9f9;
+}
+[data-inflex~='radiocheck:active'],
+div[data-inflex~='radiocheck'] input:not([disabled]):not(:checked) + label:active:before,
+div[data-inflex~='radiocheck:block'] input:not([disabled]):not(:checked) + label:active:before,
+div[data-inflex~='radiocheck:toggle'] input:not([disabled]):not(:checked) + label:active {
+  background-color: #f2f2f2;
+}
+[data-inflex~='radiocheck:checked'],
+div[data-inflex~='radiocheck'] input:not([disabled]):checked + label:before,
+div[data-inflex~='radiocheck:block'] input:not([disabled]):checked + label:before,
+div[data-inflex~='radiocheck:toggle'] input:not([disabled]):checked + label {
+  background-color: #0081FF;
+  color: #FFFFFF;
+}
+[data-inflex~='radiocheck:checked:hover'],
+div[data-inflex~='radiocheck'] input:not([disabled]):checked + label:hover:before,
+div[data-inflex~='radiocheck:block'] input:not([disabled]):checked + label:hover:before,
+div[data-inflex~='radiocheck:toggle'] input:not([disabled]):checked + label:hover {
+  background-color: #007bf2;
+}
+[data-inflex~='radiocheck:checked:active'],
+div[data-inflex~='radiocheck'] input:not([disabled]):checked + label:active:before,
+div[data-inflex~='radiocheck:block'] input:not([disabled]):checked + label:active:before,
+div[data-inflex~='radiocheck:toggle'] input:not([disabled]):checked + label:active {
+  background-color: #0074e6;
+}
+[data-inflex~='radiocheck:disabled'],
+div[data-inflex~='radiocheck'] input[disabled]:not(:checked) + label:before,
+div[data-inflex~='radiocheck:block'] input[disabled]:not(:checked) + label:before {
+  border-color: #EEEEEE;
+}
+[data-inflex~='radiocheck:disabled:checked'],
+div[data-inflex~='radiocheck'] input[disabled]:checked + label:before,
+div[data-inflex~='radiocheck:block'] input[disabled]:checked + label:before,
+div[data-inflex~='radiocheck:toggle'] input[disabled]:checked + label {
+  color: white;
+  background-color: #BBBBBB;
+}
+div[data-inflex~='radiocheck'] > label {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+div[data-inflex~='radiocheck:block'] > label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
 div[data-inflex~='radiocheck'],
 div[data-inflex~='radiocheck:block'] {
   left: -0.5em;
 }
-div[data-inflex~='radiocheck'] input[type='checkbox'] + label,
-div[data-inflex~='radiocheck:block'] input[type='checkbox'] + label,
-div[data-inflex~='radiocheck'] input[type='radio'] + label,
-div[data-inflex~='radiocheck:block'] input[type='radio'] + label {
+div[data-inflex~='radiocheck'] label,
+div[data-inflex~='radiocheck:block'] label {
   position: relative;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   margin-left: 0.5em;
 }
-div[data-inflex~='radiocheck'] input[type='checkbox'] + label:before,
-div[data-inflex~='radiocheck:block'] input[type='checkbox'] + label:before,
-div[data-inflex~='radiocheck'] input[type='radio'] + label:before,
-div[data-inflex~='radiocheck:block'] input[type='radio'] + label:before {
+div[data-inflex~='radiocheck'] label:before,
+div[data-inflex~='radiocheck:block'] label:before {
   content: '';
   display: block;
   box-sizing: border-box;
@@ -2264,35 +2315,13 @@ div[data-inflex~='radiocheck:block'] input[type='radio'] + label:before {
   -webkit-transition: background ease-out 0.12s, border-color ease-out 0.12s;
   transition: background ease-out 0.12s, border-color ease-out 0.12s;
 }
-div[data-inflex~='radiocheck'] input[type='checkbox']:checked + label:before,
-div[data-inflex~='radiocheck:block'] input[type='checkbox']:checked + label:before,
-div[data-inflex~='radiocheck'] input[type='radio']:checked + label:before,
-div[data-inflex~='radiocheck:block'] input[type='radio']:checked + label:before {
-  background-color: #0081FF;
+div[data-inflex~='radiocheck'] input[disabled]:not(:checked) + label,
+div[data-inflex~='radiocheck:block'] input[disabled]:not(:checked) + label {
+  color: #BBBBBB;
 }
-div[data-inflex~='radiocheck'] input[type='checkbox']:checked + label:after,
-div[data-inflex~='radiocheck:block'] input[type='checkbox']:checked + label:after,
-div[data-inflex~='radiocheck'] input[type='radio']:checked + label:after,
-div[data-inflex~='radiocheck:block'] input[type='radio']:checked + label:after {
-  content: '';
-}
-div[data-inflex~='radiocheck'] input[type='checkbox'][disabled] + label,
-div[data-inflex~='radiocheck:block'] input[type='checkbox'][disabled] + label,
-div[data-inflex~='radiocheck'] input[type='radio'][disabled] + label,
-div[data-inflex~='radiocheck:block'] input[type='radio'][disabled] + label {
-  color: #BBBBBB !important;
-}
-div[data-inflex~='radiocheck'] input[type='checkbox'][disabled] + label:before,
-div[data-inflex~='radiocheck:block'] input[type='checkbox'][disabled] + label:before,
-div[data-inflex~='radiocheck'] input[type='radio'][disabled] + label:before,
-div[data-inflex~='radiocheck:block'] input[type='radio'][disabled] + label:before {
-  border-color: #EEEEEE !important;
-}
-div[data-inflex~='radiocheck'] input[type='checkbox'][disabled]:checked + label:before,
-div[data-inflex~='radiocheck:block'] input[type='checkbox'][disabled]:checked + label:before,
-div[data-inflex~='radiocheck'] input[type='radio'][disabled]:checked + label:before,
-div[data-inflex~='radiocheck:block'] input[type='radio'][disabled]:checked + label:before {
-  background-color: #BBBBBB !important;
+div[data-inflex~='radiocheck'] input[disabled]:checked + label,
+div[data-inflex~='radiocheck:block'] input[disabled]:checked + label {
+  color: #BBBBBB;
 }
 div[data-inflex~='radiocheck'] input[type='checkbox'] + label:before,
 div[data-inflex~='radiocheck:block'] input[type='checkbox'] + label:before {
@@ -2311,6 +2340,10 @@ div[data-inflex~='radiocheck:block'] input[type='checkbox'] + label:after {
   -webkit-transform-origin: 0 0;
           transform-origin: 0 0;
   box-shadow: inset -2px -2px 0 0 white;
+}
+div[data-inflex~='radiocheck'] input[type='checkbox']:checked + label:after,
+div[data-inflex~='radiocheck:block'] input[type='checkbox']:checked + label:after {
+  content: '';
 }
 div[data-inflex~='radiocheck'] input[type='radio'] + label:before,
 div[data-inflex~='radiocheck:block'] input[type='radio'] + label:before {
@@ -2337,24 +2370,42 @@ div[data-inflex~='radiocheck:block'] input[type='radio'] + label:after {
   -webkit-transform-origin: 100% 0;
           transform-origin: 100% 0;
 }
-div[data-inflex~='radiocheck'] input[type='radio'] + label:active:before,
-div[data-inflex~='radiocheck:block'] input[type='radio'] + label:active:before {
-  border-color: #0081FF;
-}
 div[data-inflex~='radiocheck'] input[type='radio']:checked + label:after,
 div[data-inflex~='radiocheck:block'] input[type='radio']:checked + label:after {
   -webkit-transform: scale(1) translate(50%, -50%);
           transform: scale(1) translate(50%, -50%);
 }
-div[data-inflex~='radiocheck'] > label {
+div[data-inflex~='radiocheck:toggle'] {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  overflow: hidden;
+  border-style: solid;
+  border-width: 0.0625em;
+  border-color: rgba(0, 0, 0, 0.15);
+  border-radius: 0.3em;
+  z-index: 1;
 }
-div[data-inflex~='radiocheck:block'] > label {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+div[data-inflex~='radiocheck:toggle'] label {
+  -ms-flex-preferred-size: auto;
+      flex-basis: auto;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  white-space: nowrap;
+  text-align: center;
+  border-radius: 0 !important;
+  border-color: transparent !important;
+  box-shadow: 0 -0.0625em 0 0 rgba(0, 0, 0, 0.15), -0.0625em 0 0 0 rgba(0, 0, 0, 0.15) !important;
+  -webkit-transition: background-color ease-out 0.12s;
+  transition: background-color ease-out 0.12s;
+}
+div[data-inflex~='radiocheck:toggle'] input[disabled]:not(:checked) + label {
+  color: #BBBBBB;
 }
 select:not([multiple]) {
   padding-right: 1.875em;

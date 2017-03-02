@@ -1,156 +1,342 @@
-& when (@compile-once){
+// ---------------------------------------------------------------------------------------------------------
+// Radiocheck: Shared Styles (Compile Once)
+// ---------------------------------------------------------------------------------------------------------
 
-    div[data-inflex~='radiocheck'],
-    div[data-inflex~='radiocheck:block'],
-    div[data-inflex~='radiocheck:toggle']{
+    & when (@compile-once){
 
-        position: relative;
+        div[data-inflex~='radiocheck'],
+        div[data-inflex~='radiocheck:block'],
+        div[data-inflex~='radiocheck:toggle']{
 
-        input[type='checkbox'], input[type='radio']{
+            position: relative;
 
-            // Don't hide inputs with display: none; as tabindex functionality breaks
+            input {
 
-            position: fixed !important;
-            opacity: 0 !important;
-            width: 0 !important;
-            height: 0 !important;
-            padding: 0 !important;
-            margin: 0 !important;
-            z-index: -100000 !important;
+                // Don't hide inputs with display: none; as tabindex functionality breaks
+
+                position: fixed !important;
+
+                opacity: 0 !important;
+
+                width: 0 !important;
+
+                height: 0 !important;
+
+                padding: 0 !important;
+
+                margin: 0 !important;
+
+                z-index: -100000 !important;
+            }
+
+            input[disabled] + label {
+
+                cursor: @component--disabled-cursor;
+            }
+        }
+
+        [data-inflex~='radiocheck:hover']{
+
+            background-color: darken(@component--background-color, 2.5%);
+        }
+
+        [data-inflex~='radiocheck:active']{
+
+            background-color: darken(@component--background-color, 5%);
+        }
+
+        [data-inflex~='radiocheck:checked']{
+
+            background-color: @component--checked-background-color;
+                
+            color: @component--checked-color;
+        }
+
+        [data-inflex~='radiocheck:checked:hover']{
+
+            background-color: darken(@component--checked-background-color, 2.5%);
+        }
+
+        [data-inflex~='radiocheck:checked:active']{
+
+            background-color: darken(@component--checked-background-color, 5%);
+        }
+
+        [data-inflex~='radiocheck:disabled']{
+
+            border-color: @component--disabled-border-color;
+        }
+        
+        [data-inflex~='radiocheck:disabled:checked']{
+
+            color: @component--background-color;
+
+            background-color: @component--disabled-text-color;
         }
     }
 
-    div[data-inflex~='radiocheck:toggle']{
+// ---------------------------------------------------------------------------------------------------------
+// Radiocheck: Inline & Block Styles (Compile Once)
+// ---------------------------------------------------------------------------------------------------------
 
-        label {
+    & when (@compile-once){
 
-            &:extend([data-inflex~='input'] all);
-            &:extend([data-inflex~='input:default']);
+        div[data-inflex~='radiocheck'] > label {
+
+            display: inline-flex;
         }
-    }
+        
+        div[data-inflex~='radiocheck:block'] > label {
 
+            display: flex;
+        }
 
-    div[data-inflex~='radiocheck'],
-    div[data-inflex~='radiocheck:block']{
+        div[data-inflex~='radiocheck'],
+        div[data-inflex~='radiocheck:block']{
 
-        left: -0.5em;
+            left: -0.5em;
 
-        input[type='checkbox'], input[type='radio']{
-
-            & + label {
+            label {
 
                 position: relative;
+
                 align-items: center;
+
                 margin-left: 0.5em; // Required when using 'spaceless'
 
                 &:before {
 
                     content: '';
+
                     display: block;
+
                     box-sizing: border-box;
+
                     flex-shrink: 0;
+
                     width: 1em;
+
                     height: 1em;
+
                     margin: 0 0.25em 0 0;
+
                     background-color: white;
+
                     border-style: @component--border-style;
+
                     border-width: @component--border-width;
+
                     border-color: @component--border-color;
+
                     transition: background ease-out 0.12s, border-color ease-out 0.12s;
                 }
             }
 
-            &:checked + label:before {
+            // Default
+            // ----------------------------------------------------
 
-                background-color: extract(@palette-info, 1);
-            }
+            input:not([disabled]){
 
-            &:checked + label:after {
+                &:not(:checked) + label {
 
-                content: '';
-            }
+                    &:hover:before:extend([data-inflex~='radiocheck:hover']){}
+                    
+                    &:active:before:extend([data-inflex~='radiocheck:active']){}
+                }
 
-            &[disabled] + label {
+                &:checked + label {
 
-                color: @component--disabled-text-color !important;
+                    &:before:extend([data-inflex~='radiocheck:checked']){}
 
-                &:before {
-
-                    border-color: @component--disabled-border-color !important;
+                    &:hover:before:extend([data-inflex~='radiocheck:checked:hover']){}
+                    
+                    &:active:before:extend([data-inflex~='radiocheck:checked:active']){}
                 }
             }
 
-            &[disabled]:checked + label:before {
+            // Disabled
+            // ----------------------------------------------------
 
-                background-color: @component--disabled-text-color !important;
+            input[disabled]{
+
+                &:not(:checked) + label {
+
+                    color: @component--disabled-text-color;
+
+                    &:before:extend([data-inflex~='radiocheck:disabled']){}
+                }
+
+                &:checked + label {
+
+                    color: @component--disabled-text-color;
+
+                    &:before:extend([data-inflex~='radiocheck:disabled:checked']){}
+                }
             }
 
-        }
+            input[type='checkbox']{
 
-        input[type='checkbox']{
+                & + label:before {
 
-            & + label:before {
+                    border-radius: 0.15em;
+                }
 
-                border-radius: 0.15em;
+                & + label:after {
+
+                    position: absolute;
+
+                    top: 50%;
+
+                    left: 0.5em;
+
+                    display: block;
+
+                    width: .333em;
+
+                    height: .666em;
+
+                    transform: rotate(45deg) translate(-55%, -55%);
+
+                    transform-origin: 0 0;
+
+                    box-shadow: inset -2px -2px 0 0 white;
+                }
+
+                &:checked + label:after {
+
+                    content: '';
+                }
             }
 
-            & + label:after {
+            input[type='radio']{
 
-                position: absolute;
-                top: 50%;
-                left: 0.5em;
-                display: block;
-                width: .333em;
-                height: .666em;
-                transform: rotate(45deg) translate(-55%, -55%);
-                transform-origin: 0 0;
-                box-shadow: inset -2px -2px 0 0 white;
-            }
-        }
+                & + label:before {
 
-        input[type='radio']{
+                    border-radius: 50%;
+                }
 
-            & + label:before {
+                & + label:after {
+                    
+                    content: '';
 
-                border-radius: 50%;
-            }
+                    position: absolute;
 
-            & + label:after {
-                
-                content: '';
-                position: absolute;
-                display: block;
-                font-size: 0.5em;
-                width: 1em;
-                height: 1em;
-                top: 50%;
-                left: 0;
-                background: white;
-                border-radius: 50%;
-                transform: scale(0) translate(50%, -50%);
-                transition: transform ease-out 0.12s 0.08s;
-                transform-origin: 100% 0;
-            }
+                    display: block;
 
-            & + label:active:before {
+                    font-size: 0.5em;
 
-                border-color: extract(@palette-info, 1);
-            }
+                    width: 1em;
 
-            &:checked + label:after {
-                
-                transform: scale(1) translate(50%, -50%);
+                    height: 1em;
+
+                    top: 50%;
+
+                    left: 0;
+
+                    background: white;
+
+                    border-radius: 50%;
+
+                    transform: scale(0) translate(50%, -50%);
+
+                    transition: transform ease-out 0.12s 0.08s;
+
+                    transform-origin: 100% 0;
+                }
+
+                &:checked + label:after {
+                    
+                    transform: scale(1) translate(50%, -50%);
+                }
             }
         }
     }
 
-    div[data-inflex~='radiocheck'] > label {
+// ---------------------------------------------------------------------------------------------------------
+// Radiocheck: Toggle Styles (Compile Once)
+// ---------------------------------------------------------------------------------------------------------
 
-        display: inline-flex;
-    }
-    
-    div[data-inflex~='radiocheck:block'] > label {
+    & when (@compile-once){
 
-        display: flex;
+        div[data-inflex~='radiocheck:toggle']{
+
+            display: inline-flex;
+
+            flex-wrap: wrap;
+
+            overflow: hidden;
+
+            border-style: solid;
+
+            border-width: @component--border-width;
+
+            border-color: @component--border-color;
+
+            border-radius: @component--border-radius;
+
+            z-index: 1; // Chrome Fix: Ensures border-radius and overflow hidden render correctly.
+
+            label {
+
+                &:extend([data-inflex~='input']);
+
+                &:extend([data-inflex~='input:default']);
+
+                flex-basis: auto; // Safari Fix: Required to wrap labels; flex-basis: 0; does not work.
+
+                flex-grow: 1;
+
+                flex-shrink: 0;
+
+                white-space: nowrap;
+
+                text-align: center;
+
+                border-radius: 0 !important;
+
+                border-color: transparent !important;
+
+                box-shadow: 0 -@component--border-width 0 0 @component--border-color, -@component--border-width 0 0 0 @component--border-color !important;
+
+                transition: background-color ease-out 0.12s;
+            }
+
+            // Default Label
+		    // ----------------------------------------------------
+
+            input:not([disabled]){
+
+                &:not(:checked) + label {
+
+                    &:hover:extend([data-inflex~='radiocheck:hover']){}
+                    
+                    &:active:extend([data-inflex~='radiocheck:active']){}
+                }
+
+                &:checked + label {
+
+                    &:extend([data-inflex~='radiocheck:checked']);
+
+                    &:hover:extend([data-inflex~='radiocheck:checked:hover']){}
+                    
+                    &:active:extend([data-inflex~='radiocheck:checked:active']){}
+                }
+            }
+
+            // Disabled Label
+		    // ----------------------------------------------------
+
+            input[disabled]{
+
+                &:not(:checked) + label {
+
+                    color: @component--disabled-text-color;
+                }
+
+                &:checked + label {
+
+                    &:extend([data-inflex~='radiocheck:disabled:checked']);
+                }
+            }
+        }
     }
-}
