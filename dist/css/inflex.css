@@ -2480,7 +2480,7 @@ textarea[data-inflex~='size:xs'] {
   background: #0081FF;
   cursor: pointer;
   -webkit-appearance: none;
-  margin-top: -0.2805em;
+  margin-top: -0.4065em;
 }
 [data-inflex~='range'] input[type=range]::-moz-range-track,
 [data-inflex~='range:vertical'] input[type=range]::-moz-range-track,
