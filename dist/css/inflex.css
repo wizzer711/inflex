@@ -2451,7 +2451,7 @@ textarea[data-inflex~='size:xs'] {
 [data-inflex~='range:vertical'] input[type=range],
 [data-inflex~='range:verticalgrouped'] input[type=range] {
   -webkit-appearance: none;
-  margin: 8px 0;
+  margin: 0.5em 0;
   width: 100%;
 }
 [data-inflex~='range'] input[type=range]:focus,
@@ -2463,42 +2463,42 @@ textarea[data-inflex~='size:xs'] {
 [data-inflex~='range:vertical'] input[type=range]::-webkit-slider-runnable-track,
 [data-inflex~='range:verticalgrouped'] input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
-  height: 5px;
+  height: 0.313em;
   cursor: pointer;
   animate: 0.2s;
   background: white;
-  border-radius: 3px;
+  border-radius: 0.188em;
   border: 1px solid white;
 }
 [data-inflex~='range'] input[type=range]::-webkit-slider-thumb,
 [data-inflex~='range:vertical'] input[type=range]::-webkit-slider-thumb,
 [data-inflex~='range:verticalgrouped'] input[type=range]::-webkit-slider-thumb {
-  height: 16px;
-  width: 16px;
-  border-radius: 8px;
+  height: 1em;
+  width: 1em;
+  border-radius: 0.5em;
   border-color: white;
   background: #0081FF;
   cursor: pointer;
   -webkit-appearance: none;
-  margin-top: -6.5px;
+  margin-top: -1.3435px;
 }
 [data-inflex~='range'] input[type=range]::-moz-range-track,
 [data-inflex~='range:vertical'] input[type=range]::-moz-range-track,
 [data-inflex~='range:verticalgrouped'] input[type=range]::-moz-range-track {
   width: 100%;
-  height: 5px;
+  height: 0.313em;
   cursor: pointer;
   animate: 0.2s;
   background: white;
-  border-radius: 3px;
+  border-radius: 0.188em;
   border: 1px solid white;
 }
 [data-inflex~='range'] input[type=range]::-moz-range-thumb,
 [data-inflex~='range:vertical'] input[type=range]::-moz-range-thumb,
 [data-inflex~='range:verticalgrouped'] input[type=range]::-moz-range-thumb {
-  height: 16px;
-  width: 16px;
-  border-radius: 8px;
+  height: 1em;
+  width: 1em;
+  border-radius: 0.5em;
   border-color: white;
   background: #0081FF;
   cursor: pointer;
@@ -2507,12 +2507,12 @@ textarea[data-inflex~='size:xs'] {
 [data-inflex~='range:vertical'] input[type=range]::-ms-track,
 [data-inflex~='range:verticalgrouped'] input[type=range]::-ms-track {
   width: 100%;
-  height: 5px;
+  height: 0.313em;
   cursor: pointer;
   animate: 0.2s;
   background: transparent;
   border-color: transparent;
-  border-width: 16px 0;
+  border-width: 1em 0;
   color: transparent;
 }
 [data-inflex~='range'] input[type=range]::-ms-fill-lower,
@@ -2520,21 +2520,21 @@ textarea[data-inflex~='size:xs'] {
 [data-inflex~='range:verticalgrouped'] input[type=range]::-ms-fill-lower {
   background: #f2f2f2;
   border: 1px solid white;
-  border-radius: 6px;
+  border-radius: 0.376em;
 }
 [data-inflex~='range'] input[type=range]::-ms-fill-upper,
 [data-inflex~='range:vertical'] input[type=range]::-ms-fill-upper,
 [data-inflex~='range:verticalgrouped'] input[type=range]::-ms-fill-upper {
   background: white;
   border: 1px solid white;
-  border-radius: 6px;
+  border-radius: 0.376em;
 }
 [data-inflex~='range'] input[type=range]::-ms-thumb,
 [data-inflex~='range:vertical'] input[type=range]::-ms-thumb,
 [data-inflex~='range:verticalgrouped'] input[type=range]::-ms-thumb {
-  height: 16px;
-  width: 16px;
-  border-radius: 8px;
+  height: 1em;
+  width: 1em;
+  border-radius: 0.5em;
   border-color: white;
   background: #0081FF;
   cursor: pointer;
