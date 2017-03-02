@@ -276,9 +276,9 @@
 // Component: Range
 // ---------------------------------------------------------------------------------------------------------
 
-	@range-track-color: @component--background-color;
+	@range-track-color: extract(@palette-light, 1);
 
-	@range-track-color-focus: @component--background-color;
+	@range-track-color-focus: extract(@palette-light, 1);
 
 	@range-track-fill-color: extract(@palette-1, 2);
 
@@ -290,9 +290,9 @@
 
 	@range-thumb-width: 1em;
 
-	@range-thumb-border-width: 0.063em;
+	@range-thumb-border-width:  0.0625em;
 
-	@range-thumb-border-color: @component--background-color;
+	@range-thumb-border-color: extract(@palette-light, 1);
 
 	@range-track-height: 0.313em;
 
