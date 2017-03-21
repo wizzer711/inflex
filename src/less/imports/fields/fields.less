@@ -1,0 +1,39 @@
+// ---------------------------------------------------------------------------------------------------------
+// Field Styles (Compile Once)
+// ---------------------------------------------------------------------------------------------------------
+
+    & when (@compile-once){
+
+        [data-inflex~='field:group']{
+
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        [data-inflex~='field']{
+
+            display: inline-flex;
+            align-content: flex-end;
+            flex-wrap: wrap;
+            flex-grow: 1;
+            margin: @field--margin;
+        }
+
+        [data-inflex~='field:labels']{
+
+            width: 0;
+            flex-basis: 100%;
+            flex-shrink: 0;
+            order: -1;
+        }
+
+        [data-inflex~='field:label']{
+
+            display: block;
+            font-size: @field-label--font-size;
+            line-height: @field-label--line-height;
+            text-transform: @field-label--text-transform;
+            color: @field-label--color;
+            margin-bottom: @field--margin;
+        }
+    }
