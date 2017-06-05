@@ -1,0 +1,146 @@
+& when (@compile-once){
+	// *
+	// **
+	// ****
+	// *********************************************************************************************************
+	// Modal Overlay
+	// *********************************************************************************************************
+	// ****
+	// **
+	// *
+
+		div.inflex-modal-overlay
+		{
+			z-index   : 10000;
+			position  : fixed;
+			width     : auto;
+			height    : auto;
+			overflow  : auto;
+			top       : 0;
+			right     : 0;
+			bottom    : 0;
+			left      : 0;
+			opacity   : 0;
+			background: fade(extract(@modal-overlay-theme, 1), @modal-overlay-opacity);
+
+			// Preloader Icon
+            // ---------------------------------------------------------
+
+			&:before
+			{
+				opacity            : 0;
+				content            : "";
+				position           : absolute;
+				font-size          : 3rem;
+				width              : 1em;
+				height             : 1em;
+				top                : 50%;
+				left               : 50%;
+				margin             : -1.5rem 0 0 -1.5rem;
+				animation          : pui-spin 1s 0 linear;
+				background-repeat  : no-repeat;
+				background-size    : 1em;
+
+				.background-svg-uri('loader', extract(@palette-1, 1));
+
+			}
+
+			body.inflex-modal-loading &
+			{
+				&:before
+				{
+					opacity: 1; animation-iteration-count: infinite;
+				}
+			}
+		}
+
+	// *
+	// **
+	// ****
+	// *********************************************************************************************************
+	// Modal Content / Container
+	// *********************************************************************************************************
+	// ****
+	// **
+	// *
+
+		div.inflex-modal-content:extend(.clearfix all)
+		{
+			position     : absolute;
+			overflow     : auto;
+			opacity      : 0;
+			top          : 50%;
+			left         : 50%;
+			transform    : translate(-50%, -50%);
+			max-width    : @modal-content-max-width;
+			padding      : 0;
+			border-radius: @modal-content-border-radius;
+
+			@media all and (max-width: @modal-mobile-width)
+			{
+				width     : ~'calc(100% - 1.5rem)';
+				max-height: ~'calc(100% - 1.5rem)';
+			}
+
+			@media all and (min-width: @modal-tablet-width)
+			{
+				width     : ~'calc(100% - 3rem)';
+				max-height: ~'calc(100% - 3rem)';
+			}
+
+			// Modal Close Button
+            // ---------------------------------------------------------
+
+			a.inflex-modal-close
+			{
+				display    : block;
+				width      : 100%;
+				flex-shrink: 0;
+				flex-grow  : 0;
+				font-weight: 500;
+				font-size: @font-size;
+				line-height: 2em;
+				text-align : right;
+				text-decoration: none;
+
+				background-size    : 1rem;
+				background-repeat  : no-repeat;
+				background-position: 100% 55%;
+
+				color: extract(@palette-white, 1);
+
+				.background-svg-uri('close', extract(@palette-white, 1));
+
+				&:after 
+				{
+					content: 'close';
+					cursor : pointer;
+					padding: 0 1rem 0 0;
+				}
+			}
+		}
+
+		div.inflex-modal-content > div:first-of-type {
+			border-top-left-radius: @modal-content-border-radius;
+			border-top-right-radius: @modal-content-border-radius;
+		}
+
+		div.inflex-modal-content > div:last-of-type {
+			border-bottom-left-radius: @modal-content-border-radius;
+			border-bottom-right-radius: @modal-content-border-radius;
+		}
+
+		[data-inflex~='modal:header'] {
+			border-bottom: @modal-border-width solid @modal-border-color;
+		}
+
+		[data-inflex~='modal:footer'] {
+			border-top: @modal-border-width solid @modal-border-color;
+		}
+
+		[data-inflex~='modal:header'], [data-inflex~='modal:body'], [data-inflex~='modal:footer'] {
+			padding: @modal-content-padding;
+		}
+
+	//
+}

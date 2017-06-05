@@ -309,3 +309,30 @@
 	@range-track-radius: 0.188em;
 
 	@range-contrast: 5%;
+
+// ---------------------------------------------------------------------------------------------------------
+// Component: Modal
+// ---------------------------------------------------------------------------------------------------------
+
+	@modal-mobile-breakpoint: extract(@breakpoints, 2);
+	@modal-tablet-breakpoint: extract(@breakpoints, 3);
+
+	@modal-content-max-width    : 50rem;
+
+	@modal-content-padding      : 1.5em;
+
+	@modal-content-border-radius: 0.5em;
+
+	@modal-content-theme        : @palette-white;
+
+	@modal-overlay-theme        : @palette-dark;
+
+	@modal-overlay-opacity      : 85%;
+
+	@modal-mobile-width         : extract(@modal-mobile-breakpoint, 3);
+
+	@modal-tablet-width         : extract(@modal-tablet-breakpoint, 3);
+
+	@modal-border-width         : 0.0625em;
+
+	@modal-border-color         : rgba(0,0,0,0.15);
