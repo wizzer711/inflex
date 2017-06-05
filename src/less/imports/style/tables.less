@@ -1,0 +1,198 @@
+& when (@compile-once){
+
+	// Table Row Hover
+	// ---------------------------------------------------------
+
+	[data-inflex~="@{bpo}table-hover"] > tbody > tr:hover > td,
+	[data-inflex~="@{bpo}table-hover"] > tbody > tr:hover > th{
+		background-color: rgba(0,0,0,0.05);
+	}
+
+	// Responsive Table Wrapper
+	// ---------------------------------------------------------
+
+	div[data-inflex~="@{bpo}table-wrapper"]
+	{
+		overflow-x: auto;
+
+		> table
+		{
+			margin-bottom: 0;
+		}
+
+		&[data-inflex~="@{bpo}respond"]
+		{
+			box-shadow: inset -1em 0px 1em -1em rgba(0,0,0,0.30);
+		}
+	}
+
+	// Mould Table Columns
+	// ---------------------------------------------------------
+
+	.mould-generator(@n: 20); .mould-generator(@i: 1, @n) when (@i =< @n)
+	{
+		table[data-inflex*="|@{i}|"]{
+			> thead, > tbody, > tfoot
+			{
+				> tr > td:nth-child(@{i}),
+				> tr > th:nth-child(@{i})
+				{
+					width: 1%; 
+					white-space: nowrap;
+				}
+			}
+		}
+
+		.mould-generator(@i + 1, @n); // loop
+	};
+
+}
+	
+	// Default Styles
+	// ---------------------------------------------------------
+
+	[data-inflex~="@{bpo}table@{bpc}"]
+	{
+		border-collapse: separate;
+
+		&, > thead > tr, > tbody > tr, > tfoot > tr
+		{
+			border-color: @table-border-color;
+		}
+
+		> thead, > tbody, > tfoot
+		{
+			> tr > th,
+			> tr > td
+			{
+				padding     : 0.75em 1.00em;
+				line-height : 1.375em;
+				border-width: 0;
+				border-color: inherit;
+				border-style: solid;
+			}
+		}
+
+		> thead > tr > th,
+		> tbody > tr > th,
+		> tfoot > tr > th
+		{
+			font-weight: @strong-weight;
+		}
+	}
+
+	// Fix Table Columns
+	// ---------------------------------------------------------
+
+	[data-inflex~="@{bpo}table-fixed@{bpc}"]{
+		table-layout: fixed;
+	}
+
+	// Table Stripes
+	// ---------------------------------------------------------
+
+	[data-inflex~="@{bpo}table-stripes@{bpc}"] > tbody > tr:nth-child(2n-1){
+		background: rgba(0,0,0,0.025);
+	}
+
+	// Horizontal Borders
+	// ---------------------------------------------------------
+
+	table[data-inflex~="@{bpo}table-borders-ns@{bpc}"] > thead > tr > th, table[data-inflex~="@{bpo}table-borders-ns@{bpc}"] > thead > tr > td,
+	table[data-inflex~="@{bpo}table-borders-ns@{bpc}"] > tbody > tr > th, table[data-inflex~="@{bpo}table-borders-ns@{bpc}"] > tbody > tr > td,
+	table[data-inflex~="@{bpo}table-borders-ns@{bpc}"] > tfoot > tr > th, table[data-inflex~="@{bpo}table-borders-ns@{bpc}"] > tfoot > tr > td,
+	thead[data-inflex~="@{bpo}table-borders-ns@{bpc}"] > tr > th, thead[data-inflex~="@{bpo}table-borders-ns@{bpc}"] > tr > td,
+	tbody[data-inflex~="@{bpo}table-borders-ns@{bpc}"] > tr > th, tbody[data-inflex~="@{bpo}table-borders-ns@{bpc}"] > tr > td,
+	tfoot[data-inflex~="@{bpo}table-borders-ns@{bpc}"] > tr > th, tfoot[data-inflex~="@{bpo}table-borders-ns@{bpc}"] > tr > td,
+	tr[data-inflex~="@{bpo}table-borders-ns@{bpc}"] > th,
+	tr[data-inflex~="@{bpo}table-borders-ns@{bpc}"] > td
+	{   
+		border-top-width: @table-border-width;
+		border-right-width: 0 !important;
+	}
+
+	// Vertical Borders
+	// ---------------------------------------------------------
+
+	table[data-inflex~="@{bpo}table-borders-ew@{bpc}"] > thead > tr > th, table[data-inflex~="@{bpo}table-borders-ew@{bpc}"] > thead > tr > td,
+	table[data-inflex~="@{bpo}table-borders-ew@{bpc}"] > tbody > tr > th, table[data-inflex~="@{bpo}table-borders-ew@{bpc}"] > tbody > tr > td,
+	table[data-inflex~="@{bpo}table-borders-ew@{bpc}"] > tfoot > tr > th, table[data-inflex~="@{bpo}table-borders-ew@{bpc}"] > tfoot > tr > td,
+	thead[data-inflex~="@{bpo}table-borders-ew@{bpc}"] > tr > th, thead[data-inflex~="@{bpo}table-borders-ew@{bpc}"] > tr > td,
+	tbody[data-inflex~="@{bpo}table-borders-ew@{bpc}"] > tr > th, tbody[data-inflex~="@{bpo}table-borders-ew@{bpc}"] > tr > td,
+	tfoot[data-inflex~="@{bpo}table-borders-ew@{bpc}"] > tr > th, tfoot[data-inflex~="@{bpo}table-borders-ew@{bpc}"] > tr > td,
+	tr[data-inflex~="@{bpo}table-borders-ew@{bpc}"] > th,
+	tr[data-inflex~="@{bpo}table-borders-ew@{bpc}"] > td
+	{   
+		border-left-width: @table-border-width;
+		border-bottom-width: 0 !important;
+	}
+
+	// Vertical & Horizontal Borders
+	// ---------------------------------------------------------
+
+	table[data-inflex~="@{bpo}table-borders@{bpc}"] > thead > tr > th,
+	table[data-inflex~="@{bpo}table-borders@{bpc}"] > thead > tr > td,
+	table[data-inflex~="@{bpo}table-borders@{bpc}"] > tbody > tr > th,
+	table[data-inflex~="@{bpo}table-borders@{bpc}"] > tbody > tr > td,
+	table[data-inflex~="@{bpo}table-borders@{bpc}"] > tfoot > tr > th,
+	table[data-inflex~="@{bpo}table-borders@{bpc}"] > tfoot > tr > td,
+	thead[data-inflex~="@{bpo}table-borders@{bpc}"] > tr > th,
+	thead[data-inflex~="@{bpo}table-borders@{bpc}"] > tr > td,
+	tbody[data-inflex~="@{bpo}table-borders@{bpc}"] > tr > th,
+	tbody[data-inflex~="@{bpo}table-borders@{bpc}"] > tr > td,
+	tfoot[data-inflex~="@{bpo}table-borders@{bpc}"] > tr > th,
+	tfoot[data-inflex~="@{bpo}table-borders@{bpc}"] > tr > td,
+	tr[data-inflex~="@{bpo}table-borders@{bpc}"] > th,
+	tr[data-inflex~="@{bpo}table-borders@{bpc}"] > td
+	{
+		border-style: solid;
+		border-width: @table-border-width 0 0 @table-border-width;
+	}
+
+	// Add right border for last column cells
+	// ---------------------------------------------------------
+
+	table[data-inflex~="@{bpo}table-borders@{bpc}"] > thead > tr > th:last-child,
+	table[data-inflex~="@{bpo}table-borders@{bpc}"] > thead > tr > td:last-child,
+	table[data-inflex~="@{bpo}table-borders@{bpc}"] > tbody > tr > th:last-child,
+	table[data-inflex~="@{bpo}table-borders@{bpc}"] > tbody > tr > td:last-child,
+	table[data-inflex~="@{bpo}table-borders@{bpc}"] > tfoot > tr > th:last-child,
+	table[data-inflex~="@{bpo}table-border@{bpc}"] > tfoot > tr > td:last-child,
+	thead[data-inflex~="@{bpo}table-borders@{bpc}"] > tr > th:last-child,
+	thead[data-inflex~="@{bpo}table-borders@{bpc}"] > tr > td:last-child,
+	tbody[data-inflex~="@{bpo}table-borders@{bpc}"] > tr > th:last-child,
+	tbody[data-inflex~="@{bpo}table-borders@{bpc}"] > tr > td:last-child,
+	tfoot[data-inflex~="@{bpo}table-borders@{bpc}"] > tr > th:last-child,
+	tfoot[data-inflex~="@{bpo}table-borders@{bpc}"] > tr > td:last-child,
+	tr[data-inflex~="@{bpo}table-borders@{bpc}"] > th:last-child,
+	tr[data-inflex~="@{bpo}table-borders@{bpc}"] > td:last-child
+	{
+		border-right-width: @table-border-width;
+	}
+
+	// Add bottom border for last row cells
+	// ---------------------------------------------------------
+
+	table[data-inflex~="@{bpo}table-borders@{bpc}"] > thead:last-child > tr:last-child > th,
+	table[data-inflex~="@{bpo}table-borders@{bpc}"] > thead:last-child > tr:last-child > td,
+	table[data-inflex~="@{bpo}table-borders@{bpc}"] > tbody:last-child > tr:last-child > th,
+	table[data-inflex~="@{bpo}table-borders@{bpc}"] > tbody:last-child > tr:last-child > td,
+	table[data-inflex~="@{bpo}table-borders@{bpc}"] > tfoot:last-child > tr:last-child > th,
+	table[data-inflex~="@{bpo}table-borders@{bpc}"] > tfoot:last-child > tr:last-child > td,
+	thead[data-inflex~="@{bpo}table-borders@{bpc}"]:last-child > tr:last-child > th,
+	thead[data-inflex~="@{bpo}table-borders@{bpc}"]:last-child > tr:last-child > td,
+	tbody[data-inflex~="@{bpo}table-borders@{bpc}"]:last-child > tr:last-child > th,
+	tbody[data-inflex~="@{bpo}table-borders@{bpc}"]:last-child > tr:last-child > td,
+	tfoot[data-inflex~="@{bpo}table-borders@{bpc}"]:last-child > tr:last-child > th,
+	tfoot[data-inflex~="@{bpo}table-borders@{bpc}"]:last-child > tr:last-child > td
+	{
+		border-bottom-width: @table-border-width;
+	}
+
+	// Remove borders
+	// ---------------------------------------------------------
+
+	tr[data-inflex="table-noborders"] td
+	{
+		border: none !important;
+	}
