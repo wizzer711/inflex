@@ -1,126 +1,129 @@
-& when (@compile-once){
+& when (@accordion--import){
 
-    nav[data-inflex~='accordion'] {
+    & when (@compile-once){
 
-        ul, li {
+        nav[data-inflex~='accordion'] {
 
-            padding: 0;
-            margin: 0;
-            list-style: none;
-        }
+            ul, li {
 
-        li[data-inflex~='accordion:parent']:not([data-expand]) > ul {
+                padding: 0;
+                margin: 0;
+                list-style: none;
+            }
 
-             display: none;
-        }
+            li[data-inflex~='accordion:parent']:not([data-expand]) > ul {
 
-        li[data-inflex*='accordion:parent'], li[data-inflex~='accordion:child']{
+                display: none;
+            }
 
-            > a {
+            li[data-inflex*='accordion:parent'], li[data-inflex~='accordion:child']{
 
-                display        : flex;
-                justify-content: start;
-                align-items    : center;
-                text-decoration: none !important;
-                border-radius  : 0.3em;
+                > a {
 
-                > span {
-
-                    padding: 0.375em 0.75em;
-                }
-
-                span.hc-accordion-toggle {
-
-                    width: 2.8125em;
-                    line-height: 2.8125em;
-                    text-align: center;
-                    flex-shrink: 0;
-                }
-
-                span.hc-accordion-text {
-
-                    flex-grow      : 1;
                     display        : flex;
-                    justify-content: space-between;
-                    white-space    : nowrap;
-                    overflow       : hidden;
+                    justify-content: start;
+                    align-items    : center;
+                    text-decoration: none !important;
+                    border-radius  : 0.3em;
 
-                    u { text-decoration: none; }
+                    > span {
 
-                    > span { padding: 0 0.375em; }
+                        padding: 0.375em 0.75em;
+                    }
 
-                    > span:first-of-type { padding-left: 0; overflow: hidden; text-overflow: ellipsis; }
+                    span.hc-accordion-toggle {
 
-                    > span:last-of-type { padding-right: 0.75em; }
-                }
-            }
+                        width: 2.8125em;
+                        line-height: 2.8125em;
+                        text-align: center;
+                        flex-shrink: 0;
+                    }
 
-            &[data-active] > a, a:hover { background: rgba(0,0,0,0.02); }
+                    span.hc-accordion-text {
 
-            &[data-active] > a span.hc-accordion-text u { text-decoration: underline; }
-        }
-    }
+                        flex-grow      : 1;
+                        display        : flex;
+                        justify-content: space-between;
+                        white-space    : nowrap;
+                        overflow       : hidden;
 
-    nav[data-inflex~='accord']{
+                        u { text-decoration: none; }
 
-        ul, li {
+                        > span { padding: 0 0.375em; }
 
-            padding: 0;
-            margin: 0;
-            list-style: none;
-        }
+                        > span:first-of-type { padding-left: 0; overflow: hidden; text-overflow: ellipsis; }
 
-        li {
-
-            &[data-active]{
-
-                > label {
-
-                    background: extract(@palette-smoke, 1);
-                }
-
-                > label > a {
-
-                    border-bottom: 1px solid;
-                }
-            }
-
-            & > input {
-
-                display: none !important;
-
-                & + label {
-
-                    display: block;
-                    padding: 0.375em 0.5em;
-                    cursor: pointer;
-                }
-                
-                & ~ ul {
-
-                    transition: opacity linear 0.24s;
-                }
-
-                &:not(:checked) {
-
-                    & ~ ul {
-
-                        height: 0 !important;
-                        opacity: 0 !important;
-                        visibility: hidden !important;
-                        overflow: hidden !important;
+                        > span:last-of-type { padding-right: 0.75em; }
                     }
                 }
 
-                &:checked {
+                &[data-active] > a, a:hover { background: rgba(0,0,0,0.02); }
 
-                     & ~ ul {
+                &[data-active] > a span.hc-accordion-text u { text-decoration: underline; }
+            }
+        }
 
-                        height: auto;
-                        opacity: 1;
-                        visibility: visible;
-                        overflow: visible;
-                     }
+        nav[data-inflex~='accord']{
+
+            ul, li {
+
+                padding: 0;
+                margin: 0;
+                list-style: none;
+            }
+
+            li {
+
+                &[data-active]{
+
+                    > label {
+
+                        background: extract(@palette-smoke, 1);
+                    }
+
+                    > label > a {
+
+                        border-bottom: 1px solid;
+                    }
+                }
+
+                & > input {
+
+                    display: none !important;
+
+                    & + label {
+
+                        display: block;
+                        padding: 0.375em 0.5em;
+                        cursor: pointer;
+                    }
+                    
+                    & ~ ul {
+
+                        transition: opacity linear 0.24s;
+                    }
+
+                    &:not(:checked) {
+
+                        & ~ ul {
+
+                            height: 0 !important;
+                            opacity: 0 !important;
+                            visibility: hidden !important;
+                            overflow: hidden !important;
+                        }
+                    }
+
+                    &:checked {
+
+                        & ~ ul {
+
+                            height: auto;
+                            opacity: 1;
+                            visibility: visible;
+                            overflow: visible;
+                        }
+                    }
                 }
             }
         }
