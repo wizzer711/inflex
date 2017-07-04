@@ -1217,7 +1217,6 @@ blockquote {
 }
 [data-inflex~="theme:black"]:not([disabled])[data-inflex~="button:gradient"] {
   background-color: #222222;
-  background-image: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
   background-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
   border-color: #222222 transparent #1d1d1d transparent;
   color: #FFFFFF;
@@ -1275,7 +1274,6 @@ blockquote {
 }
 [data-inflex~="theme:dark"]:not([disabled])[data-inflex~="button:gradient"] {
   background-color: #444444;
-  background-image: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
   background-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
   border-color: #444444 transparent #3a3a3a transparent;
   color: #FFFFFF;
@@ -1333,7 +1331,6 @@ blockquote {
 }
 [data-inflex~="theme:grey"]:not([disabled])[data-inflex~="button:gradient"] {
   background-color: #989ba0;
-  background-image: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
   background-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
   border-color: #989ba0 transparent #818488 transparent;
   color: #FFFFFF;
@@ -1391,7 +1388,6 @@ blockquote {
 }
 [data-inflex~="theme:light"]:not([disabled])[data-inflex~="button:gradient"] {
   background-color: #dadfea;
-  background-image: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
   background-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
   border-color: #dadfea transparent #b9bec7 transparent;
   color: #808080;
@@ -1449,7 +1445,6 @@ blockquote {
 }
 [data-inflex~="theme:smoke"]:not([disabled])[data-inflex~="button:gradient"] {
   background-color: #f6f7f9;
-  background-image: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
   background-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
   border-color: #f6f7f9 transparent #d1d2d4 transparent;
   color: #808080;
@@ -1507,7 +1502,6 @@ blockquote {
 }
 [data-inflex~="theme:white"]:not([disabled])[data-inflex~="button:gradient"] {
   background-color: #FFFFFF;
-  background-image: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
   background-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
   border-color: #FFFFFF transparent #d9d9d9 transparent;
   color: #444444;
@@ -1565,7 +1559,6 @@ blockquote {
 }
 [data-inflex~="theme:info"]:not([disabled])[data-inflex~="button:gradient"] {
   background-color: #0081FF;
-  background-image: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
   background-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
   border-color: #0081FF transparent #006ed9 transparent;
   color: #FFFFFF;
@@ -1623,7 +1616,6 @@ blockquote {
 }
 [data-inflex~="theme:danger"]:not([disabled])[data-inflex~="button:gradient"] {
   background-color: #FF4C49;
-  background-image: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
   background-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
   border-color: #FF4C49 transparent #d9413e transparent;
   color: #FFFFFF;
@@ -1681,7 +1673,6 @@ blockquote {
 }
 [data-inflex~="theme:warning"]:not([disabled])[data-inflex~="button:gradient"] {
   background-color: #FF9436;
-  background-image: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
   background-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
   border-color: #FF9436 transparent #d97e2e transparent;
   color: #FFFFFF;
@@ -1739,7 +1730,6 @@ blockquote {
 }
 [data-inflex~="theme:caution"]:not([disabled])[data-inflex~="button:gradient"] {
   background-color: #FFD52A;
-  background-image: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
   background-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
   border-color: #FFD52A transparent #d9b524 transparent;
   color: #FFFFFF;
@@ -1797,7 +1787,6 @@ blockquote {
 }
 [data-inflex~="theme:success"]:not([disabled])[data-inflex~="button:gradient"] {
   background-color: #00D5AC;
-  background-image: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
   background-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
   border-color: #00D5AC transparent #00b592 transparent;
   color: #FFFFFF;
@@ -1855,7 +1844,6 @@ blockquote {
 }
 [data-inflex~="theme:1"]:not([disabled])[data-inflex~="button:gradient"] {
   background-color: #0081FF;
-  background-image: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
   background-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
   border-color: #0081FF transparent #006ed9 transparent;
   color: #FFFFFF;
@@ -1943,7 +1931,6 @@ textarea {
   border-width: 0.0625em;
   border-color: rgba(0, 0, 0, 0.15);
   color: #666666;
-  -webkit-transition: box-shadow ease-out 0.2s;
   transition: box-shadow ease-out 0.2s;
 }
 [data-inflex~='input:default'],
@@ -2127,12 +2114,9 @@ a[data-inflex*='button'] {
   text-decoration: none !important;
   padding-left: 0.890625em;
   padding-right: 0.890625em;
-  -webkit-transition-property: color, background, border-color;
   transition-property: color, background, border-color;
-  -webkit-transition-timing-function: ease-out;
-          transition-timing-function: ease-out;
-  -webkit-transition-duration: 0.2s;
-          transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+  transition-duration: 0.2s;
 }
 button i,
 input[type='button'] i,
@@ -2154,8 +2138,7 @@ input[type='button']:active,
 input[type='submit']:active,
 input[type='reset']:active,
 a[data-inflex*='button']:active {
-  -webkit-transition-duration: 0.1s;
-          transition-duration: 0.1s;
+  transition-duration: 0.1s;
 }
 button[disabled],
 input[type='button'][disabled],
@@ -2178,7 +2161,6 @@ a[data-inflex*='button'][disabled] {
 }
 [data-inflex~='button:gradient'][disabled] {
   background-color: #EEEEEE !important;
-  background-image: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.05) 100%);
   background-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.05) 100%);
   border-color: #EEEEEE transparent #e2e2e2 transparent;
 }
@@ -2346,7 +2328,6 @@ div[data-inflex~='radiocheck:block'] label:before {
   border-style: solid;
   border-width: 0.0625em;
   border-color: rgba(0, 0, 0, 0.15);
-  -webkit-transition: background ease-out 0.12s, border-color ease-out 0.12s;
   transition: background ease-out 0.12s, border-color ease-out 0.12s;
 }
 div[data-inflex~='radiocheck'] input[disabled]:not(:checked) + label,
@@ -2397,7 +2378,6 @@ div[data-inflex~='radiocheck:block'] input[type='radio'] + label:after {
   border-radius: 50%;
   -webkit-transform: scale(0) translate(50%, -50%);
           transform: scale(0) translate(50%, -50%);
-  -webkit-transition: -webkit-transform ease-out 0.12s 0.08s;
   transition: -webkit-transform ease-out 0.12s 0.08s;
   transition: transform ease-out 0.12s 0.08s;
   transition: transform ease-out 0.12s 0.08s, -webkit-transform ease-out 0.12s 0.08s;
@@ -2435,7 +2415,6 @@ div[data-inflex~='radiocheck:toggle'] label {
   border-radius: 0 !important;
   border-color: transparent !important;
   box-shadow: 0 -0.0625em 0 0 rgba(0, 0, 0, 0.15), -0.0625em 0 0 0 rgba(0, 0, 0, 0.15) !important;
-  -webkit-transition: background-color ease-out 0.12s;
   transition: background-color ease-out 0.12s;
 }
 div[data-inflex~='radiocheck:toggle'] input[disabled]:not(:checked) + label {
@@ -2746,7 +2725,6 @@ nav[data-inflex~='accord'] li > input + label {
   cursor: pointer;
 }
 nav[data-inflex~='accord'] li > input ~ ul {
-  -webkit-transition: opacity linear 0.24s;
   transition: opacity linear 0.24s;
 }
 nav[data-inflex~='accord'] li > input:not(:checked) ~ ul {
@@ -2862,7 +2840,6 @@ pre > code {
   visibility: hidden;
   opacity: 0;
   margin-top: -1em;
-  -webkit-transition: all 0.2s 0s, visibility 0s 0.2s;
   transition: all 0.2s 0s, visibility 0s 0.2s;
 }
 [data-inflex~='droplet:toggled'] > [data-inflex*='droplet:src'] {
@@ -2880,7 +2857,6 @@ pre > code {
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.15);
   background: white;
   padding: 1.5em;
-  -webkit-transition: all 0.2s 0s, visibility 0s 0s;
   transition: all 0.2s 0s, visibility 0s 0s;
 }
 [data-inflex*='droplet:src'][data-inflex~='droplet:src:right'] {
