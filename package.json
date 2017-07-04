@@ -1,9 +1,9 @@
 {
   "name": "inflex",
-  "version": "1.1.39",
+  "version": "1.1.40",
   "prefix": "inflex.",
   "description": "Inflex is a responsive design grid, utilising the power of the flex display property.",
-  "repository": "chris-garner/inflex",
+  "repository": "inflex.io/inflex",
   "homepage": "http://inflex.io",
   "license": "MIT",
   "copyright": [
@@ -17,7 +17,7 @@
   "author": {
     "name": "Chris Garner",
     "email": "help@inflex.io",
-    "url": "https://github.com/chris-garner"
+    "url": "https://github.com/inflex-io"
   },
   "keywords": [
     "css",
