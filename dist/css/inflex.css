@@ -2026,9 +2026,9 @@ textarea[disabled] {
   display: inline-flex;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
-}
-[data-inflex~='input:group'] input {
-  width: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
 [data-inflex~='input:group'] select {
   -ms-flex-negative: 0;
@@ -2047,6 +2047,44 @@ textarea[disabled] {
 }
 [data-inflex~='input:group'] :focus + :not(:first-child) {
   border-left-width: 0;
+}
+[data-inflex~='field:group'] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+[data-inflex~='field'] {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-line-pack: end;
+      align-content: flex-end;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  margin: 0.375em;
+}
+[data-inflex~='field:labels'] {
+  width: 0;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -webkit-box-ordinal-group: 0;
+      -ms-flex-order: -1;
+          order: -1;
+}
+[data-inflex~='field:label'] {
+  display: block;
+  font-size: 0.6875rem;
+  line-height: 1.5em;
+  text-transform: uppercase;
+  color: #666666;
+  margin-bottom: 0.375em;
 }
 input:not([type="checkbox"]):not([type="radio"]):not([type="range"])[data-inflex~='size:xl'] {
   min-height: 3.75em;
