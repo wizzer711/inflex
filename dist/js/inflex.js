@@ -104,7 +104,7 @@ var inflex = {
 
 				$body = $body || $('body').removeClass('noscript');
 
-				if (typeof FastClick != 'undefined') {
+				if (typeof FastClick !== 'undefined') {
 
 					FastClick.attach(document.body);
 				}
