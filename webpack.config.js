@@ -8,7 +8,7 @@ let CopyWebpackPlugin = require('copy-webpack-plugin');
 
 let OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 
-let Bump = require("bump-webpack-plugin");
+let Bump = require("bump-version-webpack-plugin");
 
 module.exports = {
 
@@ -111,10 +111,10 @@ if (process.env.NODE_BUMP === 'true'){
 
     module.exports.plugins.push(
 
-        new Bump([
+        new Bump({
 
-            'package.json'
-        ])
+            files: ['package.json']
+        })
     );
 
 }

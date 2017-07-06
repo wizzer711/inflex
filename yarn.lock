@@ -787,9 +787,9 @@ builtin-status-codes@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
 
-bump-webpack-plugin@^0.1.0:
+bump-version-webpack-plugin@^0.1.0:
   version "0.1.0"
-  resolved "https://registry.yarnpkg.com/bump-webpack-plugin/-/bump-webpack-plugin-0.1.0.tgz#1c2c8147a6e0d90a3cc0c09c656761fcb5239725"
+  resolved "https://registry.yarnpkg.com/bump-version-webpack-plugin/-/bump-version-webpack-plugin-0.1.0.tgz#c6bd2a535b68c92b70bfeaf4bcf0b51b17839b05"
 
 camelcase@^1.0.2:
   version "1.2.1"
